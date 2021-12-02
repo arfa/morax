@@ -1,29 +1,32 @@
-import '@assets/main.css'
-import '@assets/chrome-bug.css'
-import 'keen-slider/keen-slider.min.css'
+import * as React from 'react';
+import Head from 'next/head';
+import { AppProps } from 'next/app';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import theme from '../styles/theme';
+import createEmotionCache from '../utils/createEmotionCache';
 
-import { FC, useEffect } from 'react'
-import type { AppProps } from 'next/app'
-import { Head } from '@components/common'
-import { ManagedUIContext } from '@components/ui/context'
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
 
-const Noop: FC = ({ children }) => <>{children}</>
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const Layout = (Component as any).Layout || Noop
-
-  useEffect(() => {
-    document.body.classList?.remove('loading')
-  }, [])
-
+export default function MyApp(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
-    <>
-      <Head />
-      <ManagedUIContext>
-        <Layout pageProps={pageProps}>
-          <Component {...pageProps} />
-        </Layout>
-      </ManagedUIContext>
-    </>
-  )
+    <CacheProvider value={emotionCache}>
+      <Head>
+        <title>Change title in _app.tsx</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </CacheProvider>
+  );
 }
