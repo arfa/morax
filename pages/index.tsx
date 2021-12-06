@@ -1,26 +1,36 @@
-import * as React from 'react'
+import ProductCard from '@components/product/ProductCard'
+import { Container, Grid } from '@mui/material'
 import type { NextPage } from 'next'
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+import * as React from 'react'
 const Home: NextPage = () => {
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
-        </Typography>
-        <Button variant="contained">Hello World</Button>
-      </Box>
+    <Container maxWidth="md">
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <ProductCard />
+        </Grid>
+      </Grid>
     </Container>
   )
 }

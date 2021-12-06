@@ -14,6 +14,18 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
+          borderRadius: 20,
+          boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px"
+        },
+      },
+    },
+  },
 })
 
 export default theme
