@@ -1,0 +1,19 @@
+name: Code Quality
+
+on: push
+
+jobs:
+  code-quality:
+    name: Lint source code
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm i
+      
+    - name: Run Lint
+      run: npm run fix:lint
+
+    - name: Run Prettier
+      run: npm run fix:prettier
