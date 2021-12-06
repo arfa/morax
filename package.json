@@ -57,6 +57,8 @@
     "uuidv4": "^6.2.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "@graphql-codegen/cli": "^1.21.5",
     "@graphql-codegen/schema-ast": "^1.18.3",
     "@graphql-codegen/typescript": "^1.22.2",
