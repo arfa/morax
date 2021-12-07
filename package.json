@@ -94,6 +94,7 @@
     "@types/node": "^15.12.4",
     "@types/react": "^17.0.8",
     "babel-loader": "^8.2.3",
+    "chromatic": "^6.2.0",
     "commitizen": "^4.2.4",
     "deepmerge": "^4.2.2",
     "eslint": "^7.31.0",
