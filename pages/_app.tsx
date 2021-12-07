@@ -1,12 +1,12 @@
-import * as React from 'react'
-import Head from 'next/head'
-import { AppProps } from 'next/app'
-import { ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import theme from '../styles/theme'
 import Layout from '@components/Layout'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
 import { NextPage } from 'next'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import * as React from 'react'
 import { ReactElement, ReactNode } from 'react'
+import theme from '../styles/theme'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode

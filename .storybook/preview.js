@@ -1,6 +1,6 @@
+import { ThemeProvider } from '@mui/material/styles'
 import * as NextImage from 'next/image'
 import theme from '../styles/theme'
-import { ThemeProvider } from '@mui/material/styles'
 
 const OriginalNextImage = NextImage.default
 
