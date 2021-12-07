@@ -19,7 +19,9 @@
     "fix:lint": "next lint",
     "fix:all": "npm run fix:lint && npm run fix:prettier",
     "postinstall": "husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s public"
   },
   "config": {
     "commitizen": {
@@ -36,6 +38,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.2",
     "@react-spring/web": "^9.2.1",
+    "@storybook/addon-docs": "^6.4.8",
     "@vercel/fetch": "^6.1.1",
     "autoprefixer": "^10.2.6",
     "body-scroll-lock": "^3.1.5",
@@ -68,6 +71,7 @@
     "uuidv4": "^6.2.10"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@graphql-codegen/cli": "^1.21.5",
@@ -75,6 +79,12 @@
     "@graphql-codegen/typescript": "^1.22.2",
     "@graphql-codegen/typescript-operations": "^1.18.1",
     "@next/bundle-analyzer": "^10.2.3",
+    "@storybook/addon-actions": "^6.4.8",
+    "@storybook/addon-essentials": "^6.4.8",
+    "@storybook/addon-links": "^6.4.8",
+    "@storybook/builder-webpack5": "^6.4.8",
+    "@storybook/manager-webpack5": "^6.4.8",
+    "@storybook/react": "^6.4.8",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/cookie": "^0.4.0",
     "@types/js-cookie": "^2.2.6",
@@ -83,6 +93,7 @@
     "@types/lodash.throttle": "^4.1.6",
     "@types/node": "^15.12.4",
     "@types/react": "^17.0.8",
+    "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
     "deepmerge": "^4.2.2",
     "eslint": "^7.31.0",
