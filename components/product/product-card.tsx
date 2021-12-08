@@ -1,34 +1,43 @@
+import { Product } from '@components/types'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
-import styles from './ProductCard.module.css'
-export default function ProductCard() {
+import styles from './product-card.module.css'
+import usePrice from './use-price'
+interface ProductProps {
+  product: Product
+  className?: string
+}
+export default function ProductCard({ product, className }: ProductProps) {
+  const { price, basePrice, discount } = usePrice({
+    amount: product.sale_price ? product.sale_price : product.price,
+    baseAmount: product.price,
+    currencyCode: 'USD',
+  })
   return (
-    <Card
-      className={styles['card']}
-    >
-      <div className={styles['']}>
-        <CardMedia
-          component="img"
-          className={styles['card-img']}
-          image="https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206"
-          alt="green iguana"
-        />
-      </div>
+    <Card className={styles['card']}>
+      <CardMedia
+        component="img"
+        className={styles['card-img']}
+        image={product.image}
+        alt="green iguana"
+      />
+
       <CardContent className={styles['card-content']}>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {product.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate ...
+          {product.description}
         </Typography>
       </CardContent>
       <CardActions className={styles['card-footer']}>
         <Typography variant="subtitle1">
-          25$<del className={styles['card-price']}>20$</del>
+          {price}
+          {discount && <del className={styles['card-price']}>{basePrice}</del>}
         </Typography>{' '}
         <svg
           xmlns="http://www.w3.org/2000/svg"
