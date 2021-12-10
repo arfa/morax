@@ -1,4 +1,4 @@
-import CategoryList from '@components/category/category-list'
+import Filters from '@components/filter/Filters'
 import ProductCard from '@components/product/product-card'
 import { Product } from '@components/types'
 import { Container, Grid, Paper, Typography } from '@mui/material'
@@ -101,11 +101,10 @@ const Home: NextPage = () => {
                 overflow: 'hidden',
                 borderRadius: '20px',
                 padding: '20px',
-                // margin: '15px',
                 boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
               }}
             >
-              <CategoryList />
+              <Filters />
             </Paper>
           </Grid>
 
@@ -124,7 +123,7 @@ const Home: NextPage = () => {
               }}
             >
               <Typography variant="h5" paddingBottom="40px">
-                Flash Sale
+                Products
               </Typography>
               <Grid container spacing={2}>
                 {products.map((product) => (

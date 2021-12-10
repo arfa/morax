@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import styles from './product-card.module.css'
 import usePrice from './use-price'
+import Link from 'next/link'
 interface ProductProps {
   product: Product
   className?: string
@@ -27,15 +28,24 @@ export default function ProductCard({ product, className }: ProductProps) {
       />
 
       <CardContent className={styles['card-content']}>
-        <Typography gutterBottom variant="h5" component="div">
-          {product.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Link href={`/product/${product.id}`} passHref>
+          <Typography gutterBottom component="div" sx={{ fontWeight: '500' }}>
+            {product.name}
+          </Typography>
+        </Link>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ fontSize: '0.75rem' }}
+        >
           {product.description}
         </Typography>
       </CardContent>
       <CardActions className={styles['card-footer']}>
-        <Typography variant="subtitle1">
+        <Typography
+          variant="subtitle1"
+          sx={{ fontSize: '0.75rem', marginRight: 'auto', fontWeight: '500' }}
+        >
           {price}
           {discount && <del className={styles['card-price']}>{basePrice}</del>}
         </Typography>{' '}
@@ -45,6 +55,8 @@ export default function ProductCard({ product, className }: ProductProps) {
           fill="none"
           viewBox="0 0 24 24"
           stroke="black"
+          width="20"
+          height="20"
         >
           <path
             strokeLinecap="round"
