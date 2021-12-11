@@ -94,7 +94,14 @@ export default function SignUp({ toggle }: Props) {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="#" variant="body2" onClick={toggle}>
+              <Link
+                href="#"
+                variant="body2"
+                onClick={(event) => {
+                  event.preventDefault()
+                  toggle()
+                }}
+              >
                 Already have an account? Sign in
               </Link>
             </Grid>

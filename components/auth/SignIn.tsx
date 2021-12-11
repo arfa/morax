@@ -68,7 +68,14 @@ const SignIn: FC<Props> = ({ toggle }: Props) => {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="#" variant="body2" onClick={toggle}>
+              <Link
+                href="#"
+                variant="body2"
+                onClick={(event) => {
+                  event.preventDefault()
+                  toggle()
+                }}
+              >
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
