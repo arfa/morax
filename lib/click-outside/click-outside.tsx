@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, MouseEvent } from 'react'
+import React, { MouseEvent, useEffect, useRef } from 'react'
 import hasParent from './has-parent'
 
 interface ClickOutsideProps {

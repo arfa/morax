@@ -1,6 +1,6 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import * as React from 'react';
-import theme from '../styles/theme';
+import Document, { Head, Html, Main, NextScript } from 'next/document'
+import * as React from 'react'
+import theme from '../styles/theme'
 
 export default class MyDocument extends Document {
   render() {
@@ -13,14 +13,17 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
@@ -49,7 +52,7 @@ MyDocument.getInitialProps = async (ctx) => {
   // 3. app.render
   // 4. page.render
 
-  const originalRenderPage = ctx.renderPage;
+  const originalRenderPage = ctx.renderPage
 
   // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
   // However, be aware that it can have global side effects.
@@ -58,15 +61,14 @@ MyDocument.getInitialProps = async (ctx) => {
     originalRenderPage({
       enhanceApp: (App: any) =>
         function EnhanceApp(props) {
-          return <App {...props} />;
+          return <App {...props} />
         },
-    });
+    })
 
-  const initialProps = await Document.getInitialProps(ctx);
-
+  const initialProps = await Document.getInitialProps(ctx)
 
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
-  };
-};
+  }
+}

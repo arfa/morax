@@ -5,7 +5,7 @@ import { red } from '@mui/material/colors'
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#5b5b5b',
     },
     secondary: {
       main: '#19857b',
@@ -21,7 +21,7 @@ const theme = createTheme({
         root: {
           // Some CSS
           borderRadius: 20,
-          boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px"
+          boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
         },
       },
     },
