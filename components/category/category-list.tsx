@@ -1,10 +1,4 @@
-import {
-  Avatar,
-  Card,
-  ListItemAvatar,
-  ListSubheader,
-  Paper,
-} from '@mui/material'
+import { Avatar, Card, ListItemAvatar, ListSubheader } from '@mui/material'
 import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'

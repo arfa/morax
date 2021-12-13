@@ -1,4 +1,4 @@
-import { IconButton, Typography, SwipeableDrawer } from '@mui/material'
+import { IconButton, SwipeableDrawer, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'

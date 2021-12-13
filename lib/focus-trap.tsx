@@ -1,4 +1,4 @@
-import React, { useEffect, RefObject } from 'react'
+import React, { RefObject, useEffect } from 'react'
 import { tabbable } from 'tabbable'
 
 interface Props {
