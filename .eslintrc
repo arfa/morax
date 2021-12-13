@@ -1,6 +1,9 @@
 {
   "extends": ["next", "prettier"],
   "rules": {
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    // hack: shorturl.at/ctMX6
+    "@next/next/no-document-import-in-page": "off"
+    
   }
 }
