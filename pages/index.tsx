@@ -9,7 +9,6 @@ import * as React from 'react'
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(products)
   return (
     <MainBlock
       leftBlock={<CategoryList />}

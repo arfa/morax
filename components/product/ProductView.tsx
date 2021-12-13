@@ -1,10 +1,7 @@
-import AppBreadcrumbs from '@components/Breadcrumbs'
-import ProductCard from '@components/product/product-card'
 import ProductColorRadio from '@components/product/product-color-radio'
 import ProductDetailTab from '@components/product/product-detail-tabs'
 import SizeSelect from '@components/product/size-select'
-import usePrice from '@components/product/use-price'
-import { Product } from '@components/types'
+import { Product } from '@commerce/types/product'
 import {
   Box,
   Button,
@@ -17,19 +14,23 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import type { NextPage } from 'next'
-import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import { products } from '../../public/data-mock'
-const product = products[0]
-const relatedProducts: Product[] = products
+import usePrice from '@framework/product/use-price'
+import ProductCard from '@components/product/product-card'
 
-const ProductDetail: NextPage = () => {
-  const { price, basePrice, discount } = usePrice({
-    amount: product.sale_price ? product.sale_price : product.price,
-    baseAmount: product.price,
-    currencyCode: 'USD',
+const placeholderImg = '/product-img-placeholder.svg'
+interface ProductViewProps {
+  product: Product
+  relatedProducts: Product[]
+}
+
+const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
+  const { price } = usePrice({
+    amount: product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
   })
+
   return (
     <>
       <Container maxWidth="lg">
@@ -46,15 +47,14 @@ const ProductDetail: NextPage = () => {
             boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
           }}
         >
-          <AppBreadcrumbs />
           <Grid container spacing={3} marginTop={1}>
             {/* Product Image */}
             <Grid item xs={12} md={4} lg={3}>
               <CardMedia
                 component="img"
                 sx={{ borderRadius: '25px' }}
-                image={product.image}
-                alt="green iguana"
+                image={product.images[0]?.url || placeholderImg}
+                alt={product.name || 'Product Image'}
               />
             </Grid>
 
@@ -68,16 +68,6 @@ const ProductDetail: NextPage = () => {
                   </Typography>
                   <Typography variant="h6" sx={{ marginY: '20px' }}>
                     {price}
-                    {discount && (
-                      <del
-                        style={{
-                          color: 'rgb(153, 153, 153)',
-                          marginLeft: '10px',
-                        }}
-                      >
-                        {basePrice}
-                      </del>
-                    )}
                   </Typography>
 
                   <ProductColorRadio />
@@ -151,5 +141,4 @@ const ProductDetail: NextPage = () => {
     </>
   )
 }
-
-export default ProductDetail
+export default ProductView
