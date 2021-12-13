@@ -18,7 +18,7 @@ const products: Product[] = [
       'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
   },
   {
-    id: '0',
+    id: '1',
     image:
       'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
     price: 25,
@@ -29,7 +29,7 @@ const products: Product[] = [
       'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
   },
   {
-    id: '0',
+    id: '2',
     image:
       'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
     price: 25,
@@ -40,7 +40,7 @@ const products: Product[] = [
       'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
   },
   {
-    id: '0',
+    id: '3',
     image:
       'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
     price: 25,
@@ -51,7 +51,7 @@ const products: Product[] = [
       'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
   },
   {
-    id: '0',
+    id: '4',
     image:
       'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
     price: 25,
@@ -62,7 +62,7 @@ const products: Product[] = [
       'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
   },
   {
-    id: '0',
+    id: '5',
     image:
       'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
     price: 25,
@@ -73,7 +73,7 @@ const products: Product[] = [
       'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
   },
   {
-    id: '0',
+    id: '6',
     image:
       'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
     price: 25,
