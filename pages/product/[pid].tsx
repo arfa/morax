@@ -18,7 +18,6 @@ import {
   Typography,
 } from '@mui/material'
 import type { NextPage } from 'next'
-import { useRouter } from 'next/router'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 const product: Product = {
@@ -101,9 +100,7 @@ const relatedProducts: Product[] = [
   },
 ]
 
-const Product: NextPage = () => {
-  const router = useRouter()
-  const { pid } = router.query
+const ProductDetail: NextPage = () => {
   const { price, basePrice, discount } = usePrice({
     amount: product.sale_price ? product.sale_price : product.price,
     baseAmount: product.price,
@@ -219,9 +216,9 @@ const Product: NextPage = () => {
             Related Products
           </Typography>
           <Grid container spacing={2}>
-            {relatedProducts.map((product) => (
-              <Grid key={product.id} item xs={12} sm={6} md={2}>
-                <ProductCard product={product} />
+            {relatedProducts.map((p) => (
+              <Grid key={p.id} item xs={12} sm={6} md={2}>
+                <ProductCard product={p} />
               </Grid>
             ))}
           </Grid>
@@ -231,4 +228,4 @@ const Product: NextPage = () => {
   )
 }
 
-export default Product
+export default ProductDetail
