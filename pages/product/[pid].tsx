@@ -20,85 +20,9 @@ import {
 import type { NextPage } from 'next'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-const product: Product = {
-  id: '0',
-  image:
-    'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-  price: 25,
-  sale_price: 20,
-  quantity: 10,
-  name: 'T-shirt',
-  description:
-    'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-}
-const relatedProducts: Product[] = [
-  {
-    id: '0',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '1',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '2',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '3',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '4',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '5',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-]
+import { products } from '../../public/data-mock'
+const product = products[0]
+const relatedProducts: Product[] = products
 
 const ProductDetail: NextPage = () => {
   const { price, basePrice, discount } = usePrice({

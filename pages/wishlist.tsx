@@ -4,75 +4,8 @@ import { Container, Grid, Paper, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-
-const relatedProducts: Product[] = [
-  {
-    id: '0',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '1',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '2',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '3',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '4',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-  {
-    id: '5',
-    image:
-      'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-    price: 25,
-    sale_price: 20,
-    quantity: 10,
-    name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-  },
-]
+import { products } from '../public/data-mock'
+const relatedProducts: Product[] = products
 
 const Wishlist: NextPage = () => {
   const router = useRouter()
