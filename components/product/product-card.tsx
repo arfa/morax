@@ -1,34 +1,43 @@
-import { Product } from '@components/types'
+import type { Product } from '@commerce/types/product'
+import usePrice from '@framework/product/use-price'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import * as React from 'react'
-import styles from './product-card.module.css'
-import usePrice from './use-price'
+import { ImageProps } from 'next/image'
 import Link from 'next/link'
-interface ProductProps {
-  product: Product
+import * as React from 'react'
+import { FC } from 'react'
+import styles from './product-card.module.css'
+interface Props {
   className?: string
+  product: Product
+  noNameTag?: boolean
+  imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
+  variant?: 'default' | 'slim' | 'simple'
 }
-export default function ProductCard({ product, className }: ProductProps) {
-  const { price, basePrice, discount } = usePrice({
-    amount: product.sale_price ? product.sale_price : product.price,
-    baseAmount: product.price,
-    currencyCode: 'USD',
+
+const placeholderImg = '/product-img-placeholder.svg'
+const ProductCard: FC<Props> = ({ product }) => {
+  const { price } = usePrice({
+    amount: product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
   })
   return (
     <Card className={styles['card']}>
-      <CardMedia
-        component="img"
-        className={styles['card-img']}
-        image={product.image}
-        alt="green iguana"
-      />
+      {product?.images && (
+        <CardMedia
+          component="img"
+          className={styles['card-img']}
+          image={product.images[0]?.url || placeholderImg}
+          alt={product.name || 'Product Image'}
+        />
+      )}
 
       <CardContent className={styles['card-content']}>
-        <Link href={`/product/${product.id}`} passHref>
+        <Link href={`/product/${product.slug}`} passHref>
           <Typography gutterBottom component="div" sx={{ fontWeight: '500' }}>
             {product.name}
           </Typography>
@@ -47,7 +56,7 @@ export default function ProductCard({ product, className }: ProductProps) {
           sx={{ fontSize: '0.75rem', marginRight: 'auto', fontWeight: '500' }}
         >
           {price}
-          {discount && <del className={styles['card-price']}>{basePrice}</del>}
+          {/* {discount && <del className={styles['card-price']}>{basePrice}</del>} */}
         </Typography>{' '}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -69,3 +78,4 @@ export default function ProductCard({ product, className }: ProductProps) {
     </Card>
   )
 }
+export default ProductCard
