@@ -33,7 +33,14 @@ const SignIn: FC<Props> = ({ toggle }: Props) => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={() => {}} noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          onSubmit={() => {
+            console.log('signin')
+          }}
+          noValidate
+          sx={{ mt: 1 }}
+        >
           <TextField
             margin="normal"
             required
