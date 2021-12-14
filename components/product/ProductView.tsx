@@ -16,6 +16,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { NextSeo } from 'next-seo'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -141,6 +142,23 @@ export default function ProductView({
           </Grid>
         </Paper>
       </Container>
+      <NextSeo
+        title={product.name}
+        description={product.description}
+        openGraph={{
+          type: 'website',
+          title: product.name,
+          description: product.description,
+          images: [
+            {
+              url: product.images[0]?.url!,
+              width: 800,
+              height: 600,
+              alt: product.name,
+            },
+          ],
+        }}
+      />
     </>
   )
 }
