@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography'
 import { ImageProps } from 'next/image'
 import Link from 'next/link'
 import * as React from 'react'
-import { FC } from 'react'
 import styles from './product-card.module.css'
 interface Props {
   className?: string
@@ -19,7 +18,8 @@ interface Props {
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
-const ProductCard: FC<Props> = ({ product }) => {
+
+export default function ProductCard({ product }: Props) {
   const { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
@@ -56,8 +56,7 @@ const ProductCard: FC<Props> = ({ product }) => {
           sx={{ fontSize: '0.75rem', marginRight: 'auto', fontWeight: '500' }}
         >
           {price}
-          {/* {discount && <del className={styles['card-price']}>{basePrice}</del>} */}
-        </Typography>{' '}
+        </Typography>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={styles['card-add-cart']}
@@ -78,4 +77,3 @@ const ProductCard: FC<Props> = ({ product }) => {
     </Card>
   )
 }
-export default ProductCard

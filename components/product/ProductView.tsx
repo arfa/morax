@@ -16,7 +16,6 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { FC } from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -25,7 +24,10 @@ interface ProductViewProps {
   relatedProducts: Product[]
 }
 
-const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
+export default function ProductView({
+  product,
+  relatedProducts,
+}: ProductViewProps) {
   const { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
@@ -142,4 +144,3 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
     </>
   )
 }
-export default ProductView
