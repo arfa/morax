@@ -1,23 +1,17 @@
 import { Product } from '@commerce/types/product'
 import ProductCard from '@components/product/product-card'
-import ProductColorRadio from '@components/product/product-color-radio'
 import ProductDetailTab from '@components/product/product-detail-tabs'
-import SizeSelect from '@components/product/size-select'
 import usePrice from '@framework/product/use-price'
 import {
   Box,
-  Button,
   CardMedia,
   Container,
-  Divider,
   Grid,
   Paper,
-  Stack,
-  TextField,
   Typography,
 } from '@mui/material'
 import { NextSeo } from 'next-seo'
-import { HiOutlineShoppingCart } from 'react-icons/hi'
+import ProductSidebar from './ProductSideBar'
 
 const placeholderImg = '/product-img-placeholder.svg'
 interface ProductViewProps {
@@ -34,7 +28,6 @@ export default function ProductView({
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })
-
   return (
     <>
       <Container maxWidth="lg">
@@ -67,35 +60,10 @@ export default function ProductView({
               <Grid container spacing={2}>
                 <Box flexDirection="row" padding="20px">
                   <Typography variant="h4">{product.name}</Typography>
-                  <Typography variant="body1" paddingTop="20px">
-                    {product.description}
-                  </Typography>
                   <Typography variant="h6" sx={{ marginY: '20px' }}>
                     {price}
                   </Typography>
-
-                  <ProductColorRadio />
-                  <Divider sx={{ marginY: '20px' }} />
-                  <Stack direction="row" spacing={2} sx={{ marginTop: '20px' }}>
-                    <SizeSelect />
-                    <TextField
-                      id="quantity"
-                      label="Quantity"
-                      type="number"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Stack>
-                  <Stack direction="row" spacing={2} sx={{ marginTop: '50px' }}>
-                    <Button
-                      variant="outlined"
-                      startIcon={<HiOutlineShoppingCart />}
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button variant="contained">Buy Now</Button>
-                  </Stack>
+                  <ProductSidebar product={product} />
                 </Box>
               </Grid>
             </Grid>
@@ -114,7 +82,7 @@ export default function ProductView({
             boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
           }}
         >
-          <ProductDetailTab />
+          <ProductDetailTab product={product} />
         </Paper>
 
         {/* Related Products */}

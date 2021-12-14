@@ -1,8 +1,9 @@
-import * as React from 'react'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
-import Typography from '@mui/material/Typography'
+import { Product } from '@commerce/types/product'
 import Box from '@mui/material/Box'
+import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
+import Typography from '@mui/material/Typography'
+import * as React from 'react'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -37,7 +38,11 @@ function a11yProps(index: number) {
   }
 }
 
-export default function ProductDetailTab() {
+interface ProductDetailTabProps {
+  product: Product
+}
+
+export default function ProductDetailTab({ product }: ProductDetailTabProps) {
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -58,7 +63,17 @@ export default function ProductDetailTab() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ fontSize: '0.75rem' }}
+        >
+          <div
+            dangerouslySetInnerHTML={{
+              __html: product.descriptionHtml || product.description,
+            }}
+          />
+        </Typography>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two

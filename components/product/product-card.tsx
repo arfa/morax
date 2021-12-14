@@ -39,13 +39,6 @@ export default function ProductCard({ product }: Props) {
             {product.name}
           </Typography>
         </Link>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ fontSize: '0.75rem' }}
-        >
-          {product.description}
-        </Typography>
       </CardContent>
       <CardActions className={styles['card-footer']}>
         <Typography
