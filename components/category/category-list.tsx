@@ -4,30 +4,19 @@ import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import * as React from 'react'
-
-export const categories = [
-  {
-    id: 0,
-    name: 'Woman',
-    img: 'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fcategory%2Fwoman.jpg&w=128&q=75',
-  },
-  {
-    id: 1,
-    name: 'Man',
-    img: 'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fcategory%2Fman.jpg&w=128&q=75',
-  },
-  {
-    id: 2,
-    name: 'Watch',
-    img: 'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fcategory%2Fwatch.jpg&w=128&q=75',
-  },
-  {
-    id: 3,
-    name: 'Kids',
-    img: 'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fcategory%2Fkid.jpg&w=128&q=75',
-  },
-]
-export default function CategoryList() {
+interface category {
+  id: string | number
+  name: string
+  slug: string
+  path: string
+  image: {
+    url: string
+  }
+}
+interface Props {
+  data: category[]
+}
+export default function CategoryList({ data }: Props) {
   const [selectedIndex, setSelectedIndex] = React.useState(1)
 
   const handleListItemClick = (
@@ -43,7 +32,7 @@ export default function CategoryList() {
         <ListSubheader component="div" id="nested-list-subheader">
           Categories
         </ListSubheader>
-        {categories.map((category) => (
+        {data.map((category) => (
           <Card
             key={category.id}
             sx={{ marginY: 1, bgcolor: 'background.paper' }}
@@ -55,7 +44,7 @@ export default function CategoryList() {
               <ListItemAvatar>
                 <Avatar
                   alt={category.name}
-                  src={category.img}
+                  src={category.image?.url}
                   sx={{ width: 56, height: 56, marginRight: 2 }}
                 />
               </ListItemAvatar>

@@ -19,7 +19,7 @@ export default function ProductSidebar({
   product,
   className,
 }: ProductSidebarProps) {
-  //   const addItem = useAddItem()
+  //TODO:   const addItem = useAddItem()
   const [loading, setLoading] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
 
@@ -35,7 +35,7 @@ export default function ProductSidebar({
         productId: String(product.id),
         variantId: String(variant ? variant.id : product.variants[0].id),
       })
-      //   await addItem({
+      //TODO:   await addItem({
       //     productId: String(product.id),
       //     variantId: String(variant ? variant.id : product.variants[0].id),
       //   })

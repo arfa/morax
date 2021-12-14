@@ -281,6 +281,7 @@ export type CategoryTreeItem = {
   __typename?: 'CategoryTreeItem'
   /** The id category. */
   entityId: Scalars['Int']
+  image: Image
   /** The name of category. */
   name: Scalars['String']
   /** Path assigned to this category */
@@ -1681,7 +1682,7 @@ export type CategoryTreeItemFragment = {
   __typename?: 'CategoryTreeItem'
 } & Pick<
   CategoryTreeItem,
-  'entityId' | 'name' | 'path' | 'description' | 'productCount'
+  'entityId' | 'name' | 'path' | 'description' | 'productCount' | 'image'
 >
 
 export type ProductPricesFragment = { __typename?: 'Prices' } & {
