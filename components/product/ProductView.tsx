@@ -1,7 +1,9 @@
+import { Product } from '@commerce/types/product'
+import ProductCard from '@components/product/product-card'
 import ProductColorRadio from '@components/product/product-color-radio'
 import ProductDetailTab from '@components/product/product-detail-tabs'
 import SizeSelect from '@components/product/size-select'
-import { Product } from '@commerce/types/product'
+import usePrice from '@framework/product/use-price'
 import {
   Box,
   Button,
@@ -14,9 +16,8 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { FC } from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import usePrice from '@framework/product/use-price'
-import ProductCard from '@components/product/product-card'
 
 const placeholderImg = '/product-img-placeholder.svg'
 interface ProductViewProps {
