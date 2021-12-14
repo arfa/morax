@@ -1,11 +1,10 @@
-import ProductCard from '@components/product/product-card'
-import { Product } from '@components/types'
+import type { Product } from '@commerce/types/product'
 import { Container, Grid, Paper, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-import { products } from '../public/data-mock'
-const relatedProducts: Product[] = products
+
+const relatedProducts: Product[] = []
 
 const Wishlist: NextPage = () => {
   const router = useRouter()
@@ -32,7 +31,7 @@ const Wishlist: NextPage = () => {
           <Grid container spacing={3}>
             {relatedProducts.map((product) => (
               <Grid key={product.id} item xs={12} sm={6} md={3}>
-                <ProductCard product={product} />
+                {/* products go here */}
               </Grid>
             ))}
           </Grid>
