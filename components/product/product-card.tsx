@@ -5,7 +5,6 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { ImageProps } from 'next/image'
 import Link from 'next/link'
 import * as React from 'react'
 import styles from './product-card.module.css'
@@ -13,8 +12,6 @@ interface Props {
   className?: string
   product: Product
   noNameTag?: boolean
-  imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
