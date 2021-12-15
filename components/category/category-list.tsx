@@ -5,7 +5,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import * as React from 'react'
 interface category {
-  id: string | number
+  id: number
   name: string
   slug: string
   path: string
