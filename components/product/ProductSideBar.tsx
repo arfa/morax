@@ -1,9 +1,9 @@
 import type { Product } from '@commerce/types/product'
 import ProductOptions from '@components/product/ProductOptions'
-// import { useAddItem } from '@framework/cart'
-import { Button } from '@mui/material'
+//  import { useAddItem } from '@framework/cart'
 import { useEffect, useState } from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
+import LoadingButton from '@mui/lab/LoadingButton'
 import {
   SelectedOptions,
   getProductVariant,
@@ -19,7 +19,7 @@ export default function ProductSidebar({
   product,
   className,
 }: ProductSidebarProps) {
-  //TODO:   const addItem = useAddItem()
+  //TODO: const addItem = useAddItem()
   const [loading, setLoading] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
 
@@ -35,7 +35,7 @@ export default function ProductSidebar({
         productId: String(product.id),
         variantId: String(variant ? variant.id : product.variants[0].id),
       })
-      //TODO:   await addItem({
+      //TODO:  await addItem({
       //     productId: String(product.id),
       //     variantId: String(variant ? variant.id : product.variants[0].id),
       //   })
@@ -53,18 +53,18 @@ export default function ProductSidebar({
       />
       <div>
         {process.env.COMMERCE_CART_ENABLED && (
-          <Button
+          <LoadingButton
             sx={{ marginTop: '10px' }}
             variant="outlined"
             startIcon={<HiOutlineShoppingCart />}
             onClick={addToCart}
-            // loading={loading}
-            disabled={variant?.availableForSale === false}
+            loading={loading}
+            loadingPosition="start"
           >
             {variant?.availableForSale === false
               ? 'Not Available'
               : 'Add To Cart'}
-          </Button>
+          </LoadingButton>
         )}
       </div>
     </div>

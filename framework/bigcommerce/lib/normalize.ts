@@ -127,7 +127,6 @@ function normalizeLineItem(item: any): LineItem {
 }
 
 export function normalizeCategory(category: BCCategory): Category {
-  console.log('category', category)
   return {
     id: `${category.entityId}`,
     name: category.name,

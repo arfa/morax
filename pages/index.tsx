@@ -10,7 +10,6 @@ export default function Home({
   products,
   categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(categories)
   return (
     <MainBlock
       leftBlock={<CategoryList data={categories} />}
