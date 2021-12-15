@@ -4,15 +4,7 @@ import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import * as React from 'react'
-interface category {
-  id: number
-  name: string
-  slug: string
-  path: string
-  image: {
-    url: string
-  }
-}
+import { category } from '../types'
 interface Props {
   data: category[]
 }
@@ -21,9 +13,9 @@ export default function CategoryList({ data }: Props) {
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
+    index: string
   ) => {
-    setSelectedIndex(index)
+    setSelectedIndex(Number(index))
   }
 
   return (
@@ -38,7 +30,7 @@ export default function CategoryList({ data }: Props) {
             sx={{ marginY: 1, bgcolor: 'background.paper' }}
           >
             <ListItemButton
-              selected={selectedIndex === category.id}
+              selected={selectedIndex.toString() === category.id}
               onClick={(event) => handleListItemClick(event, category.id)}
             >
               <ListItemAvatar>
