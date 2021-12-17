@@ -1,9 +1,9 @@
-export interface Product {
-  id: number | string
+export interface category {
+  id: string
   name: string
-  price: number
-  quantity: number
-  sale_price?: number
-  image: string
-  description?: string
+  slug: string
+  path: string
+  image: {
+    url: string
+  }
 }

@@ -14,7 +14,7 @@ import { alpha, styled } from '@mui/material/styles'
 import Link from 'next/link'
 import React from 'react'
 import { HiOutlineHeart, HiSearch } from 'react-icons/hi'
-import Cart from './cart'
+import Cart from './cart/cart'
 export default function Layout({ children }: any) {
   const languages = [
     { value: 'en', label: 'English' },

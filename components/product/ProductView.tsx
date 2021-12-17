@@ -1,34 +1,32 @@
-import AppBreadcrumbs from '@components/Breadcrumbs'
+import { Product } from '@commerce/types/product'
 import ProductCard from '@components/product/product-card'
-import ProductColorRadio from '@components/product/product-color-radio'
 import ProductDetailTab from '@components/product/product-detail-tabs'
-import SizeSelect from '@components/product/size-select'
-import usePrice from '@components/product/use-price'
-import { Product } from '@components/types'
+import usePrice from '@framework/product/use-price'
 import {
   Box,
-  Button,
   CardMedia,
   Container,
-  Divider,
   Grid,
   Paper,
-  Stack,
-  TextField,
   Typography,
 } from '@mui/material'
-import type { NextPage } from 'next'
-import * as React from 'react'
-import { HiOutlineShoppingCart } from 'react-icons/hi'
-import { products } from '../../public/data-mock'
-const product = products[0]
-const relatedProducts: Product[] = products
+import { NextSeo } from 'next-seo'
+import ProductSidebar from './ProductSideBar'
 
-const ProductDetail: NextPage = () => {
-  const { price, basePrice, discount } = usePrice({
-    amount: product.sale_price ? product.sale_price : product.price,
-    baseAmount: product.price,
-    currencyCode: 'USD',
+const placeholderImg = '/product-img-placeholder.svg'
+interface ProductViewProps {
+  product: Product
+  relatedProducts: Product[]
+}
+
+export default function ProductView({
+  product,
+  relatedProducts,
+}: ProductViewProps) {
+  const { price } = usePrice({
+    amount: product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
   })
   return (
     <>
@@ -46,15 +44,14 @@ const ProductDetail: NextPage = () => {
             boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
           }}
         >
-          <AppBreadcrumbs />
           <Grid container spacing={3} marginTop={1}>
             {/* Product Image */}
             <Grid item xs={12} md={4} lg={3}>
               <CardMedia
                 component="img"
                 sx={{ borderRadius: '25px' }}
-                image={product.image}
-                alt="green iguana"
+                image={product.images[0]?.url || placeholderImg}
+                alt={product.name || 'Product Image'}
               />
             </Grid>
 
@@ -63,45 +60,10 @@ const ProductDetail: NextPage = () => {
               <Grid container spacing={2}>
                 <Box flexDirection="row" padding="20px">
                   <Typography variant="h4">{product.name}</Typography>
-                  <Typography variant="body1" paddingTop="20px">
-                    {product.description}
-                  </Typography>
                   <Typography variant="h6" sx={{ marginY: '20px' }}>
                     {price}
-                    {discount && (
-                      <del
-                        style={{
-                          color: 'rgb(153, 153, 153)',
-                          marginLeft: '10px',
-                        }}
-                      >
-                        {basePrice}
-                      </del>
-                    )}
                   </Typography>
-
-                  <ProductColorRadio />
-                  <Divider sx={{ marginY: '20px' }} />
-                  <Stack direction="row" spacing={2} sx={{ marginTop: '20px' }}>
-                    <SizeSelect />
-                    <TextField
-                      id="quantity"
-                      label="Quantity"
-                      type="number"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Stack>
-                  <Stack direction="row" spacing={2} sx={{ marginTop: '50px' }}>
-                    <Button
-                      variant="outlined"
-                      startIcon={<HiOutlineShoppingCart />}
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button variant="contained">Buy Now</Button>
-                  </Stack>
+                  <ProductSidebar product={product} />
                 </Box>
               </Grid>
             </Grid>
@@ -120,7 +82,7 @@ const ProductDetail: NextPage = () => {
             boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
           }}
         >
-          <ProductDetailTab />
+          <ProductDetailTab product={product} />
         </Paper>
 
         {/* Related Products */}
@@ -148,8 +110,23 @@ const ProductDetail: NextPage = () => {
           </Grid>
         </Paper>
       </Container>
+      <NextSeo
+        title={product.name}
+        description={product.description}
+        openGraph={{
+          type: 'website',
+          title: product.name,
+          description: product.description,
+          images: [
+            {
+              url: product.images[0]?.url!,
+              width: 800,
+              height: 600,
+              alt: product.name,
+            },
+          ],
+        }}
+      />
     </>
   )
 }
-
-export default ProductDetail
