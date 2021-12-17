@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { IconContext } from 'react-icons'
 import { IoMdSquare } from 'react-icons/io'
-import Quantity from './Quantity'
+import CartQuantityHandler from './CartQuantityHandler'
 
 type ItemOption = {
   name: string
@@ -21,7 +21,6 @@ const CartItem = ({
   item,
   variant = 'default',
   currencyCode,
-  ...rest
 }: {
   variant?: 'default' | 'display'
   item: LineItem
@@ -165,11 +164,11 @@ const CartItem = ({
               </Box>
             )}
             {variant === 'default' && (
-              <Quantity
+              <CartQuantityHandler
                 value={quantity}
                 handleRemove={handleRemove}
-                increase={() => increaseQuantity(1)}
-                decrease={() => increaseQuantity(-1)}
+                handleIncrease={() => increaseQuantity(1)}
+                handleDecrease={() => increaseQuantity(-1)}
               />
             )}
           </Typography>
