@@ -1,10 +1,8 @@
 import useCart from '@framework/cart/use-cart'
-import usePrice from '@framework/product/use-price'
-import { Button, IconButton, SwipeableDrawer, Typography } from '@mui/material'
-import Box from '@mui/material/Box'
+import { IconButton, SwipeableDrawer } from '@mui/material'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import CartItem from './CartItem'
+import CartContent from './cart-content'
 type Anchor = 'top' | 'left' | 'bottom' | 'right'
 
 export default function Cart() {
@@ -18,22 +16,6 @@ export default function Cart() {
   // logic
   const { data, isLoading, isEmpty } = useCart()
 
-  const { price: subTotal } = usePrice(
-    data && {
-      amount: Number(data.subtotalPrice),
-      currencyCode: data.currency.code,
-    }
-  )
-  const { price: total } = usePrice(
-    data && {
-      amount: Number(data.totalPrice),
-      currencyCode: data.currency.code,
-    }
-  )
-
-  const error = null
-  const success = null
-  /////////
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -48,61 +30,6 @@ export default function Cart() {
 
       setState({ ...state, [anchor]: open })
     }
-
-  const list = (anchor: Anchor) => (
-    <Box
-      sx={{ width: 400, padding: 3 }}
-      role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
-      // onKeyDown={toggleDrawer(anchor, false)}
-    >
-      {/* Products Here */}
-      {isLoading || isEmpty ? (
-        <p>Your cart is empty</p>
-      ) : error ? (
-        <p>
-          We couldn’t process the purchase. Please check your card information
-          and try again.
-        </p>
-      ) : success ? (
-        <p> Thank you for your order.</p>
-      ) : (
-        <>
-          <Typography variant="h5" paddingBottom="40px">
-            Shopping cart
-          </Typography>
-          {data!.lineItems.map((item: any) => (
-            <CartItem
-              key={item.id}
-              item={item}
-              currencyCode={data!.currency.code}
-            />
-          ))}
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              bgcolor: 'background.paper',
-              paddingTop: '20px',
-            }}
-          >
-            <span>Total</span>
-            <span>{total}</span>
-          </Box>
-          <div>
-            <Button
-              sx={{ marginY: '20px', width: '100%' }}
-              variant="contained"
-              href="/checkout"
-            >
-              Proceed to Checkout
-            </Button>
-          </div>
-        </>
-      )}
-    </Box>
-  )
 
   return (
     <div>
@@ -123,7 +50,7 @@ export default function Cart() {
           onClose={toggleDrawer('right', false)}
           onOpen={toggleDrawer('right', true)}
         >
-          {list('right')}
+          <CartContent data={data} isLoading={isLoading} isEmpty={isEmpty} />
         </SwipeableDrawer>
       </React.Fragment>
     </div>
