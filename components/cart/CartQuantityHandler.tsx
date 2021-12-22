@@ -8,15 +8,15 @@ import {
 } from 'react-icons/hi'
 export interface QuantityProps {
   value: number
-  increase: () => any
-  decrease: () => any
+  handleIncrease: () => any
+  handleDecrease: () => any
   handleRemove: React.MouseEventHandler<HTMLButtonElement>
   max?: number
 }
-export default function Quantity({
+export default function CartQuantityHandler({
   value,
-  increase,
-  decrease,
+  handleIncrease,
+  handleDecrease,
   handleRemove,
   max = 100,
 }: QuantityProps) {
@@ -25,18 +25,22 @@ export default function Quantity({
       <Stack direction="row" spacing={1}>
         <ButtonGroup size="small">
           <Button
-            aria-label="increase"
-            onClick={increase}
+            aria-label="Increase"
+            onClick={handleIncrease}
             disabled={value < 1 || value >= max}
           >
             <HiOutlinePlusSm />
           </Button>
-          <Button aria-label="reduce" onClick={decrease} disabled={value <= 1}>
+          <Button
+            aria-label="Decrease"
+            onClick={handleDecrease}
+            disabled={value <= 1}
+          >
             <HiOutlineMinusSm />
           </Button>
         </ButtonGroup>
 
-        <IconButton aria-label="delete" onClick={handleRemove}>
+        <IconButton aria-label="Remove" onClick={handleRemove}>
           <Badge color="secondary" badgeContent={value}>
             <HiOutlineTrash />
           </Badge>

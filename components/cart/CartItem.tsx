@@ -1,29 +1,17 @@
 import type { LineItem } from '@commerce/types/cart'
+import CartProductSubtitle from '@components/cart/CartProductSubtitle'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import useUpdateItem from '@framework/cart/use-update-item'
-import usePrice from '@framework/product/use-price'
 import { Avatar, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import Link from 'next/link'
-import { ChangeEvent, useEffect, useState } from 'react'
-import { IconContext } from 'react-icons'
-import { IoMdSquare } from 'react-icons/io'
-import Quantity from './Quantity'
-
-type ItemOption = {
-  name: string
-  nameId: number
-  value: string
-  valueId: number
-}
+import { useEffect, useState } from 'react'
+import CartQuantityHandler from './CartQuantityHandler'
 
 const CartItem = ({
   item,
-  variant = 'default',
   currencyCode,
-  ...rest
 }: {
-  variant?: 'default' | 'display'
   item: LineItem
   currencyCode: string
 }) => {
@@ -31,19 +19,6 @@ const CartItem = ({
   const [quantity, setQuantity] = useState<number>(item.quantity)
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
-
-  const { price } = usePrice({
-    amount: item.variant.price * item.quantity,
-    baseAmount: item.variant.listPrice * item.quantity,
-    currencyCode,
-  })
-
-  const handleChange = async ({
-    target: { value },
-  }: ChangeEvent<HTMLInputElement>) => {
-    setQuantity(Number(value))
-    await updateItem({ quantity: Number(value) })
-  }
 
   const increaseQuantity = async (n = 1) => {
     const val = Number(quantity) + n
@@ -59,9 +34,6 @@ const CartItem = ({
       setRemoving(false)
     }
   }
-
-  // TODO: Add a type for this
-  const options = (item as any).options
 
   useEffect(() => {
     // Reset the quantity state if the item quantity changes
@@ -123,56 +95,13 @@ const CartItem = ({
               {item.name}
             </Typography>
           </Link>
-          <Typography
-            variant="body2"
-            sx={{
-              fontSize: '10px',
-              lineHeight: '1.5',
-              color: 'rgb(125, 135, 156)',
-              textTransform: 'none',
-              whiteSpace: 'normal',
-            }}
-          >
-            {options && options.length > 0 && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  bgcolor: 'background.paper',
-                  paddingBottom: '10px',
-                }}
-              >
-                {price}
-                {options.map((option: ItemOption, i: number) => (
-                  <div key={`${item.id}-${option.name}`}>
-                    {option.name}
-                    {' : '}
-                    {option.name === 'Color' ? (
-                      <IconContext.Provider
-                        value={{
-                          color: option.value,
-                        }}
-                      >
-                        <IoMdSquare size={8} />
-                      </IconContext.Provider>
-                    ) : (
-                      <span>{option.value}</span>
-                    )}
-                    {i === options.length - 1 ? '' : <span />}
-                  </div>
-                ))}
-              </Box>
-            )}
-            {variant === 'default' && (
-              <Quantity
-                value={quantity}
-                handleRemove={handleRemove}
-                increase={() => increaseQuantity(1)}
-                decrease={() => increaseQuantity(-1)}
-              />
-            )}
-          </Typography>
+          <CartProductSubtitle item={item} currencyCode={currencyCode} />
+          <CartQuantityHandler
+            value={quantity}
+            handleRemove={handleRemove}
+            handleIncrease={() => increaseQuantity(1)}
+            handleDecrease={() => increaseQuantity(-1)}
+          />
         </Box>
       </Box>
     </>
