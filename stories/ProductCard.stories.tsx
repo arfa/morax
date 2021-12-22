@@ -25,7 +25,7 @@ Default.args = {
         url: 'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
       },
     ],
-    price: { value: 25 },
+    price: { value: 25, retailPrice: 25, currencyCode: 'USD' },
     name: 'T-shirt',
     description:
       'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
