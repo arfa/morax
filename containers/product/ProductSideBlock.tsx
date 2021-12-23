@@ -13,10 +13,7 @@ interface ProductSideBlockProps {
   className?: string
 }
 
-export default function ProductSideBlock({
-  product,
-  className,
-}: ProductSideBlockProps) {
+export default function ProductSideBlock({ product }: ProductSideBlockProps) {
   const addItem = useAddItem()
   const [loading, setLoading] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
@@ -43,8 +40,10 @@ export default function ProductSideBlock({
       product={product}
       onAddToCart={addToCart}
       loading={loading}
-      availableForSale={!!variant?.availableForSale}
+      availableForSale={variant?.availableForSale}
       cartEnabled={!!process.env.COMMERCE_CART_ENABLED}
+      selectedOptions={selectedOptions}
+      setSelectedOptions={setSelectedOptions}
     />
   )
 }

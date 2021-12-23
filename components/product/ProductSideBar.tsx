@@ -1,9 +1,7 @@
 import type { Product } from '@commerce/types/product'
 import ProductOptions from '@components/product/ProductOptions'
 import LoadingButton from '@mui/lab/LoadingButton'
-import { useState } from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import { SelectedOptions } from './helpers'
 
 interface ProductSidebarProps {
   product: Product
@@ -12,6 +10,8 @@ interface ProductSidebarProps {
   cartEnabled: boolean
   loading?: boolean
   availableForSale?: boolean
+  selectedOptions?: any
+  setSelectedOptions?: any
 }
 
 export default function ProductSidebar({
@@ -21,9 +21,9 @@ export default function ProductSidebar({
   cartEnabled = true,
   loading = false,
   availableForSale = true,
+  selectedOptions,
+  setSelectedOptions,
 }: ProductSidebarProps) {
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
-
   const addToCart = async () => {
     if (onAddToCart) {
       await onAddToCart()
@@ -46,7 +46,7 @@ export default function ProductSidebar({
             loading={loading}
             loadingPosition="start"
           >
-            {availableForSale ? 'Add To Cart' : 'Not Available' }
+            {availableForSale ? 'Add To Cart' : 'Not Available'}
           </LoadingButton>
         )}
       </div>
