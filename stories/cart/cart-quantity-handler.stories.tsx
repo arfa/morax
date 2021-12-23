@@ -1,10 +1,10 @@
-import CartQuantityHandler from '@components/cart/CartQuantityHandler'
+import CartQuantityHandler from '@components/cart/cart-quantity-handler'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { useState } from 'react'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'cart/CartQuantityHandler',
+  title: 'cart/cart-quantity-handler',
   component: CartQuantityHandler,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
@@ -19,7 +19,9 @@ const Template: ComponentStory<typeof CartQuantityHandler> = () => {
       value={quantity}
       handleIncrease={() => setQuantity(quantity + 1)}
       handleDecrease={() => setQuantity(quantity - 1)}
-      handleRemove={() => {}}
+      handleRemove={() => {
+        console.log('removed')
+      }}
     />
   )
 }

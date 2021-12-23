@@ -6,7 +6,7 @@ import {
   HiOutlinePlusSm,
   HiOutlineTrash,
 } from 'react-icons/hi'
-export interface QuantityProps {
+export interface CartQuantityHandlerProps {
   value: number
   handleIncrease: () => any
   handleDecrease: () => any
@@ -19,7 +19,7 @@ export default function CartQuantityHandler({
   handleDecrease,
   handleRemove,
   max = 100,
-}: QuantityProps) {
+}: CartQuantityHandlerProps) {
   return (
     <>
       <Stack direction="row" spacing={1}>

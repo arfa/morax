@@ -1,27 +1,20 @@
 import { Box, Typography } from '@mui/material'
 import { IconContext } from 'react-icons'
 import { IoMdSquare } from 'react-icons/io'
-import usePrice from '@framework/product/use-price'
-import type { LineItem } from '@commerce/types/cart'
 
 type ItemOption = {
   name: string
-  nameId: number
   value: string
-  valueId: number
 }
 
-export interface Props {
-  item: LineItem
-  currencyCode: string
+export interface CartItemSubtitleProps {
+  price: string
+  options: ItemOption[]
 }
-export default function CartProductSubtitle({ item, currencyCode }: Props) {
-  const { price } = usePrice({
-    amount: item.variant.price * item.quantity,
-    baseAmount: item.variant.listPrice * item.quantity,
-    currencyCode,
-  })
-  const options = (item as any).options
+export default function CartItemSubtitle({
+  price,
+  options,
+}: CartItemSubtitleProps) {
   return (
     <Typography
       variant="body2"
@@ -45,7 +38,7 @@ export default function CartProductSubtitle({ item, currencyCode }: Props) {
         >
           {price}
           {options.map((option: ItemOption, i: number) => (
-            <div key={`${item.id}-${option.name}`}>
+            <div key={`${option.name}`}>
               {option.name}
               {' : '}
               {option.name === 'Color' ? (

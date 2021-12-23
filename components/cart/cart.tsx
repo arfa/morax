@@ -4,7 +4,7 @@ import { Button, IconButton, SwipeableDrawer, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import CartItem from './CartItem'
+import CartItemContainer from '../../containers/cart-item-block'
 type Anchor = 'top' | 'left' | 'bottom' | 'right'
 
 export default function Cart() {
@@ -18,12 +18,6 @@ export default function Cart() {
   // logic
   const { data, isLoading, isEmpty } = useCart()
 
-  const { price: subTotal } = usePrice(
-    data && {
-      amount: Number(data.subtotalPrice),
-      currencyCode: data.currency.code,
-    }
-  )
   const { price: total } = usePrice(
     data && {
       amount: Number(data.totalPrice),
@@ -72,7 +66,7 @@ export default function Cart() {
             Shopping cart
           </Typography>
           {data!.lineItems.map((item: any) => (
-            <CartItem
+            <CartItemContainer
               key={item.id}
               item={item}
               currencyCode={data!.currency.code}
