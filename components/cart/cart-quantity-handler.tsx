@@ -1,6 +1,7 @@
 import { Badge, ButtonGroup, Stack } from '@mui/material'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
+import { useState } from 'react'
 import {
   HiOutlineMinusSm,
   HiOutlinePlusSm,
@@ -8,40 +9,64 @@ import {
 } from 'react-icons/hi'
 export interface CartQuantityHandlerProps {
   value: number
-  handleIncrease: () => any
-  handleDecrease: () => any
-  handleRemove: React.MouseEventHandler<HTMLButtonElement>
+  onIncrease?: (n: number) => any
+  onDecrease?: (n: number) => any
+  onChange?: (n: number) => any
+  onRemove?: () => void
   max?: number
+  step?: number
 }
 export default function CartQuantityHandler({
-  value,
-  handleIncrease,
-  handleDecrease,
-  handleRemove,
+  value = 0,
+  onIncrease,
+  onDecrease,
+  onChange,
+  onRemove,
   max = 100,
+  step = 1,
 }: CartQuantityHandlerProps) {
+  const [quantity, setQuantity] = useState<number>(value)
+
+  function handleIncrease() {
+    const newQuantity = Number(quantity) + step
+    setQuantity(newQuantity)
+    onChange && onChange(newQuantity)
+    onIncrease && onIncrease(newQuantity)
+  }
+  function handleDecrease() {
+    const newQuantity = Number(quantity) - step
+    setQuantity(newQuantity)
+    onChange && onChange(newQuantity)
+    onDecrease && onDecrease(newQuantity)
+  }
+
+  function handleRemove(event: any) {
+    event.preventDefault()
+    setQuantity(value)
+    onRemove && onRemove()
+  }
   return (
     <>
       <Stack direction="row" spacing={1}>
         <ButtonGroup size="small">
           <Button
-            aria-label="Increase"
+            aria-label="increase"
             onClick={handleIncrease}
-            disabled={value < 1 || value >= max}
+            disabled={quantity < 1 || quantity >= max}
           >
             <HiOutlinePlusSm />
           </Button>
           <Button
             aria-label="Decrease"
             onClick={handleDecrease}
-            disabled={value <= 1}
+            disabled={quantity <= 1}
           >
             <HiOutlineMinusSm />
           </Button>
         </ButtonGroup>
 
         <IconButton aria-label="Remove" onClick={handleRemove}>
-          <Badge color="secondary" badgeContent={value}>
+          <Badge color="secondary" badgeContent={quantity}>
             <HiOutlineTrash />
           </Badge>
         </IconButton>

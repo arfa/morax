@@ -79,9 +79,12 @@ const CartItem = ({
           />
           <CartQuantityHandler
             value={cartQuantity.value}
-            handleRemove={cartQuantity.handleRemove}
-            handleIncrease={cartQuantity.handleIncrease}
-            handleDecrease={cartQuantity.handleDecrease}
+            max={cartQuantity.max}
+            step={cartQuantity.step}
+            onChange={cartQuantity.onChange}
+            onDecrease={cartQuantity.onDecrease}
+            onIncrease={cartQuantity.onIncrease}
+            onRemove={cartQuantity.onRemove}
           />
         </Box>
       </Box>
