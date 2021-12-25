@@ -1,14 +1,12 @@
-import type { Product } from '@commerce/types/product'
+import ProductCard from '@components/product/product-card'
+import useWishlist from '@framework/wishlist/use-wishlist'
 import { Container, Grid, Paper, Typography } from '@mui/material'
 import type { NextPage } from 'next'
-import { useRouter } from 'next/router'
-import * as React from 'react'
-
-const relatedProducts: Product[] = []
 
 const Wishlist: NextPage = () => {
-  const router = useRouter()
-  console.log(router.pathname)
+  // @ts-ignore Shopify - Fix this types
+  const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
+
   return (
     <>
       <Container maxWidth="lg">
@@ -28,13 +26,21 @@ const Wishlist: NextPage = () => {
           <Typography variant="h5" paddingBottom="40px">
             My Wishlist
           </Typography>
-          <Grid container spacing={3}>
-            {relatedProducts.map((product) => (
-              <Grid key={product.id} item xs={12} sm={6} md={3}>
-                {/* products go here */}
-              </Grid>
-            ))}
-          </Grid>
+          {isLoading ? (
+            <p>loading...</p>
+          ) : isEmpty ? (
+            <p>Your wishlist is empty</p>
+          ) : (
+            <Grid container spacing={3}>
+              {data &&
+                // @ts-ignore Shopify - Fix this types
+                data.items?.map((item) => (
+                  <Grid key={item.id} item xs={12} sm={6} md={3}>
+                    <ProductCard product={item.product! as any} />
+                  </Grid>
+                ))}
+            </Grid>
+          )}
         </Paper>
       </Container>
     </>
