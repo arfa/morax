@@ -8,13 +8,22 @@ import * as React from 'react'
 import styles from './product-card.module.css'
 import WishlistButton from './WishlistButton'
 interface Props {
-    name: string;
-    slug?: string | undefined;
-    image?: string | undefined;
-    price: string;
+  name: string
+  slug?: string | undefined
+  image?: string | undefined
+  price: string
+  itemInWishlist: boolean
+  handleWishlistChange: (e: any) => Promise<void>
 }
 
-export default function ProductCard({ price, image, name, slug }: Props) {
+export default function ProductCard({
+  price,
+  image,
+  name,
+  slug,
+  itemInWishlist,
+  handleWishlistChange,
+}: Props) {
   return (
     <Card className={styles['card']}>
       {image && (
@@ -49,8 +58,8 @@ export default function ProductCard({ price, image, name, slug }: Props) {
         </Typography>
         {process.env.COMMERCE_WISHLIST_ENABLED && (
           <WishlistButton
-            productId={product.id}
-            variant={product.variants[0] as any}
+            itemInWishlist={itemInWishlist}
+            handleWishlistChange={handleWishlistChange}
           />
         )}
       </CardActions>

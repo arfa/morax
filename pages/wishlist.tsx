@@ -1,7 +1,7 @@
-import ProductCard from '@components/product/product-card'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import { Container, Grid, Paper, Typography } from '@mui/material'
 import type { NextPage } from 'next'
+import ProductCardContainer from '../containers/product/ProductCardContainer'
 
 const Wishlist: NextPage = () => {
   // @ts-ignore Shopify - Fix this types
@@ -36,7 +36,7 @@ const Wishlist: NextPage = () => {
                 // @ts-ignore Shopify - Fix this types
                 data.items?.map((item) => (
                   <Grid key={item.id} item xs={12} sm={6} md={3}>
-                    <ProductCard product={item.product! as any} />
+                    <ProductCardContainer product={item.product! as any} />
                   </Grid>
                 ))}
             </Grid>
