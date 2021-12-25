@@ -1,4 +1,5 @@
 import useLogin from '@framework/auth/use-login'
+import useCustomer from '@framework/customer/use-customer'
 import {
   Avatar,
   Box,
@@ -12,6 +13,7 @@ import {
 } from '@mui/material'
 import { validate } from 'email-validator'
 import Link from 'next/link'
+import Router from 'next/router'
 import { FC, useCallback, useEffect, useState } from 'react'
 import { HiOutlineLockClosed } from 'react-icons/hi'
 
@@ -23,6 +25,13 @@ const SignIn: FC = () => {
   const [message, setMessage] = useState('')
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
+  const { data: customer } = useCustomer()
+
+  useEffect(() => {
+    if (customer) {
+      Router.push('/')
+    }
+  })
 
   const handleEmailChange = (event: any) => {
     setEmail(event.target.value)

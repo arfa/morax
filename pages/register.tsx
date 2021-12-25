@@ -1,16 +1,19 @@
 import useSignup from '@framework/auth/use-signup'
+import useCustomer from '@framework/customer/use-customer'
 import { Alert } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
-import Link from 'next/link'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { validate } from 'email-validator'
+import Link from 'next/link'
+import Router from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import { HiOutlineLockClosed } from 'react-icons/hi'
+
 export default function SignUp() {
   // Form State
   const [email, setEmail] = useState('')
@@ -21,6 +24,14 @@ export default function SignUp() {
   const [message, setMessage] = useState('')
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
+
+  const { data: customer } = useCustomer()
+
+  useEffect(() => {
+    if (customer) {
+      Router.push('/')
+    }
+  })
 
   const signup = useSignup()
   const handleEmailChange = (event: any) => {

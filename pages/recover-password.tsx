@@ -1,3 +1,4 @@
+import useCustomer from '@framework/customer/use-customer'
 import { Alert, Button } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
@@ -5,9 +6,10 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import { validate } from 'email-validator'
+import Link from 'next/link'
+import Router from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import { HiOutlineLockClosed } from 'react-icons/hi'
-import Link from 'next/link'
 
 export default function ForgotPassword() {
   // Form State
@@ -16,6 +18,14 @@ export default function ForgotPassword() {
   const [message, setMessage] = useState('')
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
+  const { data: customer } = useCustomer()
+
+  useEffect(() => {
+    if (customer) {
+      Router.push('/')
+    }
+  })
+
   const handleEmailChange = (event: any) => {
     setEmail(event.target.value)
   }
