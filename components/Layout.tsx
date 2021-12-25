@@ -1,4 +1,3 @@
-import Auth from '@components/auth/Auth'
 import {
   AppBar,
   FormControl,
@@ -126,7 +125,6 @@ export default function Layout({ children }: any) {
                 <HiOutlineHeart />
               </IconButton>
             </Link>
-            {!auth && <Auth />}
           </Stack>
         </Toolbar>
       </AppBar>

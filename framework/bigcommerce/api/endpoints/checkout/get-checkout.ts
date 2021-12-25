@@ -40,7 +40,7 @@ const getCheckout: CheckoutEndpoint['handlers']['getCheckout'] = async ({
       jti: uuid(),
       operation: 'customer_login',
       store_hash: config.storeHash,
-      customer_id: customerId,
+      customer_id: Number(customerId),
       channel_id: config.storeChannelId,
       redirect_to: data.checkout_url,
     }

@@ -7,8 +7,8 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import * as React from 'react'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
 import styles from './product-card.module.css'
+import WishlistButton from './WishlistButton'
 interface Props {
   product: Product
 }
@@ -53,7 +53,12 @@ export default function ProductCard({ product }: Props) {
         >
           {price}
         </Typography>
-        <AiOutlineShoppingCart size={'20px'} />
+        {process.env.COMMERCE_WISHLIST_ENABLED && (
+          <WishlistButton
+            productId={product.id}
+            variant={product.variants[0] as any}
+          />
+        )}
       </CardActions>
     </Card>
   )
