@@ -4,7 +4,7 @@ import React from 'react'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Example/ProductCard',
+  title: 'Product/ProductCard',
   component: ProductCard,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
@@ -18,18 +18,9 @@ const Template: ComponentStory<typeof ProductCard> = (args) => (
 export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  product: {
-    id: '0',
-    images: [
-      {
-        url: 'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
-      },
-    ],
-    price: { value: 25, retailPrice: 25, currencyCode: 'USD' },
+    image: 'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
+    price: '25 USD',
     name: 'T-shirt',
-    description:
-      'Incididunt minim anim fugiat consectetur elit consectetur culpa...',
-    variants: [],
-    options: [],
-  },
+    slug: 'tshirt',
+    wishlistEnabled: true,
 }

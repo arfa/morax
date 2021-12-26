@@ -1,10 +1,10 @@
 import CategoryList from '@components/category/category-list'
 import MainBlock from '@components/main-block'
-import ProductCard from '@components/product/product-card'
 import commerce from '@lib/api/commerce'
 import { Grid, Typography } from '@mui/material'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import * as React from 'react'
+import ProductCardContainer from '../containers/product/ProductCardContainer'
 
 export default function Home({
   products,
@@ -21,7 +21,7 @@ export default function Home({
           <Grid container spacing={2}>
             {products.map((product) => (
               <Grid key={product.id} item xs={12} sm={6} md={3}>
-                <ProductCard product={product} />
+                <ProductCardContainer product={product} />
               </Grid>
             ))}
           </Grid>

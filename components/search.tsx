@@ -1,9 +1,9 @@
 import MainBlock from '@components/main-block'
-import ProductCard from '@components/product/product-card'
 import useSearch from '@framework/product/use-search'
 import { filterQuery, useSearchMeta } from '@lib/search'
 import type { SearchPropsType } from '@lib/search-props'
 import { Grid, Typography } from '@mui/material'
+import ProductCardContainer from 'containers/product/ProductCardContainer'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 import { useState } from 'react'
@@ -83,7 +83,7 @@ export default function Search({ categories }: SearchPropsType) {
             <Grid container spacing={2} paddingTop={5}>
               {data?.products.map((product) => (
                 <Grid key={product.id} item xs={12} sm={6} md={3}>
-                  <ProductCard product={product} />
+                  <ProductCardContainer product={product} />
                 </Grid>
               ))}
             </Grid>

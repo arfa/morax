@@ -1,47 +1,32 @@
 import type { Product } from '@commerce/types/product'
 import ProductOptions from '@components/product/ProductOptions'
-import { useAddItem } from '@framework/cart'
 import LoadingButton from '@mui/lab/LoadingButton'
-import { useEffect, useState } from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import {
-  SelectedOptions,
-  getProductVariant,
-  selectDefaultOptionFromProduct,
-} from './helpers'
 
 interface ProductSidebarProps {
   product: Product
   className?: string
+  onAddToCart?: () => void
+  cartEnabled: boolean
+  loading?: boolean
+  availableForSale?: boolean
+  selectedOptions?: any
+  setSelectedOptions?: any
 }
 
 export default function ProductSidebar({
   product,
   className,
+  onAddToCart,
+  cartEnabled = true,
+  loading = false,
+  availableForSale = true,
+  selectedOptions,
+  setSelectedOptions,
 }: ProductSidebarProps) {
-  const addItem = useAddItem()
-  const [loading, setLoading] = useState(false)
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
-
-  useEffect(() => {
-    selectDefaultOptionFromProduct(product, setSelectedOptions)
-  }, [product])
-
-  const variant = getProductVariant(product, selectedOptions)
   const addToCart = async () => {
-    setLoading(true)
-    try {
-      console.log({
-        productId: String(product.id),
-        variantId: String(variant ? variant.id : product.variants[0].id),
-      })
-      await addItem({
-        productId: String(product.id),
-        variantId: String(variant ? variant.id : product.variants[0].id),
-      })
-      setLoading(false)
-    } catch (err) {
-      setLoading(false)
+    if (onAddToCart) {
+      await onAddToCart()
     }
   }
   return (
@@ -52,7 +37,7 @@ export default function ProductSidebar({
         setSelectedOptions={setSelectedOptions}
       />
       <div>
-        {process.env.COMMERCE_CART_ENABLED && (
+        {cartEnabled && (
           <LoadingButton
             sx={{ marginTop: '10px' }}
             variant="outlined"
@@ -61,9 +46,7 @@ export default function ProductSidebar({
             loading={loading}
             loadingPosition="start"
           >
-            {variant?.availableForSale === false
-              ? 'Not Available'
-              : 'Add To Cart'}
+            {availableForSale ? 'Add To Cart' : 'Not Available'}
           </LoadingButton>
         )}
       </div>

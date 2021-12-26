@@ -1,5 +1,3 @@
-import type { Product } from '@commerce/types/product'
-import usePrice from '@framework/product/use-price'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -10,32 +8,47 @@ import * as React from 'react'
 import styles from './product-card.module.css'
 import WishlistButton from './WishlistButton'
 interface Props {
-  product: Product
+  name: string
+  slug?: string | undefined
+  image?: string | undefined
+  price: string
+  itemInWishlist: boolean
+  wishlistEnabled: boolean
+  handleWishlistChange: (e: any) => Promise<void>
 }
 
-const placeholderImg = '/product-img-placeholder.svg'
-
-export default function ProductCard({ product }: Props) {
-  const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
+export default function ProductCard({
+  price,
+  image,
+  name,
+  slug,
+  itemInWishlist,
+  wishlistEnabled,
+  handleWishlistChange,
+}: Props) {
   return (
     <Card className={styles['card']}>
-      {product?.images && (
+      {image && (
         <CardMedia
           component="img"
           className={styles['card-img']}
-          image={product.images[0]?.url || placeholderImg}
-          alt={product.name || 'Product Image'}
+          image={image}
+          alt={name || 'Product Image'}
         />
       )}
-
       <CardContent className={styles['card-content']}>
-        <Link href={`/product/${product.slug}`} passHref>
-          <Typography gutterBottom component="div" sx={{ fontWeight: '500' }}>
-            {product.name}
+        <Link href={`/product/${slug}`} passHref>
+          <Typography
+            gutterBottom
+            component="div"
+            sx={{
+              fontWeight: '500',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+            }}
+          >
+            {name}
           </Typography>
         </Link>
       </CardContent>
@@ -53,10 +66,10 @@ export default function ProductCard({ product }: Props) {
         >
           {price}
         </Typography>
-        {process.env.COMMERCE_WISHLIST_ENABLED && (
+        {wishlistEnabled && (
           <WishlistButton
-            productId={product.id}
-            variant={product.variants[0] as any}
+            active={itemInWishlist}
+            onWishlistChange={handleWishlistChange}
           />
         )}
       </CardActions>
