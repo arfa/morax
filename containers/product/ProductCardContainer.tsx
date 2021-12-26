@@ -68,6 +68,7 @@ export default function ProductCardContainer({
       slug={product.slug}
       itemInWishlist={itemInWishlist}
       handleWishlistChange={handleWishlistChange}
+      wishlistEnabled={!!process?.env?.COMMERCE_WISHLIST_ENABLED}
       // productId={product.id}
       // variant={product.variants[0] as any}
     />

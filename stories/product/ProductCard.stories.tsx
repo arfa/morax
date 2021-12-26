@@ -4,7 +4,7 @@ import React from 'react'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Example/ProductCard',
+  title: 'Product/ProductCard',
   component: ProductCard,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
@@ -22,4 +22,5 @@ Default.args = {
     price: '25 USD',
     name: 'T-shirt',
     slug: 'tshirt',
+    wishlistEnabled: true,
 }

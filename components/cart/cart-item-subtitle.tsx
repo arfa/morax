@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Divider, Stack } from '@mui/material'
 import { IconContext } from 'react-icons'
 import { IoMdSquare } from 'react-icons/io'
 
@@ -7,56 +7,50 @@ type ItemOption = {
   value: string
 }
 
+const OptionSwitch = ({name, value}: ItemOption) => {
+  switch (name) {
+    case 'Color':
+      return (
+              <IconContext.Provider
+                value={{
+                  color: value,
+                }}
+              >
+                <IoMdSquare size={8} />
+              </IconContext.Provider>
+            )
+    default:
+      return <span>{value}</span>;
+  }
+}
+
 export interface CartItemSubtitleProps {
+  fontSize?: number
   price: string
   options: ItemOption[]
 }
 export default function CartItemSubtitle({
   price,
-  options,
+  options = [],
+  fontSize = 10,
 }: CartItemSubtitleProps) {
   return (
-    <Typography
-      variant="body2"
-      sx={{
-        fontSize: '10px',
-        lineHeight: '1.5',
-        color: 'rgb(125, 135, 156)',
-        textTransform: 'none',
-        whiteSpace: 'normal',
-      }}
+    <Stack
+      direction="row"
+      justifyContent="space-between"
+      fontSize={fontSize}
+      paddingY={"5px"}
+      color={'rgb(125, 135, 156)'}
+      divider={<Divider orientation="vertical" flexItem />}
     >
-      {options && options.length > 0 && (
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            bgcolor: 'background.paper',
-            paddingBottom: '10px',
-          }}
-        >
-          {price}
-          {options.map((option: ItemOption, i: number) => (
-            <div key={`${option.name}`}>
-              {option.name}
-              {' : '}
-              {option.name === 'Color' ? (
-                <IconContext.Provider
-                  value={{
-                    color: option.value,
-                  }}
-                >
-                  <IoMdSquare size={8} />
-                </IconContext.Provider>
-              ) : (
-                <span>{option.value}</span>
-              )}
-              {i === options.length - 1 ? '' : <span />}
-            </div>
-          ))}
-        </Box>
-      )}
-    </Typography>
+      {price}
+      {!!options?.length &&
+        options?.map((option: ItemOption) => (
+          <span key={`${option.name}`}>
+            {`${option.name}: `}
+            <OptionSwitch name={option.name} value={option.value}/>
+          </span>
+        ))}
+    </Stack>
   )
 }

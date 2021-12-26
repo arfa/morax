@@ -8,9 +8,11 @@ export default {
   component: CartItem,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    onIncrease: { action: 'increased' },
-    onDecrease: { action: 'decreased' },
-    onChange: { action: 'changed' },
+    cartQuantity: {
+      onIncrease: { action: 'increased' },
+      onDecrease: { action: 'decreased' },
+      onChange: { action: 'changed' },
+    }
   },
 } as ComponentMeta<typeof CartItem>
 

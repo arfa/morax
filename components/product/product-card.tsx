@@ -13,6 +13,7 @@ interface Props {
   image?: string | undefined
   price: string
   itemInWishlist: boolean
+  wishlistEnabled: boolean
   handleWishlistChange: (e: any) => Promise<void>
 }
 
@@ -22,6 +23,7 @@ export default function ProductCard({
   name,
   slug,
   itemInWishlist,
+  wishlistEnabled,
   handleWishlistChange,
 }: Props) {
   return (
@@ -34,7 +36,6 @@ export default function ProductCard({
           alt={name || 'Product Image'}
         />
       )}
-
       <CardContent className={styles['card-content']}>
         <Link href={`/product/${slug}`} passHref>
           <Typography gutterBottom component="div" sx={{ fontWeight: '500' }}>
@@ -56,10 +57,10 @@ export default function ProductCard({
         >
           {price}
         </Typography>
-        {process.env.COMMERCE_WISHLIST_ENABLED && (
+        { wishlistEnabled && (
           <WishlistButton
-            itemInWishlist={itemInWishlist}
-            handleWishlistChange={handleWishlistChange}
+            active={itemInWishlist}
+            onWishlistChange={handleWishlistChange}
           />
         )}
       </CardActions>

@@ -1,19 +1,27 @@
+import { IconButton } from '@mui/material'
 import React, { FC } from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 type Props = {
-  itemInWishlist: boolean
-  handleWishlistChange: (e: any) => Promise<void>
+  active: boolean
+  onWishlistChange: (e: any) => Promise<void>
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const WishlistButton: FC<Props> = ({
-  itemInWishlist = false,
-  handleWishlistChange,
+  active = false,
+  color= "#DB7093",
+  onWishlistChange,
 }) => {
-  return itemInWishlist ? (
-    <AiFillHeart onClick={handleWishlistChange} color="#DB7093" />
-  ) : (
-    <AiOutlineHeart onClick={handleWishlistChange} color="#DB7093" />
+  const [status, setStatus] = React.useState(active)
+  const Icon = status ? AiFillHeart : AiOutlineHeart
+  const handleWishlistChange = (e: any) => {
+    setStatus(!status);
+    onWishlistChange(!status);
+  }
+  return (
+    <IconButton onClick={handleWishlistChange} aria-label="upload picture" component="span">
+      <Icon  color={color} />
+    </IconButton>
   )
 }
 

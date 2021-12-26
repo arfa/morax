@@ -1,5 +1,5 @@
 import CartItemSubtitle from '@components/cart/cart-item-subtitle'
-import { Avatar, Typography } from '@mui/material'
+import { Avatar, Stack, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import Link from 'next/link'
 import { CartItemSubtitleProps } from './cart-item-subtitle'
@@ -24,71 +24,49 @@ const CartItem = ({
   cartQuantity,
 }: CartItemProps) => {
   return (
-    <>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          padding: '16px 20px',
-          borderBottom: '1px solid rgb(243, 245, 249)',
-        }}
-      >
-        <Link href={`/product/${itemPath}`}>
-          <a>
-            <Avatar
-              alt={imageAlt}
-              src={imageUrl}
-              sx={{
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                fontSize: '1.25rem',
-                lineHeight: 1,
-                borderRadius: '20%',
-                overflow: 'hidden',
-                userSelect: 'none',
-                marginLeft: '16px',
-                marginRight: '16px',
-                height: '76px',
-                width: '76px',
-              }}
-              variant="square"
-            />
-          </a>
+    <Stack direction="row">
+      <Link href={`/product/${itemPath}`} passHref>
+        <Avatar
+          alt={imageAlt}
+          src={imageUrl}
+          sx={{
+            width: '76px',
+            height: '76px',
+            marginX: '16px',
+          }}
+          variant="square"
+        />
+      </Link>
+      <Box>
+        <Link href={`/product/${itemPath}`} passHref>
+          <Typography
+            variant="h5"
+            sx={{
+              fontSize: '14px',
+              fontWeight: '600',
+              lineHeight: '1.5',
+              textTransform: 'none',
+              whiteSpace: 'normal',
+            }}
+          >
+            {itemName}
+          </Typography>
         </Link>
-        <Box>
-          <Link href={`/product/${itemPath}`} passHref>
-            <Typography
-              variant="h5"
-              sx={{
-                fontSize: '14px',
-                fontWeight: '600',
-                lineHeight: '1.5',
-                textTransform: 'none',
-                whiteSpace: 'normal',
-              }}
-            >
-              {itemName}
-            </Typography>
-          </Link>
-          <CartItemSubtitle
-            price={cartSubtitle.price}
-            options={cartSubtitle.options}
-          />
-          <CartQuantityHandler
-            value={cartQuantity.value}
-            max={cartQuantity.max}
-            step={cartQuantity.step}
-            onChange={cartQuantity.onChange}
-            onDecrease={cartQuantity.onDecrease}
-            onIncrease={cartQuantity.onIncrease}
-            onRemove={cartQuantity.onRemove}
-          />
-        </Box>
+        <CartItemSubtitle
+          price={cartSubtitle.price}
+          options={cartSubtitle.options}
+        />
+        <CartQuantityHandler
+          value={cartQuantity.value}
+          max={cartQuantity.max}
+          step={cartQuantity.step}
+          onChange={cartQuantity.onChange}
+          onDecrease={cartQuantity.onDecrease}
+          onIncrease={cartQuantity.onIncrease}
+          onRemove={cartQuantity.onRemove}
+        />
       </Box>
-    </>
+    </Stack>
   )
 }
 
