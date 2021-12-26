@@ -33,14 +33,12 @@ export default function ProductCardContainer({
       (item.variant_id as any) === Number(product.variants[0].id)
   )
 
-  const handleWishlistChange = async (e: any) => {
-    e.preventDefault()
-
+  const handleWishlistChange = async () => {
     // if (loading) return
 
     // A login is required before adding an item to the wishlist
     if (!customer) {
-      Router.push('/ogin')
+      Router.push('/login')
     }
 
     // setLoading(true)

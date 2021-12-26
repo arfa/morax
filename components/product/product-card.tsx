@@ -38,7 +38,16 @@ export default function ProductCard({
       )}
       <CardContent className={styles['card-content']}>
         <Link href={`/product/${slug}`} passHref>
-          <Typography gutterBottom component="div" sx={{ fontWeight: '500' }}>
+          <Typography
+            gutterBottom
+            component="div"
+            sx={{
+              fontWeight: '500',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+            }}
+          >
             {name}
           </Typography>
         </Link>
@@ -57,7 +66,7 @@ export default function ProductCard({
         >
           {price}
         </Typography>
-        { wishlistEnabled && (
+        {wishlistEnabled && (
           <WishlistButton
             active={itemInWishlist}
             onWishlistChange={handleWishlistChange}
