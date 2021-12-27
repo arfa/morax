@@ -20,20 +20,6 @@ interface Props {
   email?: string
 }
 
-const LINKS = [
-  {
-    name: 'Profile',
-    href: '/profile',
-  },
-  {
-    name: 'Orders',
-    href: '/orders',
-  },
-  {
-    name: 'Cart',
-    href: '/cart',
-  },
-]
 export default function DropdownMenu({
   image,
   firstName = '',
@@ -76,13 +62,6 @@ export default function DropdownMenu({
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {/* {LINKS.map(({ name, href }) => (
-          <MenuItem key={name} onClick={handleClose}>
-            <Link href={href} passHref>
-              <a style={{ color: '#000', textDecoration: 'none' }}>{name}</a>
-            </Link>
-          </MenuItem>
-        ))} */}
         <MenuItem>
           <Stack
             direction="column"
