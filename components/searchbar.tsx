@@ -1,4 +1,4 @@
-import { Divider, IconButton, InputAdornment, InputBase } from '@mui/material'
+import { Divider, InputAdornment, InputBase } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { HiSearch } from 'react-icons/hi'
@@ -44,13 +44,7 @@ export default function Searchbar({
         onKeyUp={handleKeyUp}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={() => {}}
-              onMouseDown={() => {}}
-            >
-              <HiSearch size={20} />
-            </IconButton>
+            <HiSearch size={20} />
           </InputAdornment>
         }
       />
