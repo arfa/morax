@@ -1,66 +1,29 @@
+import Searchbar from '@components/searchbar'
 import {
   AppBar,
   FormControl,
   IconButton,
-  InputBase,
   MenuItem,
+  OutlinedInput,
   Select,
   Stack,
   Toolbar,
   Typography,
 } from '@mui/material'
-import { alpha, styled } from '@mui/material/styles'
 import Link from 'next/link'
 import React from 'react'
-import { HiOutlineHeart, HiSearch } from 'react-icons/hi'
+import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from '../components/cart/cart'
 export default function Layout({ children }: any) {
-  const languages = [
-    { value: 'en', label: 'English' },
-    { value: 'fr', label: 'French' },
-    { value: 'ar', label: 'Arabic' },
-  ]
+  const languages = ['English', 'French', 'Arabic']
   const [auth, setAuth] = React.useState(false)
-  const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  }))
+  const [currentLanguage, setCurrentLanguage] = React.useState(languages[0])
 
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }))
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
-      },
-    },
-  }))
+  const handleLanguageChange = (event: any) => {
+    setCurrentLanguage(event.target.value)
+  }
+  console.log(currentLanguage)
+
   return (
     <>
       <AppBar position="sticky" color="inherit">
@@ -75,43 +38,24 @@ export default function Layout({ children }: any) {
               SHOP
             </Typography>
           </Link>
-          <Search>
-            <SearchIconWrapper>
-              <HiSearch />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          <Searchbar />
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
-              value={''}
-              onChange={() => {}}
-              displayEmpty
+              sx={{ border: '0px' }}
+              value={currentLanguage}
+              label={currentLanguage}
+              onChange={handleLanguageChange}
+              input={<OutlinedInput />}
               inputProps={{ 'aria-label': 'Without label' }}
             >
-              {languages.map((language) => (
-                <MenuItem key={language.value} value={language.value}>
-                  {language.label}
+              {languages.map((language, index) => (
+                <MenuItem key={index} value={language}>
+                  {language}
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
           <Stack spacing={2} direction="row">
-            {' '}
-            <IconButton
-              size="large"
-              aria-label="search"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={() => {}}
-              color="inherit"
-            >
-              <Link href="/search" passHref>
-                <HiSearch />
-              </Link>
-            </IconButton>
             <Cart />
             <Link href="/wishlist" passHref>
               <IconButton
