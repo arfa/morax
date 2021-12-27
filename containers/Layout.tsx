@@ -1,3 +1,4 @@
+import UserNav from '@components/UserNav/UserNav'
 import {
   AppBar,
   FormControl,
@@ -125,6 +126,7 @@ export default function Layout({ children }: any) {
                 <HiOutlineHeart />
               </IconButton>
             </Link>
+            <UserNav />
           </Stack>
         </Toolbar>
       </AppBar>
