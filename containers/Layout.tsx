@@ -1,4 +1,3 @@
-import Searchbar from '@components/searchbar'
 import {
   AppBar,
   FormControl,
@@ -14,6 +13,7 @@ import Link from 'next/link'
 import React from 'react'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from '../components/cart/cart'
+import SearchbarBlock from './searchbar-block'
 export default function Layout({ children }: any) {
   const languages = ['English', 'French', 'Arabic']
   const [auth, setAuth] = React.useState(false)
@@ -38,7 +38,7 @@ export default function Layout({ children }: any) {
               SHOP
             </Typography>
           </Link>
-          <Searchbar />
+          <SearchbarBlock />
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               sx={{ border: '0px' }}

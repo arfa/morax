@@ -1,47 +1,16 @@
 import { Divider, InputAdornment, InputBase } from '@mui/material'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { HiSearch } from 'react-icons/hi'
 interface Props {
-  id?: string
-  targetPath?: string
+  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => any
 }
-export default function Searchbar({
-  id = 'search',
-  targetPath = '/search',
-}: Props) {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.prefetch(targetPath)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router])
-
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.preventDefault()
-
-    if (e.key === 'Enter') {
-      const q = e.currentTarget.value
-
-      router.push(
-        {
-          pathname: targetPath,
-          query: q ? { q } : {},
-        },
-        undefined,
-        { shallow: true }
-      )
-    }
-  }
+export default function Searchbar({ onKeyUp }: Props) {
   return (
     <>
       <InputBase
-        id={id}
         sx={{ ml: 1 }}
         placeholder="Search for products..."
         inputProps={{ 'aria-label': 'Search for products..' }}
-        defaultValue={router.query.q}
-        onKeyUp={handleKeyUp}
+        onKeyUp={onKeyUp}
         endAdornment={
           <InputAdornment position="end">
             <HiSearch size={20} />
