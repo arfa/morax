@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Divider,
   FormControl,
   IconButton,
   MenuItem,
@@ -39,6 +40,7 @@ export default function Layout({ children }: any) {
             </Typography>
           </Link>
           <SearchbarBlock />
+          <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               sx={{ border: '0px' }}
