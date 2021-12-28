@@ -15,12 +15,27 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiButtonBase: {
+      defaultProps: {
+        // The props to change the default for.
+        disableRipple: true, // No more ripple!
+      },
+    },
     MuiCard: {
       styleOverrides: {
         // Name of the slot
         root: {
           // Some CSS
           borderRadius: 20,
+          boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
           boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
         },
       },
