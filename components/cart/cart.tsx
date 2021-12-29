@@ -1,11 +1,20 @@
+import type { LineItem } from '@commerce/types/cart'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
-import { Button, IconButton, SwipeableDrawer, Typography } from '@mui/material'
+import {
+  Badge,
+  Button,
+  IconButton,
+  SwipeableDrawer,
+  Typography,
+} from '@mui/material'
 import Box from '@mui/material/Box'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 import CartItemContainer from '../../containers/cart-item-block'
+
 type Anchor = 'top' | 'left' | 'bottom' | 'right'
+const countItem = (count: number, item: LineItem) => count + item.quantity
 
 export default function Cart() {
   const [state, setState] = React.useState({
@@ -17,6 +26,7 @@ export default function Cart() {
 
   // logic
   const { data, isLoading, isEmpty } = useCart()
+  const itemsCount = data?.lineItems.reduce(countItem, 0) ?? 0
 
   const { price: total } = usePrice(
     data && {
@@ -109,7 +119,9 @@ export default function Cart() {
           onClick={toggleDrawer('right', true)}
           color="inherit"
         >
-          <HiOutlineShoppingCart />
+          <Badge color="secondary" badgeContent={itemsCount > 0 && itemsCount}>
+            <HiOutlineShoppingCart />
+          </Badge>
         </IconButton>
         <SwipeableDrawer
           anchor={'right'}
