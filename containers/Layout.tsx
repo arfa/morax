@@ -1,4 +1,4 @@
-import UserNav from '@components/UserNav/UserNav'
+import UserNav from 'containers/UserNav/UserNav'
 import {
   AppBar,
   FormControl,
