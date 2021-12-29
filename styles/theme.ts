@@ -36,11 +36,38 @@ const theme = createTheme({
         // Name of the slot
         root: {
           // Some CSS
-          boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
         },
       },
     },
   },
+
+  shadows: [
+    'none',
+    'rgb(0, 0, 0, 0.08) 0px 2px 3px 0px',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+    'none',
+  ],
 })
 
 export default theme
