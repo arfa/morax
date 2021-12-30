@@ -1,4 +1,4 @@
-import Card from '@mui/material/Card'
+import { Card } from '@mui/material'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
@@ -27,7 +27,7 @@ export default function ProductCard({
   handleWishlistChange,
 }: Props) {
   return (
-    <Card className={styles['card']}>
+    <Card>
       {image && (
         <CardMedia
           component="img"

@@ -1,4 +1,4 @@
-import { Container, Grid, Paper } from '@mui/material'
+import { Container, Grid, Stack } from '@mui/material'
 
 interface Props {
   rightBlock: React.ReactElement
@@ -7,42 +7,17 @@ interface Props {
 const MainBlock = ({ leftBlock, rightBlock }: Props) => {
   return (
     <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-      <Grid container spacing={3}>
-        {/* Category list */}
-
-        <Grid item xs={12} md={4} lg={3}>
-          <Paper
-            sx={{
-              backgroundColor: 'rgb(255, 255, 255)',
-              color: 'rgba(0, 0, 0, 0.87)',
-              transition: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-              overflow: 'hidden',
-              borderRadius: '20px',
-              padding: '20px',
-              boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
-            }}
-          >
+      <Grid container spacing={3} padding={0} margin={0} border={0}>
+        <Stack direction="row" spacing={4}>
+          {/* Category list */}
+          <Grid item xs={12} md={3} lg={3} padding={0} margin={0} border={0}>
             {leftBlock}
-          </Paper>
-        </Grid>
-
-        {/* Product list */}
-        <Grid item xs={12} md={8} lg={8}>
-          <Paper
-            sx={{
-              maxWidth: 'xl',
-              backgroundColor: 'rgb(255, 255, 255)',
-              color: 'rgba(0, 0, 0, 0.87)',
-              transition: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-              overflow: 'hidden',
-              borderRadius: '20px',
-              padding: '40px',
-              boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
-            }}
-          >
+          </Grid>
+          {/* Product list */}
+          <Grid item xs={12} md={8} lg={8} minWidth={300}>
             {rightBlock}
-          </Paper>
-        </Grid>
+          </Grid>
+        </Stack>
       </Grid>
     </Container>
   )

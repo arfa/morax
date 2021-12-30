@@ -43,7 +43,9 @@ interface ProductDetailsBlockProps {
   product: Product
 }
 
-export default function ProductDetailsBlock({ product }: ProductDetailsBlockProps) {
+export default function ProductDetailsBlock({
+  product,
+}: ProductDetailsBlockProps) {
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -53,14 +55,10 @@ export default function ProductDetailsBlock({ product }: ProductDetailsBlockProp
   return (
     <Paper
       sx={{
-        backgroundColor: 'rgb(255, 255, 255)',
-        color: 'rgba(0, 0, 0, 0.87)',
-        transition: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-        overflow: 'hidden',
-        borderRadius: '20px',
-        padding: '40px',
+        // padding: '40px',
         margin: '15px',
-        boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
+        boxShadow: 'none',
+        // boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
       }}
     >
       <Box sx={{ width: '100%' }}>

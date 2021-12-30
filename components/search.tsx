@@ -41,7 +41,7 @@ export default function Search({ categories }: SearchPropsType) {
         leftBlock={<CategoryList data={categories} />}
         rightBlock={
           <>
-            <Typography variant="h5" paddingBottom="10px">
+            <Typography variant="h5" paddingBottom="30px">
               Products
             </Typography>
             {(q || activeCategory) && (
@@ -80,9 +80,17 @@ export default function Search({ categories }: SearchPropsType) {
               </div>
             )}
             {/* products list  */}
-            <Grid container spacing={2} paddingTop={5}>
+            <Grid container spacing={2} border={0}>
               {data?.products.map((product) => (
-                <Grid key={product.id} item xs={12} sm={6} md={3}>
+                <Grid
+                  key={product.id}
+                  item
+                  padding={0}
+                  border={0}
+                  xs={12}
+                  sm={6}
+                  md={3}
+                >
                   <ProductCardContainer product={product} />
                 </Grid>
               ))}

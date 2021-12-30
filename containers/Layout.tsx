@@ -70,7 +70,14 @@ export default function Layout(props: any) {
             <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                sx={{ border: '0px' }}
+                sx={{
+                  border: 'solid',
+                  borderWidth: '1px',
+                  borderColor: '#e6e6e6',
+                  borderRadius: '0.5rem',
+                  shadow: 'none',
+                  height: '32px',
+                }}
                 value={currentLanguage}
                 label={currentLanguage}
                 onChange={handleLanguageChange}
@@ -93,9 +100,8 @@ export default function Layout(props: any) {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={() => {}}
-                  color="inherit"
                 >
-                  <HiOutlineHeart />
+                  <HiOutlineHeart color="#DB7093" />
                 </IconButton>
               </Link>
               <UserNav />
@@ -104,8 +110,6 @@ export default function Layout(props: any) {
         </AppBar>
       </ElevationScroll>
       {props.children}
-      <div>dddddd</div> <div>dddddd</div> <div>dddddd</div> <div>dddddd</div>{' '}
-      <div>dddddd</div> <div>dddddd</div> <div>dddddd</div>
     </>
   )
 }

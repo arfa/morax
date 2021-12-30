@@ -39,7 +39,7 @@ export default function ProductSidebar({
       <div>
         {cartEnabled && (
           <LoadingButton
-            sx={{ marginTop: '10px' }}
+            sx={{ marginTop: '30px' }}
             variant="outlined"
             startIcon={<HiOutlineShoppingCart />}
             onClick={addToCart}

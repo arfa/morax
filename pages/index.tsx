@@ -15,12 +15,20 @@ export default function Home({
       leftBlock={<CategoryList data={categories} />}
       rightBlock={
         <>
-          <Typography variant="h5" paddingBottom="40px">
+          <Typography variant="h5" paddingBottom="30px">
             Flash Sale
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} border={0}>
             {products.map((product) => (
-              <Grid key={product.id} item xs={12} sm={6} md={3}>
+              <Grid
+                key={product.id}
+                item
+                padding={0}
+                border={0}
+                xs={12}
+                sm={6}
+                md={3}
+              >
                 <ProductCardContainer product={product} />
               </Grid>
             ))}

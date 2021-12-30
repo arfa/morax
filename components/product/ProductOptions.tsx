@@ -1,5 +1,5 @@
 import type { ProductOption } from '@commerce/types/product'
-import { ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { memo } from 'react'
 import { IconContext } from 'react-icons'
 import { ImStop2 } from 'react-icons/im'
@@ -16,7 +16,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
   setSelectedOptions,
 }) => {
   return (
-    <div>
+    <Stack direction="row" spacing={10}>
       {options.map((opt) => (
         <div className="pb-4" key={opt.displayName}>
           <h2 className="text-sm font-medium tracking-wide uppercase">
@@ -62,7 +62,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
           </div>
         </div>
       ))}
-    </div>
+    </Stack>
   )
 }
 
