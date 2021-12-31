@@ -30,11 +30,6 @@ export default function ProductMainBlock({ product }: ProductMainBlockProps) {
         {/* Product detail */}
         <Grid item border={0}>
           <Typography variant="h4">{product.name}</Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ fontSize: '0.75rem' }}
-          ></Typography>
           <Typography variant="h6" sx={{ marginTop: '10px' }}>
             {price}
           </Typography>

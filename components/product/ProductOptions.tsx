@@ -1,5 +1,11 @@
 import type { ProductOption } from '@commerce/types/product'
-import { Paper, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
+import {
+  Paper,
+  Stack,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from '@mui/material'
 import { memo } from 'react'
 import { SelectedOptions } from './helpers'
 interface ProductOptionsProps {
@@ -67,7 +73,9 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
                           }}
                         />
                       ) : (
-                        v.label
+                        <Typography variant="body2" sx={{ marginX: 1 }}>
+                          {v.label}
+                        </Typography>
                       )}
                     </ToggleButton>
                   </div>
