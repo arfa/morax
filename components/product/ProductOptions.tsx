@@ -1,8 +1,6 @@
 import type { ProductOption } from '@commerce/types/product'
-import { Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { Paper, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { memo } from 'react'
-import { IconContext } from 'react-icons'
-import { ImStop2 } from 'react-icons/im'
 import { SelectedOptions } from './helpers'
 interface ProductOptionsProps {
   options: ProductOption[]
@@ -40,17 +38,34 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
                           }
                         })
                       }}
+                      sx={{
+                        minWidth: '40px',
+                        minHeight: '40px',
+                        padding: '0px',
+                        marginLeft: '7px',
+                        border: '1px solid #e6e6e6',
+                        '&:hover': {
+                          border: '1px solid #000',
+                          backgroundColor: '#fff',
+                        },
+                        '&.Mui-focusVisible': { backgroundColor: '#fff' },
+                        '&.Mui-selected': {
+                          border: '1px solid #000',
+                          backgroundColor: '#fff',
+                          '&:hover': { backgroundColor: '#fff' },
+                        },
+                      }}
                     >
                       {' '}
                       {v.hexColors ? (
-                        <IconContext.Provider
-                          value={{
-                            color: v.hexColors[0],
-                            className: 'global-class-name',
+                        <Paper
+                          sx={{
+                            backgroundColor: v.hexColors[0],
+                            borderRadius: '7px',
+                            minWidth: '32px',
+                            minHeight: '32px',
                           }}
-                        >
-                          <ImStop2 size={20} />
-                        </IconContext.Provider>
+                        />
                       ) : (
                         v.label
                       )}
