@@ -1,4 +1,3 @@
-import UserNav from 'containers/UserNav/UserNav'
 import {
   AppBar,
   Divider,
@@ -11,13 +10,14 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
+import useScrollTrigger from '@mui/material/useScrollTrigger'
+import UserNav from 'containers/UserNav/UserNav'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from '../components/cart/cart'
 import SearchbarBlock from './searchbar-block'
-import useScrollTrigger from '@mui/material/useScrollTrigger'
-import PropTypes from 'prop-types'
 function ElevationScroll(props: any) {
   const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -71,11 +71,8 @@ export default function Layout(props: any) {
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
                 sx={{
-                  border: 'solid',
                   borderWidth: '1px',
                   borderColor: '#e6e6e6',
-                  borderRadius: '0.5rem',
-                  shadow: 'none',
                   height: '32px',
                 }}
                 value={currentLanguage}
