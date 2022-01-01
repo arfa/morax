@@ -7,6 +7,7 @@ import ProductCardContainer from '../containers/product/ProductCardContainer'
 const Wishlist: NextPage = () => {
   // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
+  console.log('isLoading: ', isLoading);
 
   let wishlistContent = null
   if (isEmpty && data?.items.length == 0) {

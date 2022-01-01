@@ -1,3 +1,4 @@
+import WishlistButton from '@components/buttons/WishlistButton'
 import { Card } from '@mui/material'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -6,7 +7,6 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import * as React from 'react'
 import styles from './product-card.module.css'
-import WishlistButton from './WishlistButton'
 interface Props {
   name: string
   slug?: string | undefined

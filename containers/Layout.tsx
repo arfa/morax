@@ -16,7 +16,7 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { HiOutlineHeart } from 'react-icons/hi'
-import Cart from '../components/cart/cart'
+import Cart from './cart'
 import SearchbarBlock from './searchbar-block'
 function ElevationScroll(props: any) {
   const { children, window } = props

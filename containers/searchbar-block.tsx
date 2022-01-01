@@ -1,4 +1,4 @@
-import Searchbar from '@components/searchbar'
+import Searchbar from '@components/inputs/searchbar'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 interface Props {
@@ -29,5 +29,5 @@ export default function SearchbarBlock({ targetPath = '/search' }: Props) {
       )
     }
   }
-  return <Searchbar onKeyUp={handleKeyUp} />
+  return <Searchbar onSearch={handleKeyUp} />
 }

@@ -11,7 +11,7 @@ import {
 import Box from '@mui/material/Box'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import CartItemContainer from '../../containers/cart-item-block'
+import CartItemContainer from './cart-item-block'
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right'
 const countItem = (count: number, item: LineItem) => count + item.quantity

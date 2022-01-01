@@ -1,4 +1,4 @@
-import MainBlock from '@components/main-block'
+import MainBlock from '@components/layouts/main-block'
 import useSearch from '@framework/product/use-search'
 import { filterQuery, useSearchMeta } from '@lib/search'
 import type { SearchPropsType } from '@lib/search-props'
@@ -7,7 +7,7 @@ import ProductCardContainer from 'containers/product/ProductCardContainer'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 import { useState } from 'react'
-import CategoryList from './category/category-list'
+import CategoryList from '../components/category/category-list'
 
 export default function Search({ categories }: SearchPropsType) {
   const [activeFilter, setActiveFilter] = useState('')

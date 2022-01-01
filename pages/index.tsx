@@ -1,5 +1,5 @@
 import CategoryList from '@components/category/category-list'
-import MainBlock from '@components/main-block'
+import MainBlock from '@components/layouts/main-block'
 import commerce from '@lib/api/commerce'
 import { Grid, Typography } from '@mui/material'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
