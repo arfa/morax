@@ -59,7 +59,7 @@ export default function ForgotPassword() {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
           <HiOutlineLockClosed />
         </Avatar>
         <Box
@@ -67,26 +67,23 @@ export default function ForgotPassword() {
           noValidate
           onSubmit={handleResetPassword}
           sx={{ mt: 3 }}
+          width="100%"
         >
           {message && (
             <Alert sx={{ marginY: 2 }} severity="error">
               {message}
             </Alert>
           )}
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={email}
-                onChange={handleEmailChange}
-              />
-            </Grid>
-          </Grid>
+          <TextField
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
         </Box>
         <Button
           type="submit"
@@ -96,8 +93,14 @@ export default function ForgotPassword() {
         >
           Recover Password
         </Button>
-        <Grid container justifyContent="flex-end">
-          <Grid item>
+        <Grid
+          container
+          justifyContent="flex-end"
+          border={0}
+          padding={0}
+          sx={{ fontSize: 14 }}
+        >
+          <Grid item border={0} padding={0}>
             <Link href="/login">Already have an account? Sign in</Link>
           </Grid>
         </Grid>

@@ -88,7 +88,12 @@ export default function Layout(props: any) {
                 ))}
               </Select>
             </FormControl>
-            <Stack spacing={2} direction="row">
+            <Stack
+              spacing={2}
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+            >
               <Cart />
               <Link href="/wishlist" passHref>
                 <IconButton
@@ -96,7 +101,6 @@ export default function Layout(props: any) {
                   aria-label="search"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  onClick={() => {}}
                 >
                   <HiOutlineHeart color="#DB7093" />
                 </IconButton>

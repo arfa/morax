@@ -3,10 +3,12 @@ import { red } from '@mui/material/colors'
 
 // Create a theme instance.
 const defaultTheme = createTheme()
-const theme = createTheme(defaultTheme, {
+let theme = createTheme(defaultTheme, {
   palette: {
     primary: {
       main: '#db7093',
+      light: '#ffc1e2',
+      dark: '#994e77',
     },
     secondary: {
       main: '#994e77',
@@ -24,6 +26,10 @@ const theme = createTheme(defaultTheme, {
   shape: {
     borderRadius: 8,
   },
+  shadows: ['none', 'rgb(0, 0, 0, 0.08) 0px 2px 3px 0px'],
+})
+
+theme = createTheme(theme, {
   components: {
     MuiButtonBase: {
       defaultProps: {
@@ -50,12 +56,6 @@ const theme = createTheme(defaultTheme, {
         },
       },
     },
-    MuiPaper: {
-      styleOverrides: {
-        // Name of the slot
-        root: {},
-      },
-    },
     MuiGrid: {
       styleOverrides: {
         // Name of the slot
@@ -70,8 +70,6 @@ const theme = createTheme(defaultTheme, {
       },
     },
   },
-
-  shadows: ['none', 'rgb(0, 0, 0, 0.08) 0px 2px 3px 0px'],
 })
 
 export default theme

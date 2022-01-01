@@ -7,20 +7,20 @@ type ItemOption = {
   value: string
 }
 
-const OptionSwitch = ({name, value}: ItemOption) => {
+const OptionSwitch = ({ name, value }: ItemOption) => {
   switch (name) {
     case 'Color':
       return (
-              <IconContext.Provider
-                value={{
-                  color: value,
-                }}
-              >
-                <IoMdSquare size={8} />
-              </IconContext.Provider>
-            )
+        <IconContext.Provider
+          value={{
+            color: value,
+          }}
+        >
+          <IoMdSquare size={8} />
+        </IconContext.Provider>
+      )
     default:
-      return <span>{value}</span>;
+      return <span>{value}</span>
   }
 }
 
@@ -39,8 +39,8 @@ export default function CartItemSubtitle({
       direction="row"
       justifyContent="space-between"
       fontSize={fontSize}
-      paddingY={"5px"}
-      color={'rgb(125, 135, 156)'}
+      paddingY={'5px'}
+      color={'#7d879c'}
       divider={<Divider orientation="vertical" flexItem />}
     >
       {price}
@@ -48,7 +48,7 @@ export default function CartItemSubtitle({
         options?.map((option: ItemOption) => (
           <span key={`${option.name}`}>
             {`${option.name}: `}
-            <OptionSwitch name={option.name} value={option.value}/>
+            <OptionSwitch name={option.name} value={option.value} />
           </span>
         ))}
     </Stack>

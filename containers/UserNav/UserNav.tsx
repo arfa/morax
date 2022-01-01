@@ -1,7 +1,7 @@
 import DropdownMenu from 'containers/UserNav/DropdownMenu'
 import useCustomer from '@framework/customer/use-customer'
-import { Button } from '@mui/material'
 import Link from 'next/link'
+import { Button } from '@mui/material'
 
 export default function UserNav() {
   const { data: customer } = useCustomer()
@@ -13,7 +13,9 @@ export default function UserNav() {
     />
   ) : (
     <Link href="/login" passHref>
-      <Button color="inherit">Login</Button>
+      <Button size="small" variant="outlined" sx={{ height: '32px' }}>
+        Login
+      </Button>
     </Link>
   )
   return <>{process.env.COMMERCE_CUSTOMERAUTH_ENABLED && userIcon}</>
