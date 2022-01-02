@@ -119,7 +119,7 @@ export default function Cart() {
           onClick={toggleDrawer('right', true)}
           color="inherit"
         >
-          <Badge color="secondary" badgeContent={itemsCount > 0 && itemsCount}>
+          <Badge color="secondary" badgeContent={itemsCount}>
             <HiOutlineShoppingCart color="#0000008a" />
           </Badge>
         </IconButton>
