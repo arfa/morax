@@ -24,9 +24,9 @@ export default function ProductSidebar({
   selectedOptions,
   setSelectedOptions,
 }: ProductSidebarProps) {
-  const addToCart = async () => {
+  const addToCart = () => {
     if (onAddToCart) {
-      await onAddToCart()
+      onAddToCart()
     }
   }
   return (
