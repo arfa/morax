@@ -1,4 +1,5 @@
 import ProductCardLoader from '@components/loaders/product-card-loader'
+import { Box } from '@mui/material'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
@@ -12,7 +13,16 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof ProductCardLoader> = (args) => (
-  <ProductCardLoader />
+  <Box
+    sx={{
+      width: 300,
+      padding: '24px',
+      backgroundColor: 'primary.dark',
+    }}
+  >
+
+    <ProductCardLoader />
+  </Box>
 )
 
 export const Default = Template.bind({})

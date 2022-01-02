@@ -10,8 +10,8 @@ export default function ProductRelated({
   relatedProducts,
 }: ProductRelatedProps) {
   return (
-    <Grid border={0}>
-      <Typography variant="h5">Related Products</Typography>
+    <>
+      <Typography variant="h5" mt={5}>Related Products</Typography>
       <Grid container spacing={2} border={0}>
         {relatedProducts.map((p) => {
           return (
@@ -21,6 +21,6 @@ export default function ProductRelated({
           )
         })}
       </Grid>
-    </Grid>
+    </>
   )
 }

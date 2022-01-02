@@ -1,5 +1,5 @@
 import MainBlock from '@components/layouts/main-block'
-import { Paper } from '@mui/material'
+import { Box } from '@mui/material'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
@@ -9,7 +9,7 @@ export default {
   component: MainBlock,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    color: {control: { type: 'color' }},
+    color: { control: { type: 'color' } },
     onWishlistChange: { action: 'onWishlistChange' },
   },
 } as ComponentMeta<typeof MainBlock>
@@ -22,7 +22,26 @@ const Template: ComponentStory<typeof MainBlock> = (args) => (
 export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  leftBlock: <Paper>Left block</Paper>,
-  rightBlock: <Paper>Right block</Paper>,
-
+  leftBlock: (
+    <Box
+      sx={{
+        height: 300,
+        padding: '24px',
+        backgroundColor: 'secondary.dark',
+      }}
+    >
+      Left block
+    </Box>
+  ),
+  rightBlock: (
+    <Box
+      sx={{
+        height: 300,
+        padding: '24px',
+        backgroundColor: 'primary.dark',
+      }}
+    >
+      Right block
+    </Box>
+  ),
 }

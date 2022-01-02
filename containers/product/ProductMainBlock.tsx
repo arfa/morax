@@ -1,6 +1,6 @@
 import { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
-import { CardMedia, Grid, Stack, Typography } from '@mui/material'
+import { CardMedia, Grid, Typography } from '@mui/material'
 import ProductSideBlock from './ProductSideBlock'
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -16,12 +16,10 @@ export default function ProductMainBlock({ product }: ProductMainBlockProps) {
   })
   return (
     <Grid container spacing={3} marginTop={5} border={0}>
-      <Stack direction="row" spacing={2}>
         {/* Product Image */}
         <Grid item xs={12} md={4} lg={3} border={0}>
           <CardMedia
             component="img"
-            sx={{ borderRadius: '25px' }}
             image={product.images[0]?.url || placeholderImg}
             alt={product.name || 'Product Image'}
           />
@@ -35,7 +33,6 @@ export default function ProductMainBlock({ product }: ProductMainBlockProps) {
           </Typography>
           <ProductSideBlock product={product} />
         </Grid>
-      </Stack>
     </Grid>
   )
 }

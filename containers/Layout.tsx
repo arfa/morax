@@ -10,6 +10,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
+import MUILink from '@mui/material/Link'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/UserNav/UserNav'
 import Link from 'next/link'
@@ -57,24 +58,16 @@ export default function Layout(props: any) {
         <AppBar position="sticky" color="inherit">
           <Toolbar sx={{ boxShadow: 'none' }}>
             <Link href="/" passHref>
-              <Typography
-                sx={{ flexGrow: 1 }}
-                variant="h6"
-                color="inherit"
-                noWrap
-              >
-                SHOP
-              </Typography>
+              <MUILink color="inherit" underline="none" sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" noWrap>
+                  SHOP
+                </Typography>
+              </MUILink>
             </Link>
             <SearchbarBlock />
             <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
               <Select
-                sx={{
-                  borderWidth: '1px',
-                  borderColor: '#e6e6e6',
-                  height: '32px',
-                }}
                 value={currentLanguage}
                 label={currentLanguage}
                 onChange={handleLanguageChange}
