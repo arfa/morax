@@ -35,7 +35,7 @@ export default function ProductCard({
           alt={name || 'Product Image'}
         />
       )}
-      <CardContent sx={{ padding: '24px' }}>
+      <CardContent sx={{ padding: '16px' }}>
         <Link href={`/product/${slug}`} passHref>
           <MUILink color="inherit" underline="none">
             <Typography gutterBottom variant="subtitle1" fontWeight="medium" noWrap>
