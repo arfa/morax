@@ -1,74 +1,23 @@
 import { createTheme } from '@mui/material/styles'
-import { red } from '@mui/material/colors'
+import { MuiButtonBase } from './components/MuiButtonBase.theme'
+import { MuiCard } from './components/MuiCard.theme'
+import { MuiGrid } from './components/MuiGrid.theme'
+import { MuiInputBase } from './components/MuiInputBase.theme'
+import { DEFAULT_THEME } from './constants.theme'
+import { palette } from './palette.theme'
+import { shadows } from './shadows.theme'
+import { shape } from './shape.theme'
 
 // Create a theme instance.
-const defaultTheme = createTheme()
-let theme = createTheme(defaultTheme, {
-  palette: {
-    primary: {
-      main: '#db7093',
-      light: '#ffc1e2',
-      dark: '#994e77',
-    },
-    secondary: {
-      main: '#994e77',
-    },
-    warning: {
-      main: '#ffe0f1',
-    },
-    error: {
-      main: red.A200,
-    },
-    info: {
-      main: '#ffc1e2',
-    },
-  },
-  shape: {
-    borderRadius: 8,
-  },
-  shadows: ['none', 'rgb(0, 0, 0, 0.08) 0px 2px 3px 0px'],
-})
-
-theme = createTheme(theme, {
+let theme = createTheme(DEFAULT_THEME, {
+  palette,
+  shape,
+  shadows,
   components: {
-    MuiButtonBase: {
-      defaultProps: {
-        // The props to change the default for.
-        disableRipple: true, // No more ripple!
-      },
-    },
-    MuiCard: {
-      styleOverrides: {
-        // Name of the slot
-        root: {
-          // Some CSS
-          color: 'rgb(43, 52, 69)',
-          boxShadow: ' rgb(3 0 71 / 9%) 0px 1px 3px',
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: '100%',
-          margin: 'auto',
-          overflow: 'hidden',
-          transition: 'all 250ms ease-in-out 0s',
-          '&:hover': { boxShadow: '0 6px 12px rgba(0,0,0,.08)' },
-        },
-      },
-    },
-    MuiGrid: {
-      styleOverrides: {
-        // Name of the slot
-        root: {
-          padding: defaultTheme.spacing(3),
-          border: 'solid',
-          borderWidth: '1px',
-          borderColor: '#e6e6e6',
-          borderRadius: '0.5rem',
-          boxShadow: 'none',
-        },
-      },
-    },
+    MuiButtonBase,
+    MuiInputBase,
+    MuiCard,
+    MuiGrid,
   },
 })
 
