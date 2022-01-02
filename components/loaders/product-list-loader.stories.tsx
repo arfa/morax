@@ -1,23 +1,22 @@
-import WishlistButton from '@components/product/WishlistButton'
+import ProductListLoader from '@components/loaders/product-list-loader'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Product/WishlistButton',
-  component: WishlistButton,
+  title: 'Loaders/ProductListLoader',
+  component: ProductListLoader,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    color: {control: { type: 'color' }},
-    onWishlistChange: { action: 'onWishlistChange' },
-  },
-} as ComponentMeta<typeof WishlistButton>
+  argTypes: {},
+} as ComponentMeta<typeof ProductListLoader>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof WishlistButton> = (args) => (
-  <WishlistButton {...args} />
+const Template: ComponentStory<typeof ProductListLoader> = (args) => (
+  <ProductListLoader  {...args}/>
 )
 
 export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {}
+Default.args = {
+  number: 3
+}

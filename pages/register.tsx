@@ -1,6 +1,6 @@
 import useSignup from '@framework/auth/use-signup'
 import useCustomer from '@framework/customer/use-customer'
-import { Alert } from '@mui/material'
+import { Alert, Paper } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -46,17 +46,6 @@ export default function SignUp() {
   const handleLastNameChange = (event: any) => {
     setLastName(event.target.value)
   }
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault()
-  //   const data = new FormData(event.currentTarget)
-  //   // eslint-disable-next-line no-console
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //     firstName: data.get('firstName'),
-  //     lastName: data.get('lastName'),
-  //   })
-  // }
   const handleSignup = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
 
@@ -96,15 +85,16 @@ export default function SignUp() {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
+      <Paper
         sx={{
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          padding: 5,
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
           <HiOutlineLockClosed />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -116,8 +106,8 @@ export default function SignUp() {
               {message}
             </Alert>
           )}
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+          <Grid container spacing={2} border={0} padding={0}>
+            <Grid item xs={12} sm={6} border={0}>
               <TextField
                 autoComplete="given-name"
                 name="firstName"
@@ -130,7 +120,7 @@ export default function SignUp() {
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} border={0}>
               <TextField
                 required
                 fullWidth
@@ -142,7 +132,7 @@ export default function SignUp() {
                 autoComplete="family-name"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} border={0}>
               <TextField
                 required
                 fullWidth
@@ -154,7 +144,7 @@ export default function SignUp() {
                 onChange={handleEmailChange}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} border={0}>
               <TextField
                 required
                 fullWidth
@@ -166,23 +156,27 @@ export default function SignUp() {
                 value={password}
                 onChange={handlePasswordChange}
               />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Sign Up
-          </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="/login">Already have an account? Sign in</Link>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 5, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+              <Grid
+                container
+                justifyContent="flex-end"
+                border={0}
+                paddingX={0}
+                sx={{ fontSize: 14 }}
+              >
+                <Link href="/login">Already have an account? Sign in</Link>
+              </Grid>
             </Grid>
           </Grid>
         </Box>
-      </Box>
+      </Paper>
     </Container>
   )
 }

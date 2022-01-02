@@ -1,6 +1,7 @@
 import useLogin from '@framework/auth/use-login'
 import useCustomer from '@framework/customer/use-customer'
 import {
+  Alert,
   Avatar,
   Box,
   Button,
@@ -8,6 +9,7 @@ import {
   Container,
   FormControlLabel,
   Grid,
+  Paper,
   TextField,
   Typography,
 } from '@mui/material'
@@ -80,15 +82,16 @@ const SignIn: FC = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
+      <Paper
         sx={{
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          padding: 5,
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
           <HiOutlineLockClosed />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -96,10 +99,10 @@ const SignIn: FC = () => {
         </Typography>
         <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
           {message && (
-            <div className="p-3 border text-red border-red">
-              {message}. Did you {` `}
+            <Alert severity="error" sx={{ fontSize: 12, marginY: 2 }}>
+              {message}.{' '}
               <Link href="/recover-password">forgot your password?</Link>
-            </div>
+            </Alert>
           )}
           <TextField
             margin="normal"
@@ -137,13 +140,11 @@ const SignIn: FC = () => {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item>
-              <Link href="/register">{"Don't have an account? Sign Up"}</Link>
-            </Grid>
+          <Grid container border={0} paddingX={0} sx={{ fontSize: 14 }}>
+            <Link href="/register">{"Don't have an account? Sign Up"}</Link>
           </Grid>
         </Box>
-      </Box>
+      </Paper>
     </Container>
   )
 }

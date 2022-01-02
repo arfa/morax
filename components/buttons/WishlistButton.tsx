@@ -9,18 +9,22 @@ type Props = {
 
 const WishlistButton: FC<Props> = ({
   active = false,
-  color= "#DB7093",
+  color = '#DB7093',
   onWishlistChange,
 }) => {
   const [status, setStatus] = React.useState(active)
   const Icon = status ? AiFillHeart : AiOutlineHeart
   const handleWishlistChange = (e: any) => {
-    setStatus(!status);
-    onWishlistChange(!status);
+    setStatus(!status)
+    onWishlistChange(!status)
   }
   return (
-    <IconButton onClick={handleWishlistChange} aria-label="upload picture" component="span">
-      <Icon  color={color} />
+    <IconButton
+      onClick={handleWishlistChange}
+      aria-label="wishlist"
+      component="span"
+    >
+      <Icon color={color} />
     </IconButton>
   )
 }

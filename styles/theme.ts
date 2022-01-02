@@ -1,30 +1,23 @@
 import { createTheme } from '@mui/material/styles'
-import { red } from '@mui/material/colors'
+import { MuiButtonBase } from './components/MuiButtonBase.theme'
+import { MuiCard } from './components/MuiCard.theme'
+import { MuiGrid } from './components/MuiGrid.theme'
+import { MuiInputBase } from './components/MuiInputBase.theme'
+import { DEFAULT_THEME } from './constants.theme'
+import { palette } from './palette.theme'
+import { shadows } from './shadows.theme'
+import { shape } from './shape.theme'
 
 // Create a theme instance.
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#5b5b5b',
-    },
-    secondary: {
-      main: '#19857b',
-    },
-    error: {
-      main: red.A400,
-    },
-  },
+let theme = createTheme(DEFAULT_THEME, {
+  palette,
+  shape,
+  shadows,
   components: {
-    MuiCard: {
-      styleOverrides: {
-        // Name of the slot
-        root: {
-          // Some CSS
-          borderRadius: 20,
-          boxShadow: 'rgb(90 114 123 / 11%) 0px 7px 30px 0px',
-        },
-      },
-    },
+    MuiButtonBase,
+    MuiInputBase,
+    MuiCard,
+    MuiGrid,
   },
 })
 

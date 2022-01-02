@@ -1,5 +1,5 @@
 import CategoryList from '@components/category/category-list'
-import MainBlock from '@components/main-block'
+import MainBlock from '@components/layouts/main-block'
 import commerce from '@lib/api/commerce'
 import { Grid, Typography } from '@mui/material'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
@@ -15,12 +15,20 @@ export default function Home({
       leftBlock={<CategoryList data={categories} />}
       rightBlock={
         <>
-          <Typography variant="h5" paddingBottom="40px">
+          <Typography variant="h5" paddingBottom="30px">
             Flash Sale
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} border={0}>
             {products.map((product) => (
-              <Grid key={product.id} item xs={12} sm={6} md={3}>
+              <Grid
+                key={product.id}
+                item
+                padding={0}
+                border={0}
+                xs={12}
+                sm={6}
+                md={3}
+              >
                 <ProductCardContainer product={product} />
               </Grid>
             ))}

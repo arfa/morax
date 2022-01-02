@@ -11,7 +11,7 @@ import {
 import Box from '@mui/material/Box'
 import * as React from 'react'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import CartItemContainer from '../../containers/cart-item-block'
+import CartItemContainer from './cart-item-block'
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right'
 const countItem = (count: number, item: LineItem) => count + item.quantity
@@ -119,8 +119,8 @@ export default function Cart() {
           onClick={toggleDrawer('right', true)}
           color="inherit"
         >
-          <Badge color="secondary" badgeContent={itemsCount > 0 && itemsCount}>
-            <HiOutlineShoppingCart />
+          <Badge color="secondary" badgeContent={itemsCount}>
+            <HiOutlineShoppingCart color="#0000008a" />
           </Badge>
         </IconButton>
         <SwipeableDrawer
