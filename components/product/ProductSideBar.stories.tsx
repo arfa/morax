@@ -37,7 +37,6 @@ Default.args = {
       {
         url: 'https://cdn11.bigcommerce.com/s-lu4684lw7b/images/stencil/original/products/112/376/image_url_https%253A%252F%252Fcdn11.bigcommerce.com%252Fs-qfzerv205w%252Fimages%252Fstencil%252Foriginal%252Fproducts%252F116%252F512%252FMen-Jacket-Front-Black__15466.1603283963__94945.1640001047.png',
         alt: '',
-        isDefault: true,
       },
     ],
     id: '112',
