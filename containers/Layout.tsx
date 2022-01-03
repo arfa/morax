@@ -40,13 +40,7 @@ ElevationScroll.propTypes = {
   window: PropTypes.func,
 }
 export default function Layout(props: any) {
-  // const languages = ['English', 'French', 'Arabic']
   const [auth, setAuth] = React.useState(false)
-  // const [currentLanguage, setCurrentLanguage] = React.useState(languages[0])
-
-  // const handleLanguageChange = (event: any) => {
-  //   setCurrentLanguage(event.target.value)
-  // }
 
   return (
     <>
@@ -62,21 +56,6 @@ export default function Layout(props: any) {
             </Link>
             <SearchbarBlock />
             <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
-            {/* <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-              <Select
-                value={currentLanguage}
-                label={currentLanguage}
-                onChange={handleLanguageChange}
-                input={<OutlinedInput />}
-                inputProps={{ 'aria-label': 'Without label' }}
-              >
-                {languages.map((language, index) => (
-                  <MenuItem key={index} value={language}>
-                    {language}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl> */}
             <Stack
               spacing={2}
               direction="row"
