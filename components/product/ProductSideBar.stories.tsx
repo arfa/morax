@@ -25,14 +25,6 @@ Default.args = {
   product: {
     name: 'Lightweight Jacket',
     description: '',
-    prices: {
-      price: {
-        value: 35,
-        currencyCode: 'USD',
-      },
-      salePrice: null,
-      retailPrice: null,
-    },
     images: [
       {
         url: 'https://cdn11.bigcommerce.com/s-lu4684lw7b/images/stencil/original/products/112/376/image_url_https%253A%252F%252Fcdn11.bigcommerce.com%252Fs-qfzerv205w%252Fimages%252Fstencil%252Foriginal%252Fproducts%252F116%252F512%252FMen-Jacket-Front-Black__15466.1603283963__94945.1640001047.png',
@@ -40,6 +32,7 @@ Default.args = {
       },
     ],
     id: '112',
+    variants: [],
     options: [
       {
         id: '114',
