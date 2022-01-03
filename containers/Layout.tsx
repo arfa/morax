@@ -1,11 +1,7 @@
 import {
   AppBar,
   Divider,
-  FormControl,
   IconButton,
-  MenuItem,
-  OutlinedInput,
-  Select,
   Stack,
   Toolbar,
   Typography,
@@ -44,13 +40,13 @@ ElevationScroll.propTypes = {
   window: PropTypes.func,
 }
 export default function Layout(props: any) {
-  const languages = ['English', 'French', 'Arabic']
+  // const languages = ['English', 'French', 'Arabic']
   const [auth, setAuth] = React.useState(false)
-  const [currentLanguage, setCurrentLanguage] = React.useState(languages[0])
+  // const [currentLanguage, setCurrentLanguage] = React.useState(languages[0])
 
-  const handleLanguageChange = (event: any) => {
-    setCurrentLanguage(event.target.value)
-  }
+  // const handleLanguageChange = (event: any) => {
+  //   setCurrentLanguage(event.target.value)
+  // }
 
   return (
     <>
@@ -66,7 +62,7 @@ export default function Layout(props: any) {
             </Link>
             <SearchbarBlock />
             <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            {/* <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
               <Select
                 value={currentLanguage}
                 label={currentLanguage}
@@ -80,7 +76,7 @@ export default function Layout(props: any) {
                   </MenuItem>
                 ))}
               </Select>
-            </FormControl>
+            </FormControl> */}
             <Stack
               spacing={2}
               direction="row"
