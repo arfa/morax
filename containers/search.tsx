@@ -27,26 +27,64 @@ const SearchContent = ({ categories }: any) => {
   })
 
   if (isLoading) {
-    return <ProductListLoader number={3} />
+    return (
+      <>
+        {q ? (
+          <>
+            Searching for: "<strong>{q}</strong>"
+          </>
+        ) : (
+          <>Searching...</>
+        )}
+        <ProductListLoader number={3} />
+      </>
+    )
   }
 
   if (!isLoading && !error) {
     return (
-      <Grid container spacing={2} border={0}>
-        {data?.products.map((product) => (
-          <Grid
-            key={product.id}
-            item
-            padding={0}
-            border={0}
-            xs={12}
-            sm={6}
-            md={3}
-          >
-            <ProductCardContainer product={product} />
-          </Grid>
-        ))}
-      </Grid>
+      <>
+        {!data?.found ? (
+          <p>
+            {q && (
+              <>
+                There are no products that match <strong>{q}</strong>
+              </>
+            )}
+          </p>
+        ) : (
+          <span>
+            {q || activeCategory ? (
+              <>
+                Showing {data?.products.length} results{' '}
+                {q && (
+                  <>
+                    for "<strong>{q}</strong>"
+                  </>
+                )}
+              </>
+            ) : (
+              <>There are no products that match the selected category.</>
+            )}
+          </span>
+        )}
+
+        <Grid container spacing={2} border={0}>
+          {data?.products.map((product) => (
+            <Grid
+              key={product.id}
+              item
+              padding={0}
+              border={0}
+              xs={12}
+              sm={6}
+              md={3}
+            >
+              <ProductCardContainer product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      </>
     )
   }
 
