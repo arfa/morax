@@ -42,7 +42,7 @@ Default.args = {
     id: '112',
     options: [
       {
-        id: 114,
+        id: '114',
         values: [
           {
             label: 'S',
@@ -58,21 +58,18 @@ Default.args = {
         displayName: 'Size',
       },
       {
-        id: 113,
+        id: '113',
         values: [
           {
             label: '#d3a3a3',
-            isDefault: false,
             hexColors: ['#D3A3A3'],
           },
           {
             label: '#a9b0b3',
-            isDefault: false,
             hexColors: ['#A9B0B3'],
           },
           {
             label: '#d499f0',
-            isDefault: false,
             hexColors: ['#D499F0'],
           },
         ],
