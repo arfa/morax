@@ -12,11 +12,9 @@ const WishlistButton: FC<Props> = ({
   color = '#DB7093',
   onWishlistChange,
 }) => {
-  const [status, setStatus] = React.useState(active)
-  const Icon = status ? AiFillHeart : AiOutlineHeart
+  const Icon = active ? AiFillHeart : AiOutlineHeart
   const handleWishlistChange = (e: any) => {
-    setStatus(!status)
-    onWishlistChange(!status)
+    onWishlistChange(!active)
   }
   return (
     <IconButton

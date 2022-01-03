@@ -1,11 +1,12 @@
 import { Product } from '@commerce/types/product'
 import ProductCard from '@components/product/product-card'
-import usePrice from '@framework/product/use-price'
 import useCustomer from '@framework/customer/use-customer'
+import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/wishlist/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import Router from 'next/router'
+import { useMemo } from 'react'
 
 const placeholderImg = '/product-img-placeholder.svg'
 interface ProductCardContainerProps {
@@ -24,27 +25,25 @@ export default function ProductCardContainer({
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })
-
-  // @ts-ignore Wishlist is not always enabled
-  const itemInWishlist = data?.items?.find(
-    // @ts-ignore Wishlist is not always enabled
-    (item) =>
-      item.product_id === Number(product.id) &&
-      (item.variant_id as any) === Number(product.variants[0].id)
+  const itemInWishlist = useMemo(
+    () =>
+      data?.items?.find(
+        // @ts-ignore Wishlist is not always enabled
+        (item) =>
+          item.product_id === Number(product.id) &&
+          (item.variant_id as any) === Number(product.variants[0].id)
+      ),
+    [data, product]
   )
 
-  const handleWishlistChange = async () => {
-    // if (loading) return
-
+  const handleWishlistChange = async (active: any) => {
     // A login is required before adding an item to the wishlist
     if (!customer) {
       Router.push('/login')
     }
 
-    // setLoading(true)
-
     try {
-      if (itemInWishlist) {
+      if (!active) {
         await removeItem({ id: itemInWishlist.id! })
       } else {
         await addItem({
@@ -52,11 +51,7 @@ export default function ProductCardContainer({
           variantId: product.variants[0].id,
         })
       }
-
-      // setLoading(false)
-    } catch (err) {
-      // setLoading(false)
-    }
+    } catch (err) {}
   }
   return (
     <ProductCard

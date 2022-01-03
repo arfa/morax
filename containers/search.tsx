@@ -1,5 +1,4 @@
 import MainBlock from '@components/layouts/main-block'
-import ProductListLoader from '@components/loaders/product-list-loader'
 import useSearch from '@framework/product/use-search'
 import { filterQuery, useSearchMeta } from '@lib/search'
 import type { SearchPropsType } from '@lib/search-props'
@@ -36,7 +35,6 @@ const SearchContent = ({ categories }: any) => {
         ) : (
           <>Searching...</>
         )}
-        <ProductListLoader number={3} />
       </>
     )
   }
