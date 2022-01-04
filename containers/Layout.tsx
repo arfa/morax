@@ -17,6 +17,7 @@ import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from './cart/cart'
 import SearchbarBlock from './searchbar-block'
 import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
+import ScrollTop from '@components/layouts/scroll-top'
 function ElevationScroll(props: any) {
   const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -60,11 +61,12 @@ export default function Layout(props: any) {
       link: 'https://github.com',
     },
   ]
+  const backTopId = 'back-top-anchor'
   return (
     <>
       <ElevationScroll {...props}>
         <AppBar position="sticky" color="inherit">
-          <Toolbar sx={{ boxShadow: 'none' }}>
+          <Toolbar sx={{ boxShadow: 'none' }} id={backTopId}>
             <Link href="/" passHref>
               <MUILink color="inherit" underline="none" sx={{ flexGrow: 1 }}>
                 <Typography variant="h6" noWrap>
@@ -97,6 +99,7 @@ export default function Layout(props: any) {
         </AppBar>
       </ElevationScroll>
       {props.children}
+      <ScrollTop anchorTop={`#${backTopId}`} />
       <Footer
         socials={socials}
         copyright="&copy; 2020 Transcend, Inc. All rights reserved."
