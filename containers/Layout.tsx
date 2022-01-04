@@ -1,3 +1,4 @@
+import Footer from '@components/layouts/footer'
 import {
   AppBar,
   Divider,
@@ -15,6 +16,7 @@ import React from 'react'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from './cart/cart'
 import SearchbarBlock from './searchbar-block'
+import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
 function ElevationScroll(props: any) {
   const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -41,7 +43,23 @@ ElevationScroll.propTypes = {
 }
 export default function Layout(props: any) {
   const [auth, setAuth] = React.useState(false)
-
+  const socials = [
+    {
+      icon: <FiFacebook />,
+      name: 'facebook',
+      link: 'https://www.facebook.com',
+    },
+    {
+      icon: <FiInstagram />,
+      name: 'Instagram',
+      link: 'https://www.instagram.com',
+    },
+    {
+      icon: <FiGithub />,
+      name: 'Github',
+      link: 'https://github.com',
+    },
+  ]
   return (
     <>
       <ElevationScroll {...props}>
@@ -79,6 +97,10 @@ export default function Layout(props: any) {
         </AppBar>
       </ElevationScroll>
       {props.children}
+      <Footer
+        socials={socials}
+        copyright="&copy; 2020 Transcend, Inc. All rights reserved."
+      />
     </>
   )
 }
