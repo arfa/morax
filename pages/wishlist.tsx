@@ -2,6 +2,7 @@ import useWishlist from '@framework/wishlist/use-wishlist'
 import { Container, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import ProductCardContainer from '../containers/product/ProductCardContainer'
+import ProductListLoader from '@components/loaders/product-list-loader'
 
 const WishlistContent = () => {
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
@@ -9,7 +10,9 @@ const WishlistContent = () => {
   if (isEmpty && data?.items.length == 0) {
     return <p>Your wishlist is empty</p>
   }
-
+  if (isLoading) {
+    return <ProductListLoader number={3} />
+  }
   if (!isLoading && !isEmpty) {
     return (
       <Grid container spacing={2} border={0}>

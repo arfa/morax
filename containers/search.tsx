@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import * as React from 'react'
 import { useState } from 'react'
 import CategoryList from '../components/category/category-list'
+import ProductListLoader from '@components/loaders/product-list-loader'
 
 const SearchContent = ({ categories }: any) => {
   const router = useRouter()
@@ -33,7 +34,7 @@ const SearchContent = ({ categories }: any) => {
             Searching for: "<strong>{q}</strong>"
           </>
         ) : (
-          <>Searching...</>
+          <ProductListLoader number={3} />
         )}
       </>
     )
