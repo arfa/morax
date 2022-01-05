@@ -15,11 +15,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof ScrollTop> = (args) => (
   <>
-    <Box id="top" sx={{ height: '100vh' }}></Box>{' '}
-    <ScrollTop
-      {...args}
-      sx={{ transform: 'scale(1)', visibility: 'visible' }}
-    />
+    <Box id="top" sx={{ height: '100vh', my: 5 }}></Box> <ScrollTop {...args} />
   </>
 )
 
