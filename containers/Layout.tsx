@@ -1,6 +1,7 @@
 import Footer from '@components/layouts/footer'
 import {
   AppBar,
+  Container,
   Divider,
   IconButton,
   Stack,
@@ -12,11 +13,12 @@ import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/UserNav/UserNav'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, {  } from 'react'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from './cart/cart'
 import SearchbarBlock from './searchbar-block'
 import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
+import ScrollTop from '@components/layouts/scroll-top'
 function ElevationScroll(props: any) {
   const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -96,11 +98,12 @@ export default function Layout(props: any) {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      {props.children}
+      <Container>{props.children}</Container>
       <Footer
         socials={socials}
         copyright="&copy; 2020 Transcend, Inc. All rights reserved."
       />
+      <ScrollTop />
     </>
   )
 }
