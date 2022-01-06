@@ -1,43 +1,49 @@
 import { Box, Fab, Zoom, useScrollTrigger } from '@mui/material'
 import { MdKeyboardArrowUp } from 'react-icons/md'
 
+type Props = {
+  target?: HTMLElement
+  bottom?: number
+  right?: number
+  left?: number
+} & React.ButtonHTMLAttributes<HTMLButtonElement>
+
 export default function ScrollTop({
-  anchorTop = '#back-top-anchor',
-  window,
-}: any) {
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+  target,
+  bottom = 16,
+  right = 16,
+  left,
+  onClick,
+}: Props) {
   const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
+    target,
     disableHysteresis: true,
-    threshold: 100,
   })
 
   const handleClick = (event: any) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      anchorTop
-    )
-
+    const anchor = target || window
     if (anchor) {
-      anchor.scrollIntoView({
+      onClick && onClick(event)
+      anchor.scrollTo({
         behavior: 'smooth',
-        block: 'center',
+        top: 0,
       })
     }
   }
 
   return (
-    <Zoom in={trigger}>
-      <Box
-        onClick={handleClick}
-        role="presentation"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}
-      >
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
+    <Box role="presentation" sx={{ position: 'relative' }}>
+      <Zoom in={trigger}>
+        <Fab
+          onClick={handleClick}
+          color="secondary"
+          size="small"
+          aria-label="scroll back to top"
+          sx={{ position: 'absolute', bottom, right, left }}
+        >
           <MdKeyboardArrowUp size={20} />
         </Fab>
-      </Box>
-    </Zoom>
+      </Zoom>
+    </Box>
   )
 }

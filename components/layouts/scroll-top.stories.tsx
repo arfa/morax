@@ -1,7 +1,7 @@
 import ScrollTop from '@components/layouts/scroll-top'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import React from 'react'
-import { AppBar, Box, Toolbar, Typography } from '@mui/material'
+import React, { useEffect, useRef, useState } from 'react'
+import { Box } from '@mui/material'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -13,21 +13,52 @@ export default {
 } as ComponentMeta<typeof ScrollTop>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ScrollTop> = (args) => (
+const Template: ComponentStory<typeof ScrollTop> = (args) => {
+  const wrapperEl = useRef();
+  const [target, setTarget] = useState();
+
+  useEffect(() => {
+    setTarget(wrapperEl.current);
+  }, [wrapperEl]);
+
+  console.log('wrapperEl: ', wrapperEl);
+
+  return (
   <>
-    {' '}
-    <AppBar>
-      <Toolbar>
-        <Typography variant="h6" component="div">
-          Scroll to see button
-        </Typography>
-      </Toolbar>
-    </AppBar>
-    <Toolbar id="top" />
-    <Box sx={{ height: '100vh', my: 5 }}></Box> <ScrollTop {...args} />
+    <Box
+      ref={wrapperEl}
+      sx={{
+        width: 300,
+        height: 500,
+        overflow: 'scroll',
+        padding: '24px',
+        backgroundColor: 'secondary.light',
+      }}
+    >
+      {[...Array(5)].map((_, i) => (
+        <Box
+          key={i}
+          sx={{
+            height: 100,
+            margin: 5,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'primary.light',
+          }}
+        >
+          scroll down ↓
+        </Box>
+      ))}
+      <ScrollTop target={target} {...args} />
+    </Box>
   </>
-)
+)}
 
 export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = { anchorTop: '#top' }
+Default.args = {
+  bottom: 16,
+  right: 16,
+  left: NaN,
+}

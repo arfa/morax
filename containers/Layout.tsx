@@ -1,6 +1,7 @@
 import Footer from '@components/layouts/footer'
 import {
   AppBar,
+  Container,
   Divider,
   IconButton,
   Stack,
@@ -12,7 +13,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/UserNav/UserNav'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, {  } from 'react'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from './cart/cart'
 import SearchbarBlock from './searchbar-block'
@@ -61,12 +62,11 @@ export default function Layout(props: any) {
       link: 'https://github.com',
     },
   ]
-  const backTopId = 'back-top-anchor'
   return (
     <>
       <ElevationScroll {...props}>
         <AppBar position="sticky" color="inherit">
-          <Toolbar sx={{ boxShadow: 'none' }} id={backTopId}>
+          <Toolbar sx={{ boxShadow: 'none' }}>
             <Link href="/" passHref>
               <MUILink color="inherit" underline="none" sx={{ flexGrow: 1 }}>
                 <Typography variant="h6" noWrap>
@@ -98,12 +98,12 @@ export default function Layout(props: any) {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      {props.children}
-      <ScrollTop anchorTop={`#${backTopId}`} />
+      <Container>{props.children}</Container>
       <Footer
         socials={socials}
         copyright="&copy; 2020 Transcend, Inc. All rights reserved."
       />
+      <ScrollTop />
     </>
   )
 }
