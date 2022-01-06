@@ -1,4 +1,6 @@
 import Cookies, {
+  DEFAULT_BTN_LABEL,
+  DEFAULT_MSG,
   horizontalType,
   verticalType,
 } from '@components/layouts/cookies'
@@ -29,6 +31,8 @@ const Template: ComponentStory<typeof Cookies> = (args) => <Cookies {...args} />
 export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+  msg: DEFAULT_MSG,
+  buttonLabel: DEFAULT_BTN_LABEL,
   vertical: verticalType.bottom,
   horizontal: horizontalType.center,
   visible: true,
