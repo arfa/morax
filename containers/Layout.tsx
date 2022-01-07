@@ -1,4 +1,7 @@
+import Cookies from '@components/layouts/cookies'
 import Footer from '@components/layouts/footer'
+import ScrollTop from '@components/layouts/scroll-top'
+import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import {
   AppBar,
   Container,
@@ -13,12 +16,11 @@ import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/UserNav/UserNav'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import React, {  } from 'react'
+import React from 'react'
+import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from './cart/cart'
 import SearchbarBlock from './searchbar-block'
-import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
-import ScrollTop from '@components/layouts/scroll-top'
 function ElevationScroll(props: any) {
   const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -43,8 +45,10 @@ ElevationScroll.propTypes = {
    */
   window: PropTypes.func,
 }
+
 export default function Layout(props: any) {
-  const [auth, setAuth] = React.useState(false)
+  const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
+
   const socials = [
     {
       icon: <FiFacebook />,
@@ -99,6 +103,8 @@ export default function Layout(props: any) {
         </AppBar>
       </ElevationScroll>
       <Container>{props.children}</Container>
+      <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
+
       <Footer
         socials={socials}
         copyright="&copy; 2020 Transcend, Inc. All rights reserved."
