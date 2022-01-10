@@ -16,23 +16,23 @@ export default function ProductMainBlock({ product }: ProductMainBlockProps) {
   })
   return (
     <Grid container spacing={3} marginTop={5} border={0}>
-        {/* Product Image */}
-        <Grid item xs={12} md={4} lg={3} border={0}>
-          <CardMedia
-            component="img"
-            image={product.images[0]?.url || placeholderImg}
-            alt={product.name || 'Product Image'}
-          />
-        </Grid>
+      {/* Product Image */}
+      <Grid item sm={12} md={6} border={0}>
+        <CardMedia
+          component="img"
+          image={product.images[0]?.url || placeholderImg}
+          alt={product.name || 'Product Image'}
+        />
+      </Grid>
 
-        {/* Product detail */}
-        <Grid item border={0}>
-          <Typography variant="h4">{product.name}</Typography>
-          <Typography variant="h6" sx={{ marginTop: '10px' }}>
-            {price}
-          </Typography>
-          <ProductSideBlock product={product} />
-        </Grid>
+      {/* Product detail */}
+      <Grid item sm={12} md={6} border={0}>
+        <Typography variant="h5">{product.name}</Typography>
+        <Typography variant="h6" sx={{ marginTop: '10px' }}>
+          {price}
+        </Typography>
+        <ProductSideBlock product={product} />
+      </Grid>
     </Grid>
   )
 }
