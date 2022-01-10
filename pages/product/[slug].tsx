@@ -3,7 +3,7 @@ import { Container } from '@mui/material'
 import type {
   GetStaticPathsContext,
   GetStaticPropsContext,
-  InferGetStaticPropsType
+  InferGetStaticPropsType,
 } from 'next'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
@@ -11,7 +11,7 @@ import * as React from 'react'
 import ProductDetailsBlock from '../../containers/product/ProductDetailsBlock'
 import ProductMainBlock from '../../containers/product/ProductMainBlock'
 import ProductRelated from '../../containers/product/ProductRelatedBlock'
-
+import espcapeHtml from '../../lib/escape-html'
 
 export async function getStaticProps({
   params,
@@ -82,7 +82,7 @@ export default function Slug({
     <>
       <Container maxWidth="lg">
         {/* main product paper */}
-        <ProductMainBlock product={product}/>
+        <ProductMainBlock product={product} />
         {/* poduct details paper */}
         <ProductDetailsBlock product={product} />
 
@@ -91,11 +91,11 @@ export default function Slug({
       </Container>
       <NextSeo
         title={product.name}
-        description={product.description}
+        description={espcapeHtml(product.description)}
         openGraph={{
           type: 'website',
           title: product.name,
-          description: product.description,
+          description: espcapeHtml(product.description),
           images: [
             {
               url: product.images[0]?.url!,
