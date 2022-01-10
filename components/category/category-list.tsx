@@ -41,7 +41,7 @@ export default function CategoryList({ data }: Props) {
       className={'keen-slider'}
       component="nav"
       aria-label="categories"
-      sx={downBreakpoint ? { display: 'flex', flexDirection: 'row' } : {}}
+      sx={{ display: 'flex', flexDirection: 'row' }}
     >
       {data.map((category) => (
         <Link
