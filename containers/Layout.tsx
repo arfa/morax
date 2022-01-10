@@ -102,7 +102,9 @@ export default function Layout(props: any) {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <Container>{props.children}</Container>
+      <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+        {props.children}
+      </Container>
       <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
 
       <Footer

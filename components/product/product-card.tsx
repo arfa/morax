@@ -3,9 +3,9 @@ import { Card } from '@mui/material'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
+import MUILink from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
-import MUILink from '@mui/material/Link'
 import * as React from 'react'
 interface Props {
   name: string
@@ -38,7 +38,7 @@ export default function ProductCard({
       <CardContent sx={{ padding: '16px' }}>
         <Link href={`/product/${slug}`} passHref>
           <MUILink color="inherit" underline="none">
-            <Typography gutterBottom variant="subtitle1" fontWeight="medium" noWrap>
+            <Typography gutterBottom variant="body2" fontWeight="medium" noWrap>
               {name}
             </Typography>
           </MUILink>
