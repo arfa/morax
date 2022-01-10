@@ -11,6 +11,8 @@ import * as React from 'react'
 import ProductDetailsBlock from '../../containers/product/ProductDetailsBlock'
 import ProductMainBlock from '../../containers/product/ProductMainBlock'
 import ProductRelated from '../../containers/product/ProductRelatedBlock'
+import espcapeHtml from '../../lib/escape-html'
+
 
 export async function getStaticProps({
   params,
@@ -90,11 +92,11 @@ export default function Slug({
       </Container>
       <NextSeo
         title={product.name}
-        description={product.description}
+        description={espcapeHtml(product.description)}
         openGraph={{
           type: 'website',
           title: product.name,
-          description: product.description,
+          description: espcapeHtml(product.description),
           images: [
             {
               url: product.images[0]?.url!,
