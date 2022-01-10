@@ -17,12 +17,15 @@ export default function CategoryList({ data }: Props) {
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
       '(min-width: 400px)': {
+        // tslint:disable-next-line
         slides: { perView: 2, spacing: 5 },
       },
       '(min-width: 1000px)': {
+        // tslint:disable-next-line
         slides: { perView: 3, spacing: 10 },
       },
     },
+    // tslint:disable-next-line
     slides: { perView: 1 },
   })
 
