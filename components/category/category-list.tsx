@@ -43,7 +43,7 @@ export default function CategoryList({ data }: Props) {
       aria-label="categories"
       sx={{ display: 'flex', flexDirection: 'row' }}
     >
-      {data.map((category) => (
+      {data.map((category: category) => (
         <Link
           key={category.id}
           href={{ pathname: getCategoryPath(category.path) }}
@@ -83,7 +83,7 @@ export default function CategoryList({ data }: Props) {
     </List>
   ) : (
     <List component="nav" aria-label="categories">
-      {data.map((category) => (
+      {data.map((category: category) => (
         <Link
           key={category.id}
           href={{ pathname: getCategoryPath(category.path) }}
