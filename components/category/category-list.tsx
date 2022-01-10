@@ -14,7 +14,7 @@ interface Props {
 }
 export default function CategoryList({ data }: Props) {
   const [selectedIndex, setSelectedIndex] = React.useState(1)
-  const [sliderRef] = useKeenSlider({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
       '(min-width: 400px)': {
         slides: { perView: 2, spacing: 5 },
