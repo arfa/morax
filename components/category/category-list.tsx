@@ -17,7 +17,7 @@ export default function CategoryList({ data }: Props) {
     breakpoints: {
       '(min-width: 400px)': {
         // tslint:disable-next-line
-        slides: { perView: 2, spacing: 5 },
+        slides: { perView: 1, spacing: 5 },
         loop: true,
       },
       '(min-width: 600px)': {

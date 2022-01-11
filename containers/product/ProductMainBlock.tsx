@@ -1,6 +1,8 @@
 import { Product } from '@commerce/types/product'
+import Slider from '@components/slider'
 import usePrice from '@framework/product/use-price'
-import { CardMedia, Grid, Typography } from '@mui/material'
+import { Grid, Stack, Typography } from '@mui/material'
+import Image from 'next/image'
 import ProductSideBlock from './ProductSideBlock'
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -17,12 +19,26 @@ export default function ProductMainBlock({ product }: ProductMainBlockProps) {
   return (
     <Grid container spacing={3} marginTop={5} border={0}>
       {/* Product Image */}
-      <Grid item sm={12} md={6} border={0}>
-        <CardMedia
-          component="img"
-          image={product.images[0]?.url || placeholderImg}
-          alt={product.name || 'Product Image'}
-        />
+      <Grid item xs={12} sm={12} md={6} border={0}>
+        <Slider key={product.id}>
+          {product.images.map((image) => (
+            <div key={image.url}>
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Image
+                  src={image.url!}
+                  alt={image.alt || 'Product Image'}
+                  width={300}
+                  height={300}
+                  quality="85"
+                />
+              </Stack>
+            </div>
+          ))}
+        </Slider>
       </Grid>
 
       {/* Product detail */}
