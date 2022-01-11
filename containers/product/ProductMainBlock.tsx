@@ -1,5 +1,5 @@
 import { Product } from '@commerce/types/product'
-import Slider from '@components/slider'
+import Slider from '@components/slider/slider'
 import usePrice from '@framework/product/use-price'
 import { Grid, Stack, Typography } from '@mui/material'
 import Image from 'next/image'

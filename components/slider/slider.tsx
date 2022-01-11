@@ -5,14 +5,21 @@ import React, { Children, isValidElement, useState } from 'react'
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 
 interface Props {
+  perView?: number
+  spacing?: number
   children: React.ReactNode[]
 }
 
-export default function ProductSlider({ children }: Props) {
+export default function ProductSlider({
+  perView = 1,
+  spacing = 10,
+  children,
+}: Props) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
+    slides: { perView, spacing },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
     },
