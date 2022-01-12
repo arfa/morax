@@ -1,4 +1,4 @@
-import Searchbar from '@components/inputs/searchbar'
+import SearchButton from '@components/buttons/search-button'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 interface Props {
@@ -7,7 +7,6 @@ interface Props {
 }
 export default function SearchbarBlock({ targetPath = '/search' }: Props) {
   const router = useRouter()
-
   useEffect(() => {
     router.prefetch(targetPath)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -29,5 +28,5 @@ export default function SearchbarBlock({ targetPath = '/search' }: Props) {
       )
     }
   }
-  return <Searchbar onSearch={handleKeyUp} />
+  return <SearchButton onSearch={handleKeyUp} />
 }
