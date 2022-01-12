@@ -17,7 +17,16 @@ const WishlistContent = () => {
     return (
       <Grid container spacing={2} border={0}>
         {data.items?.map((item: any) => (
-          <Grid key={item.id} item xs={12} sm={6} md={2} padding={0} border={0}>
+          <Grid
+            key={item.id}
+            item
+            lg={2}
+            md={3}
+            sm={4}
+            xs={12}
+            padding={0}
+            border={0}
+          >
             <ProductCardContainer product={item.product! as any} />
           </Grid>
         ))}

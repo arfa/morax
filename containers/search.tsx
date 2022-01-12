@@ -73,11 +73,13 @@ const SearchContent = ({ categories }: any) => {
             <Grid
               key={product.id}
               item
+              xl={2}
+              lg={3}
+              md={4}
+              sm={6}
+              xs={12}
               padding={0}
               border={0}
-              xs={12}
-              sm={6}
-              md={3}
             >
               <ProductCardContainer product={product} />
             </Grid>

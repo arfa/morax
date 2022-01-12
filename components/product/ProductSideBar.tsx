@@ -30,26 +30,25 @@ export default function ProductSidebar({
     }
   }
   return (
-    <div className={className}>
+    <>
       <ProductOptions
         options={product.options}
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
-      <div>
-        {cartEnabled && (
-          <LoadingButton
-            sx={{ marginTop: '30px' }}
-            variant="outlined"
-            startIcon={<HiOutlineShoppingCart />}
-            onClick={addToCart}
-            loading={loading}
-            loadingPosition="start"
-          >
-            {availableForSale ? 'Add To Cart' : 'Not Available'}
-          </LoadingButton>
-        )}
-      </div>
-    </div>
+
+      {cartEnabled && (
+        <LoadingButton
+          sx={{ marginTop: '30px' }}
+          variant="outlined"
+          startIcon={<HiOutlineShoppingCart />}
+          onClick={addToCart}
+          loading={loading}
+          loadingPosition="start"
+        >
+          {availableForSale ? 'Add To Cart' : 'Not Available'}
+        </LoadingButton>
+      )}
+    </>
   )
 }

@@ -1,4 +1,4 @@
-import { Container, Grid, Stack } from '@mui/material'
+import { Grid } from '@mui/material'
 
 interface Props {
   rightBlock: React.ReactElement
@@ -6,18 +6,16 @@ interface Props {
 }
 const MainBlock = ({ leftBlock, rightBlock }: Props) => {
   return (
-    <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-      <Stack direction="row" spacing={4}>
-        {/* Category list */}
-        <Grid item xs={12} md={3} lg={3} padding={0} margin={0} border={0}>
-          {leftBlock}
-        </Grid>
-        {/* Product list */}
-        <Grid item xs={12} md={9} lg={9}>
-          {rightBlock}
-        </Grid>
-      </Stack>
-    </Container>
+    <Grid container border={0} padding={0}>
+      {/* Category list */}
+      <Grid item xs={12} md={3} margin={0} border={0}>
+        {leftBlock}
+      </Grid>
+      {/* Product list */}
+      <Grid item xs={12} md={9}>
+        {rightBlock}
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,12 +1,12 @@
 import type { Product } from '@commerce/types/product'
-import ProductSidebar from '@components/product/ProductSideBar'
-import { useAddItem } from '@framework/cart'
-import { useEffect, useState } from 'react'
 import {
   SelectedOptions,
   getProductVariant,
   selectDefaultOptionFromProduct,
 } from '@components/product/helpers'
+import ProductSidebar from '@components/product/ProductSideBar'
+import { useAddItem } from '@framework/cart'
+import { useEffect, useState } from 'react'
 
 interface ProductSideBlockProps {
   product: Product

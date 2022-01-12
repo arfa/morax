@@ -13,6 +13,7 @@ import ProductMainBlock from '../../containers/product/ProductMainBlock'
 import ProductRelated from '../../containers/product/ProductRelatedBlock'
 import espcapeHtml from '../../lib/escape-html'
 
+
 export async function getStaticProps({
   params,
   locale,

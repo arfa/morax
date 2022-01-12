@@ -18,16 +18,18 @@ export default function Home({
           <Typography variant="h5" paddingBottom="30px">
             Flash Sale
           </Typography>
-          <Grid container spacing={2} border={0}>
+          <Grid container spacing={2} border={'1px'}>
             {products.map((product) => (
               <Grid
                 key={product.id}
                 item
+                xl={2}
+                lg={3}
+                md={4}
+                sm={6}
+                xs={12}
                 padding={0}
                 border={0}
-                xs={12}
-                sm={6}
-                md={3}
               >
                 <ProductCardContainer product={product} />
               </Grid>

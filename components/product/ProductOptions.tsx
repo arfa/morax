@@ -1,7 +1,6 @@
 import type { ProductOption } from '@commerce/types/product'
 import {
   Paper,
-  Stack,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
@@ -20,72 +19,74 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
   setSelectedOptions,
 }) => {
   return (
-    <Stack direction="row" spacing={10}>
+    <>
       {options.map((opt) => (
-        <div className="pb-4" key={opt.displayName}>
-          <h2 className="text-sm font-medium tracking-wide uppercase">
+        <div key={opt.displayName} style={{ marginTop: 0 }}>
+          <Typography variant="h6" mt={4} mb={1}>
             {opt.displayName}
-          </h2>
-          <div role="listbox" className="flex flex-row py-4">
-            <ToggleButtonGroup size="small">
-              {opt.values.map((v, i: number) => {
-                const active = selectedOptions[opt.displayName.toLowerCase()]
-                return (
-                  <div key={`${opt.id}-${i}`}>
-                    <ToggleButton
-                      value="check"
-                      selected={v.label.toLowerCase() === active}
-                      onChange={() => {
-                        setSelectedOptions((selectedOptions) => {
-                          return {
-                            ...selectedOptions,
-                            [opt.displayName.toLowerCase()]:
-                              v.label.toLowerCase(),
-                          }
-                        })
-                      }}
-                      sx={{
-                        minWidth: '40px',
-                        minHeight: '40px',
-                        padding: '0px',
-                        marginLeft: '7px',
-                        border: '1px solid #e6e6e6',
-                        '&:hover': {
-                          border: '1px solid #000',
-                          backgroundColor: '#fff',
-                        },
-                        '&.Mui-focusVisible': { backgroundColor: '#fff' },
-                        '&.Mui-selected': {
-                          border: '1px solid #000',
-                          backgroundColor: '#fff',
-                          '&:hover': { backgroundColor: '#fff' },
-                        },
-                      }}
-                    >
-                      {' '}
-                      {v.hexColors ? (
-                        <Paper
-                          sx={{
-                            backgroundColor: v.hexColors[0],
-                            borderRadius: '7px',
-                            minWidth: '32px',
-                            minHeight: '32px',
-                          }}
-                        />
-                      ) : (
-                        <Typography variant="body2" sx={{ marginX: 1 }}>
-                          {v.label}
-                        </Typography>
-                      )}
-                    </ToggleButton>
-                  </div>
-                )
-              })}
-            </ToggleButtonGroup>
-          </div>
+          </Typography>
+          <ToggleButtonGroup
+            size="small"
+            sx={{ display: 'flex', flexWrap: 'wrap' }}
+          >
+            {opt.values.map((v, i: number) => {
+              const active = selectedOptions[opt.displayName.toLowerCase()]
+              return (
+                <div key={`${opt.id}-${i}`}>
+                  <ToggleButton
+                    value="check"
+                    selected={v.label.toLowerCase() === active}
+                    onChange={() => {
+                      setSelectedOptions((selectedOptions) => {
+                        return {
+                          ...selectedOptions,
+                          [opt.displayName.toLowerCase()]:
+                            v.label.toLowerCase(),
+                        }
+                      })
+                    }}
+                    sx={{
+                      minWidth: '40px',
+                      minHeight: '40px',
+                      padding: '0px',
+
+                      margin: '3px',
+                      border: '1px solid #e6e6e6',
+                      '&:hover': {
+                        border: '1px solid #000',
+                        backgroundColor: '#fff',
+                      },
+                      '&.Mui-focusVisible': { backgroundColor: '#fff' },
+                      '&.Mui-selected': {
+                        border: '1px solid #000',
+                        backgroundColor: '#fff',
+                        '&:hover': { backgroundColor: '#fff' },
+                      },
+                    }}
+                  >
+                    {' '}
+                    {v.hexColors ? (
+                      <Paper
+                        sx={{
+                          backgroundColor: v.hexColors[0],
+                          borderRadius: '7px',
+                          minWidth: '32px',
+                          minHeight: '32px',
+                        }}
+                      />
+                    ) : (
+                      <Typography variant="body2" sx={{ marginX: 1 }}>
+                        {v.label}
+                      </Typography>
+                    )}
+                  </ToggleButton>
+                </div>
+              )
+            })}
+          </ToggleButtonGroup>
         </div>
       ))}
-    </Stack>
+    </>
   )
 }
 

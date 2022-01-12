@@ -62,7 +62,6 @@ export default function ProductDetailsBlock({
       >
         <Tab label="Description" {...a11yProps(0)} />
         <Tab label="Reviews" {...a11yProps(1)} />
-        <Tab label="Comments" {...a11yProps(2)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <Typography
@@ -79,9 +78,6 @@ export default function ProductDetailsBlock({
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
       </TabPanel>
     </Paper>
   )
