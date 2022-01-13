@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "test": "jest --watch",
     "analyze": "BUNDLE_ANALYZE=both next build",
