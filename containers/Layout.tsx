@@ -21,6 +21,7 @@ import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from './cart/cart'
 import SearchbarBlock from './searchbar-block'
+import Chatwoot from '@components/Chatwoot'
 function ElevationScroll(props: any) {
   const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -105,13 +106,13 @@ export default function Layout(props: any) {
       <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
         {props.children}
       </Container>
+      <Chatwoot />
       <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
-
+      <ScrollTop />
       <Footer
         socials={socials}
         copyright="&copy; 2020 Transcend, Inc. All rights reserved."
       />
-      <ScrollTop />
     </>
   )
 }
