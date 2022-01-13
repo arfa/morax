@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "analyze": "BUNDLE_ANALYZE=both next build",
     "find:unused": "npx next-unused",
@@ -106,6 +107,7 @@
     "graphql": "^15.5.1",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
+    "next-sitemap": "^1.9.9",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.0",
