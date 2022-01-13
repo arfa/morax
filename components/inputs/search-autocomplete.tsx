@@ -1,22 +1,26 @@
 import { Product } from '@commerce/types/product'
 import useSearch from '@framework/product/use-search'
+import { Modal, Paper, useMediaQuery } from '@mui/material'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
 import { debounce } from '@mui/material/utils'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
+import { useRouter } from 'next/router'
 import * as React from 'react'
 import { useCallback } from 'react'
 import { HiSearch } from 'react-icons/hi'
 
 interface Props {
+  openModal: boolean
   placeholder?: string
-  onConfirm?: (_v: string) => void
+  handleClose?: any
 }
 
 export default function SearchAutocomplete({
+  openModal,
   placeholder = 'Search for products..',
-  onConfirm,
+  handleClose,
 }: Props) {
   const [query, setQuery] = React.useState('')
 
@@ -30,6 +34,9 @@ export default function SearchAutocomplete({
     }, 500),
     []
   )
+  const breakpoint = useMediaQuery((theme: any) => theme.breakpoints.down('md'))
+  const router = useRouter()
+
   return (
     <Autocomplete
       freeSolo
@@ -46,22 +53,52 @@ export default function SearchAutocomplete({
       options={data?.products || []}
       loading={isLoading}
       renderInput={(params) => (
-        <TextField
-          {...params}
-          hiddenLabel
-          placeholder={placeholder}
-          onChange={(e) => onInputChange(e, e.currentTarget.value)}
-          onKeyDown={(e: any) => {
-            if (e.key === 'Enter') {
-              const q = e.target.value
-              onConfirm && onConfirm(q)
-            }
-          }}
-          InputProps={{
-            ...params.InputProps,
-            startAdornment: <HiSearch size={20} style={{ margin: 5 }} />,
-          }}
-        />
+        <Modal
+          open={openModal}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Paper
+            sx={{
+              position: 'absolute',
+              top: '10%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              minWidth: breakpoint ? '90%' : '50%',
+              bgcolor: 'background.paper',
+              boxShadow: 24,
+              p: 2,
+            }}
+          >
+            <TextField
+              autoFocus
+              {...params}
+              hiddenLabel
+              placeholder={placeholder}
+              onChange={(e) => onInputChange(e, e.currentTarget.value)}
+              onKeyUp={(e: any) => {
+                const q = e.target.value
+                setQuery(q)
+                if (e.key === 'Enter') {
+                  router.push(
+                    {
+                      pathname: '/search',
+                      query: query ? { q: query } : {},
+                    },
+                    undefined,
+                    { shallow: true }
+                  )
+                  handleClose()
+                }
+              }}
+              InputProps={{
+                ...params.InputProps,
+                startAdornment: <HiSearch size={20} style={{ margin: 5 }} />,
+              }}
+            />
+          </Paper>
+        </Modal>
       )}
       renderOption={(props, option: Product, { inputValue }) => {
         const matches = match(option.name, inputValue, { insideWords: true })
