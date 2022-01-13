@@ -1,6 +1,9 @@
+// @ts-nocheck
 import { useEffect } from 'react'
-
-export default function ChatwootWidget() {
+interface configType {
+  token?: string
+}
+export default function useChatwoot(config: configType) {
   useEffect(() => {
     // Add Chatwoot Settings
     window.chatwootSettings = {
@@ -18,15 +21,13 @@ export default function ChatwootWidget() {
       g.src = BASE_URL + '/packs/js/sdk.js'
       g.defer = true
       g.async = true
-      s.parentNode.insertBefore(g, s)
+      s.parentNode?.insertBefore(g, s)
       g.onload = function () {
         window.chatwootSDK.run({
-          websiteToken: process.env.NEXT_PUBLIC_CHATWOOT_TOKEN,
+          websiteToken: config.token,
           baseUrl: BASE_URL,
         })
       }
     })(document, 'script')
   }, []) // empty array here means that we only want to run this effect once
-
-  return null
 }
