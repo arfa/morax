@@ -1,29 +1,17 @@
-import {
-  IconButton,
-  InputAdornment,
-  InputBase,
-  Paper,
-  useMediaQuery,
-} from '@mui/material'
+import SearchAutocomplete from '@components/inputs/search-autocomplete'
+import { IconButton, Paper, useMediaQuery } from '@mui/material'
 import Modal from '@mui/material/Modal'
 import * as React from 'react'
-import { KeyboardEventHandler } from 'react'
 import { HiSearch } from 'react-icons/hi'
+import { useRouter } from 'next/router'
 
-interface Props {
-  placeholder?: string
-  onSearch: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>
-}
-
-export default function SearchButton({
-  placeholder = 'Search ...',
-  onSearch,
-}: Props) {
+export default function SearchButton() {
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-
+  const router = useRouter()
   const breakpoint = useMediaQuery((theme: any) => theme.breakpoints.down('md'))
+  console.log(open)
   return (
     <div>
       <IconButton onClick={handleOpen}>
@@ -48,15 +36,23 @@ export default function SearchButton({
             p: 2,
           }}
         >
-          <InputBase
-            placeholder={placeholder}
-            inputProps={{ 'aria-label': 'Search for products..' }}
-            onKeyUp={onSearch}
-            startAdornment={
-              <InputAdornment position="end" sx={{ mr: 2 }}>
-                <HiSearch size={20} />
-              </InputAdornment>
-            }
+          <SearchAutocomplete
+            onConfirm={(q) => {
+              setOpen(!q)
+              console.log(q)
+              setTimeout(
+                () =>
+                  router.push(
+                    {
+                      pathname: '/search',
+                      query: q ? { q } : {},
+                    },
+                    undefined,
+                    { shallow: true }
+                  ),
+                3000
+              )
+            }}
           />
         </Paper>
       </Modal>
