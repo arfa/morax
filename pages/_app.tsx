@@ -24,7 +24,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Head>
-        <title>Change title in _app.tsx</title>
+        <title>Transcend</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <CommerceProvider locale={locale}>
