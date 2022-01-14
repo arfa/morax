@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import MUILink from '@mui/material/Link'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
-import UserNav from 'containers/UserNav/UserNav'
+import UserNav from 'containers/user-nav/user-nav'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import React from 'react'

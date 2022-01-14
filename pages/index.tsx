@@ -4,7 +4,7 @@ import commerce from '@lib/api/commerce'
 import { Grid, Typography } from '@mui/material'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import * as React from 'react'
-import ProductCardContainer from '../containers/product/ProductCardContainer'
+import ProductCardContainer from '../containers/product/product-card'
 
 export default function Home({
   products,

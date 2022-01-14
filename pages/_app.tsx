@@ -1,4 +1,4 @@
-import Layout from 'containers/Layout'
+import Layout from 'containers/layout'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import { NextPage } from 'next'

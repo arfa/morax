@@ -3,7 +3,7 @@ import Slider from '@components/slider/slider'
 import usePrice from '@framework/product/use-price'
 import { Grid, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
-import ProductSideBlock from './ProductSideBlock'
+import ProductSideBlock from './product-sidebar'
 
 const placeholderImg = '/product-img-placeholder.svg'
 interface ProductMainBlockProps {

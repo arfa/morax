@@ -8,11 +8,10 @@ import type {
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-import ProductDetailsBlock from '../../containers/product/ProductDetailsBlock'
-import ProductMainBlock from '../../containers/product/ProductMainBlock'
-import ProductRelated from '../../containers/product/ProductRelatedBlock'
+import ProductDetailsBlock from '../../containers/product/product-details'
+import ProductMainBlock from '../../containers/product/product-main-block'
+import ProductRelated from '../../containers/product/product-related-block'
 import espcapeHtml from '../../lib/escape-html'
-
 
 export async function getStaticProps({
   params,

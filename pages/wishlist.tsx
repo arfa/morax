@@ -1,7 +1,7 @@
 import useWishlist from '@framework/wishlist/use-wishlist'
 import { Container, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
-import ProductCardContainer from '../containers/product/ProductCardContainer'
+import ProductCardContainer from '../containers/product/product-card'
 import ProductListLoader from '@components/loaders/product-list-loader'
 
 const WishlistContent = () => {

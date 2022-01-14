@@ -1,5 +1,5 @@
 import type { Product } from '@commerce/types/product'
-import ProductOptions from '@components/product/ProductOptions'
+import ProductOptions from '@components/product/product-options'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 

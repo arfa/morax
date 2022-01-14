@@ -1,6 +1,6 @@
 import { Product } from '@commerce/types/product'
 import { Grid, Typography } from '@mui/material'
-import ProductCardContainer from './ProductCardContainer'
+import ProductCardContainer from './product-card'
 
 interface ProductRelatedProps {
   relatedProducts: Product[]

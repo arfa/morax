@@ -1,4 +1,4 @@
-import ProductSidebar from '@components/product/ProductSideBar'
+import ProductSidebar from '@components/product/product-sidebar'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
