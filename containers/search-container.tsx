@@ -42,7 +42,7 @@ export default function SearchButtonCtn() {
 
   const onInputChange = React.useCallback((_e, value) => {
     setQuery(value)
-  }, [])
+  }, [setQuery])
 
   return (
     <SearchButton
