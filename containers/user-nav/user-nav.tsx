@@ -1,4 +1,4 @@
-import DropdownMenu from 'containers/UserNav/DropdownMenu'
+import DropdownMenu from 'containers/user-nav/dropdown-menu'
 import useCustomer from '@framework/customer/use-customer'
 import Link from 'next/link'
 import { Button } from '@mui/material'

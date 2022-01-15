@@ -1,4 +1,4 @@
-import WishlistButton from '@components/buttons/WishlistButton'
+import WishlistButton from '@components/buttons/wishlist-button'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
@@ -8,7 +8,7 @@ export default {
   component: WishlistButton,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    color: {control: { type: 'color' }},
+    color: { control: { type: 'color' } },
     onWishlistChange: { action: 'onWishlistChange' },
   },
 } as ComponentMeta<typeof WishlistButton>

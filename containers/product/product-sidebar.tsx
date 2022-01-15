@@ -4,7 +4,7 @@ import {
   getProductVariant,
   selectDefaultOptionFromProduct,
 } from '@components/product/helpers'
-import ProductSidebar from '@components/product/ProductSideBar'
+import ProductSidebar from '@components/product/product-sidebar'
 import { useAddItem } from '@framework/cart'
 import { useEffect, useState } from 'react'
 

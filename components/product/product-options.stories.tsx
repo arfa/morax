@@ -1,4 +1,4 @@
-import ProductOptions from '@components/product/ProductOptions'
+import ProductOptions from '@components/product/product-options'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 

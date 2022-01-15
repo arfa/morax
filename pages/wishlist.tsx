@@ -3,10 +3,11 @@ import useCustomer from '@framework/customer/use-customer'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import { Container, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
+import ProductCardContainer from '../containers/product/product-card'
+import ProductListLoader from '@components/loaders/product-list-loader'
 import { NextSeo } from 'next-seo'
 import Router from 'next/router'
-import ProductCardContainer from '../containers/product/ProductCardContainer'
-
+        
 const WishlistContent = () => {
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
   const { data: customer } = useCustomer()

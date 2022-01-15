@@ -1,4 +1,4 @@
-import WishlistButton from '@components/buttons/WishlistButton'
+import WishlistButton from '@components/buttons/wishlist-button'
 import { Card } from '@mui/material'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
