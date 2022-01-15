@@ -1,14 +1,14 @@
 import MainBlock from '@components/layouts/main-block'
+import ProductListLoader from '@components/loaders/product-list-loader'
 import useSearch from '@framework/product/use-search'
 import { filterQuery, useSearchMeta } from '@lib/search'
 import type { SearchPropsType } from '@lib/search-props'
 import { Grid } from '@mui/material'
 import ProductCardContainer from 'containers/product/ProductCardContainer'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-import { useState } from 'react'
 import CategoryList from '../components/category/category-list'
-import ProductListLoader from '@components/loaders/product-list-loader'
 
 const SearchContent = ({ categories }: any) => {
   const router = useRouter()
@@ -18,7 +18,6 @@ const SearchContent = ({ categories }: any) => {
   const { pathname, category } = useSearchMeta(asPath)
 
   const activeCategory = categories.find((cat: any) => cat.slug === category)
-
   const { data, isLoading, error } = useSearch({
     search: typeof q === 'string' ? q : '',
     categoryId: activeCategory?.id,
@@ -48,6 +47,10 @@ const SearchContent = ({ categories }: any) => {
             {q && (
               <>
                 There are no products that match <strong>{q}</strong>
+                <NextSeo
+                  title={`Search - ${q}`}
+                  description={`There are no products that match ${q}`}
+                />
               </>
             )}
           </p>
@@ -56,9 +59,17 @@ const SearchContent = ({ categories }: any) => {
             {q || activeCategory ? (
               <>
                 Showing {data?.products.length} results{' '}
+                <NextSeo
+                  title={`Category - ${activeCategory.name}`}
+                  description={`${activeCategory.name} : ${data?.products.length} products`}
+                />
                 {q && (
                   <>
                     for "<strong>{q}</strong>"
+                    <NextSeo
+                      title={`Search - ${q}`}
+                      description={`${data?.products.length} results for : ${q}`}
+                    />
                   </>
                 )}
               </>
@@ -93,18 +104,6 @@ const SearchContent = ({ categories }: any) => {
 }
 
 export default function Search({ categories }: SearchPropsType) {
-  const [activeFilter, setActiveFilter] = useState('')
-  const [toggleFilter, setToggleFilter] = useState(false)
-
-  const handleClick = (event: any, filter: string) => {
-    if (filter !== activeFilter) {
-      setToggleFilter(true)
-    } else {
-      setToggleFilter(!toggleFilter)
-    }
-    setActiveFilter(filter)
-  }
-
   return (
     <>
       <MainBlock
