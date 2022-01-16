@@ -3,15 +3,19 @@ import * as React from 'react'
 import { HiSearch } from 'react-icons/hi'
 import { Product } from '@commerce/types/product'
 import { Dialog, useMediaQuery } from '@mui/material'
-import Autocomplete, { AutocompleteProps } from '@mui/material/Autocomplete'
+import Autocomplete, {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
+  AutocompleteProps,
+} from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
-import { debounce } from '@mui/material/utils'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 
 interface Props
   extends Partial<AutocompleteProps<any, undefined, undefined, undefined>> {
   isOpen?: boolean
+  searchText?: string
 }
 
 export default function SearchButton({
@@ -21,27 +25,21 @@ export default function SearchButton({
   placeholder = 'Search for products..',
   onInputChange,
   onChange,
+  searchText,
 }: Props) {
   const [open, setOpen] = React.useState(isOpen)
-  const [searchText, setSearchText] = React.useState('')
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const _onInputChange = React.useCallback(
-    debounce((event, value, reason) => {
-      onInputChange && onInputChange(event, value, reason)
-      setSearchText(value)
-    }, 500),
-    [onInputChange]
-  )
-
-  const _onChange = React.useCallback(
-    (event, value, reason, details) => {
-      setOpen(false)
-      onChange && onChange(event, value, reason, details)
-    },
-    [onChange, setOpen]
-  )
+  const _onChange = (
+    event: React.SyntheticEvent<Element, Event>,
+    value: any,
+    reason: AutocompleteChangeReason,
+    details: AutocompleteChangeDetails<any> | undefined
+  ) => {
+    setOpen(false)
+    onChange && onChange(event, value, reason, details)
+  }
   const breakpoint = useMediaQuery((theme: any) => theme.breakpoints.down('md'))
 
   return (
@@ -60,7 +58,6 @@ export default function SearchButton({
         sx={{
           '& .MuiDialog-container': {
             alignItems: 'flex-start',
-            verticalAlign: 'top',
           },
         }}
       >
@@ -74,7 +71,7 @@ export default function SearchButton({
           getOptionLabel={(option) => option.name || ''}
           options={options}
           loading={loading}
-          onInputChange={_onInputChange}
+          onInputChange={onInputChange}
           onChange={_onChange}
           renderInput={(params) => (
             <TextField
@@ -93,7 +90,6 @@ export default function SearchButton({
               insideWords: true,
             })
             const parts = parse(option.name, matches)
-            if (inputValue.length < 2) setOpen(false)
 
             return (
               <li {...props}>

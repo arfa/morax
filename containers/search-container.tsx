@@ -15,34 +15,29 @@ export default function SearchButtonCtn() {
     (_e, value, reason, details) => {
       switch (reason) {
         case 'createOption':
-          router.push(
-            {
-              pathname: '/search',
-              query: value ? { q: value } : {},
-            },
-            undefined,
-            { shallow: true }
-          )
+          router.push({
+            pathname: '/search',
+            query: value ? { q: value } : {},
+          })
           break
         case 'selectOption':
-          router.push(
-            {
-              pathname: `/product/${details.option.slug}`,
-            },
-            undefined,
-            { shallow: true }
-          )
+          router.push({
+            pathname: `/product/${details.option.slug}`,
+          })
           break
         default:
-          console.log('default');
+          console.log('default')
       }
     },
     [router]
   )
 
-  const onInputChange = React.useCallback((_e, value) => {
-    setQuery(value)
-  }, [setQuery])
+  const onInputChange = React.useCallback(
+    (_event, value, _reason) => {
+      setQuery(value)
+    },
+    [setQuery]
+  )
 
   return (
     <SearchButton
@@ -50,6 +45,7 @@ export default function SearchButtonCtn() {
       onInputChange={onInputChange}
       loading={isLoading}
       options={data?.products || []}
+      searchText={query}
     />
   )
 }
