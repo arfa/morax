@@ -21,7 +21,7 @@ import React from 'react'
 import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
 import { HiOutlineHeart } from 'react-icons/hi'
 import Cart from './cart/cart'
-import SearchbarBlock from './searchbar-block'
+import SearchButtonCtn from './search-container'
 function ElevationScroll(props: any) {
   const { children, window } = props
 
@@ -80,7 +80,7 @@ export default function Layout(props: any) {
                 </Typography>
               </MUILink>
             </Link>
-            <SearchbarBlock />
+            <SearchButtonCtn />
             <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
             <Stack
               spacing={2}
