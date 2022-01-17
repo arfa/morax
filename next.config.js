@@ -12,6 +12,7 @@ const isSwell = provider === 'swell'
 const isVendure = provider === 'vendure'
 
 module.exports = withCommerceConfig({
+  swcMinify: false,
   commerce,
   i18n: {
     locales: ['en-US', 'es'],
