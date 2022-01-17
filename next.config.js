@@ -15,7 +15,7 @@ module.exports = withCommerceConfig({
   swcMinify: true,
   commerce,
   i18n: {
-    locales: ['en-US', 'es'],
+    locales: ['en-US'],
     defaultLocale: 'en-US',
   },
   rewrites() {
