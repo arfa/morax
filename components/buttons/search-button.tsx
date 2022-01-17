@@ -1,65 +1,115 @@
-import {
-  IconButton,
-  InputAdornment,
-  InputBase,
-  Paper,
-  useMediaQuery,
-} from '@mui/material'
-import Modal from '@mui/material/Modal'
+import { IconButton } from '@mui/material'
 import * as React from 'react'
-import { KeyboardEventHandler } from 'react'
 import { HiSearch } from 'react-icons/hi'
+import { Product } from '@commerce/types/product'
+import { Dialog, useMediaQuery } from '@mui/material'
+import Autocomplete, {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
+  AutocompleteProps,
+} from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
+import match from 'autosuggest-highlight/match'
+import parse from 'autosuggest-highlight/parse'
 
-interface Props {
-  placeholder?: string
-  onSearch: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>
+interface Props
+  extends Partial<AutocompleteProps<any, undefined, undefined, undefined>> {
+  isOpen?: boolean
+  searchText?: string
 }
 
 export default function SearchButton({
-  placeholder = 'Search ...',
-  onSearch,
+  options = [],
+  loading = false,
+  isOpen = false,
+  placeholder = 'Search for products..',
+  onInputChange,
+  onChange,
+  searchText,
 }: Props) {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(isOpen)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
+  const _onChange = (
+    event: React.SyntheticEvent<Element, Event>,
+    value: any,
+    reason: AutocompleteChangeReason,
+    details: AutocompleteChangeDetails<any> | undefined
+  ) => {
+    setOpen(false)
+    onChange && onChange(event, value, reason, details)
+  }
   const breakpoint = useMediaQuery((theme: any) => theme.breakpoints.down('md'))
+
   return (
-    <div>
+    <>
       <IconButton onClick={handleOpen}>
         <HiSearch size={20} />
       </IconButton>
 
-      <Modal
+      <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        maxWidth={breakpoint ? 'sm' : 'md'}
+        fullWidth
+        aria-labelledby="Dialog-Dialog-title"
+        aria-describedby="Dialog-Dialog-description"
+        sx={{
+          '& .MuiDialog-container': {
+            alignItems: 'flex-start',
+          },
+        }}
       >
-        <Paper
-          sx={{
-            position: 'absolute',
-            top: '10%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            minWidth: breakpoint ? '90%' : '50%',
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            p: 2,
+        <Autocomplete
+          freeSolo
+          id="asynchronous"
+          open={open && !!searchText && options.length > 0}
+          isOptionEqualToValue={(option: Product, value) =>
+            option.id === value.id
+          }
+          getOptionLabel={(option) => option.name || ''}
+          options={options}
+          loading={loading}
+          onInputChange={onInputChange}
+          onChange={_onChange}
+          renderInput={(params) => (
+            <TextField
+              autoFocus
+              {...params}
+              hiddenLabel
+              placeholder={placeholder}
+              InputProps={{
+                ...params.InputProps,
+                startAdornment: <HiSearch size={20} style={{ margin: 5 }} />,
+              }}
+            />
+          )}
+          renderOption={(props, option: Product, { inputValue }) => {
+            const matches = match(option.name, inputValue, {
+              insideWords: true,
+            })
+            const parts = parse(option.name, matches)
+
+            return (
+              <li {...props}>
+                <div>
+                  {parts.map((part: any, index: any) => (
+                    <span
+                      key={index}
+                      style={{
+                        fontWeight: part.highlight ? 700 : 400,
+                      }}
+                    >
+                      {part.text}
+                    </span>
+                  ))}
+                </div>
+              </li>
+            )
           }}
-        >
-          <InputBase
-            placeholder={placeholder}
-            inputProps={{ 'aria-label': 'Search for products..' }}
-            onKeyUp={onSearch}
-            startAdornment={
-              <InputAdornment position="end" sx={{ mr: 2 }}>
-                <HiSearch size={20} />
-              </InputAdornment>
-            }
-          />
-        </Paper>
-      </Modal>
-    </div>
+        />
+      </Dialog>
+    </>
   )
 }

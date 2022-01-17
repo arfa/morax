@@ -23,11 +23,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   )
 }
@@ -65,16 +61,14 @@ export default function ProductDetailsBlock({
       </Tabs>
       <TabPanel value={value} index={0}>
         <Typography
+          component="div"
           variant="body2"
           color="text.secondary"
           sx={{ fontSize: '0.75rem' }}
-        >
-          <div
-            dangerouslySetInnerHTML={{
-              __html: product.descriptionHtml || product.description,
-            }}
-          />
-        </Typography>
+          dangerouslySetInnerHTML={{
+            __html: product.descriptionHtml || product.description,
+          }}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
