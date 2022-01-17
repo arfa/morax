@@ -65,7 +65,8 @@ export default function SignUp() {
       })
       setLoading(false)
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      // @ts-ignore
+      setMessage(errors[0]?.message)
       setLoading(false)
     }
   }
