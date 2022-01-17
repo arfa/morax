@@ -58,9 +58,9 @@ const SignIn: FC = () => {
         password,
       })
       setLoading(false)
-      // closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      // @ts-ignore
+      setMessage(errors[0]?.message)
       setLoading(false)
       setDisabled(false)
     }
