@@ -30,6 +30,6 @@ Default.args = {
   imageUrl:
     'https://cdn.shopify.com/s/files/1/0752/6435/products/Shade2.jpg?v=1607128206',
   imageAlt: 'T-shirt',
-  name: 'T-shirt',
-  price: '$25.00',
+  title: 'T-shirt',
+  subtitle: '$25.00',
 }

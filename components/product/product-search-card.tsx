@@ -4,10 +4,10 @@ import Box from '@mui/material/Box'
 interface Props {
   imageUrl: string | undefined
   imageAlt: string | undefined
-  name: string
-  price: string
+  title: string
+  subtitle: string
 }
-const ProductSearchCard = ({ imageUrl, imageAlt, name, price }: Props) => {
+const ProductSearchCard = ({ imageUrl, imageAlt, title, subtitle }: Props) => {
   return (
     <Stack direction="row">
       <Avatar
@@ -23,29 +23,8 @@ const ProductSearchCard = ({ imageUrl, imageAlt, name, price }: Props) => {
       />
 
       <Box>
-        <Typography
-          variant="h5"
-          sx={{
-            fontSize: '.875rem',
-            lineHeight: '1.5',
-            textTransform: 'none',
-            whiteSpace: 'normal',
-          }}
-        >
-          {name}
-        </Typography>
-
-        <Typography
-          variant="h5"
-          sx={{
-            fontSize: '12px',
-            lineHeight: '1.5',
-            textTransform: 'none',
-            whiteSpace: 'normal',
-          }}
-        >
-          {price}
-        </Typography>
+        <Typography variant="body2">{title}</Typography>
+        <Typography variant="caption">{subtitle}</Typography>
       </Box>
     </Stack>
   )
