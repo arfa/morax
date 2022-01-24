@@ -10,6 +10,7 @@ export enum Rate {
   FIVE = '5',
 }
 interface Props {
+  direction?: 'row' | 'column'
   imageUrl?: string
   imageAlt?: string
   title?: string
@@ -18,6 +19,7 @@ interface Props {
   body?: string
 }
 export default function Review({
+  direction = 'column',
   imageUrl,
   imageAlt,
   title,
@@ -25,9 +27,13 @@ export default function Review({
   ratingValue = Rate.NULL,
   body,
 }: Props) {
+  const isColumn = direction === 'column'
   return (
-    <>
-      <Stack direction="row">
+    <Stack direction={direction}>
+      <Stack
+        direction={isColumn ? 'row' : 'column'}
+        sx={{ marginX: imageUrl ? '0px' : '16px' }}
+      >
         {imageUrl && (
           <Avatar
             alt={imageAlt}
@@ -35,13 +41,13 @@ export default function Review({
             sx={{
               width: '60px',
               height: '60px',
-              marginX: '16px',
+              marginRight: 2,
+              marginBottom: !isColumn ? 1 : 0,
             }}
             variant="rounded"
           />
         )}
-
-        <Stack direction="column" sx={{ marginX: imageUrl ? '0px' : '16px' }}>
+        <Stack direction={'column'}>
           {title && <Typography variant="body2">{title}</Typography>}
           {subtitle && (
             <Typography variant="caption" color={grey[700]}>
@@ -58,11 +64,16 @@ export default function Review({
         <Typography
           component="div"
           variant="body2"
-          sx={{ textAlign: 'left', m: 2, color: grey[600] }}
+          sx={{
+            textAlign: 'left',
+            mt: isColumn ? 2 : 0,
+            ml: !isColumn ? 2 : 0,
+            color: grey[600],
+          }}
         >
           {body}
         </Typography>
       )}
-    </>
+    </Stack>
   )
 }
