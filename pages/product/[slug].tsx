@@ -1,3 +1,4 @@
+import { Method, useReviews } from '@components/hooks/use-reviews'
 import commerce from '@lib/api/commerce'
 import { Container } from '@mui/material'
 import type {
@@ -74,6 +75,7 @@ export default function Slug({
   product,
   relatedProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const reviews = useReviews(Method.GET, product.id)
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading...</div>
