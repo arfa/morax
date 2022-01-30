@@ -120,7 +120,7 @@ export default function Cart() {
           color="inherit"
         >
           <Badge color="secondary" badgeContent={itemsCount}>
-            <HiOutlineShoppingCart color="#0000008a" />
+            <HiOutlineShoppingCart />
           </Badge>
         </IconButton>
         <SwipeableDrawer

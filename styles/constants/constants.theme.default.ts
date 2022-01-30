@@ -1,3 +1,3 @@
 import { createTheme } from '@mui/material/styles'
 
-export const DEFAULT_THEME = createTheme()
+export const THEME_DEFAULT = createTheme()

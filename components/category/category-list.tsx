@@ -63,9 +63,9 @@ export default function CategoryList({ data }: Props) {
             sx={{
               marginBottom: 2,
               maxHeight: '80px',
-              bgcolor: '#f9f9f9',
+              bgcolor: 'action.hover',
               borderRadius: 1,
-              '&:hover': { bgcolor: '#f1f1f1' },
+              '&:hover': { bgcolor: 'action.selected' },
             }}
           >
             <ListItemAvatar>

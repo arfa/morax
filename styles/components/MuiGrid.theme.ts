@@ -1,10 +1,10 @@
-import { DEFAULT_THEME } from 'styles/constants.theme'
+import { THEME_DEFAULT } from '../constants/constants.theme.default'
 
 export const MuiGrid = {
   styleOverrides: {
     // Name of the slot
     root: {
-      padding: DEFAULT_THEME.spacing(3),
+      padding: THEME_DEFAULT.spacing(3),
       border: 'solid',
       borderWidth: '1px',
       borderColor: '#e6e6e6',

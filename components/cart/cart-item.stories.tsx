@@ -12,7 +12,7 @@ export default {
       onIncrease: { action: 'increased' },
       onDecrease: { action: 'decreased' },
       onChange: { action: 'changed' },
-    }
+    },
   },
 } as ComponentMeta<typeof CartItem>
 
