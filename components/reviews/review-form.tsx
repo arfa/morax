@@ -39,7 +39,6 @@ export default function ReviewForm({
 
   return (
     <Grid container>
-      <CssBaseline />
       <Grid
         item
         xs={12}
