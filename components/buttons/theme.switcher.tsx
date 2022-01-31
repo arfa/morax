@@ -1,8 +1,8 @@
 import * as React from 'react'
 import IconButton from '@mui/material/IconButton'
 import Box from '@mui/material/Box'
-import { BsSun } from 'react-icons/Bs'
-import { BiMoon } from 'react-icons/Bi'
+import { BsSun } from 'react-icons/bs'
+import { BiMoon } from 'react-icons/bi'
 
 type Props = {
   mode?: 'light' | 'dark'
