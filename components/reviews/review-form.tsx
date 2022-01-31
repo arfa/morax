@@ -1,7 +1,6 @@
 import { Card, Rating, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
