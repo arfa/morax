@@ -85,7 +85,7 @@ export default function SignUp() {
   }, [handleValidation])
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
       <Paper
         sx={{
           marginTop: 8,
@@ -172,7 +172,18 @@ export default function SignUp() {
                 paddingX={0}
                 sx={{ fontSize: 14 }}
               >
-                <Link href="/login">Already have an account? Sign in</Link>
+                <Link href="/login" passHref>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      cursor: 'pointer',
+                      '&:hover': { color: 'text.primary' },
+                    }}
+                  >
+                    {'Already have an account? Sign in'}
+                  </Typography>
+                </Link>
               </Grid>
             </Grid>
           </Grid>

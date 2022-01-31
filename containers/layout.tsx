@@ -1,3 +1,4 @@
+import ThemeSwither from '@components/buttons/theme.switcher'
 import useTawk from '@components/hooks/use-tawk'
 import Cookies from '@components/layouts/cookies'
 import Footer from '@components/layouts/footer'
@@ -13,15 +14,35 @@ import {
   Typography,
 } from '@mui/material'
 import MUILink from '@mui/material/Link'
+import { ThemeProvider } from '@mui/material/styles'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/user-nav/user-nav'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
 import { HiOutlineHeart } from 'react-icons/hi'
+import useThemeMode from 'styles/use-template-mode'
 import Cart from './cart/cart'
 import SearchButtonCtn from './search-container'
+
+const socials = [
+  {
+    icon: <FiFacebook />,
+    name: 'facebook',
+    link: 'https://www.facebook.com',
+  },
+  {
+    icon: <FiInstagram />,
+    name: 'Instagram',
+    link: 'https://www.instagram.com',
+  },
+  {
+    icon: <FiGithub />,
+    name: 'Github',
+    link: 'https://github.com',
+  },
+]
 function ElevationScroll(props: any) {
   const { children, window } = props
 
@@ -49,32 +70,28 @@ ElevationScroll.propTypes = {
 }
 
 export default function Layout(props: any) {
+  const { theme, setDarkMode } = useThemeMode()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   useTawk({ id: process.env.NEXT_PUBLIC_TAWK_ID })
-  const socials = [
-    {
-      icon: <FiFacebook />,
-      name: 'facebook',
-      link: 'https://www.facebook.com',
-    },
-    {
-      icon: <FiInstagram />,
-      name: 'Instagram',
-      link: 'https://www.instagram.com',
-    },
-    {
-      icon: <FiGithub />,
-      name: 'Github',
-      link: 'https://github.com',
-    },
-  ]
+
+  useEffect(() => {
+    document.body.style.backgroundColor = theme.palette.background.default
+  }, [theme])
+
+  const onThemeSwitch = useCallback(() => {
+    setDarkMode(theme.palette.mode === 'light' ? 'dark' : 'light')
+  }, [theme, setDarkMode])
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <ElevationScroll {...props}>
-        <AppBar position="sticky" color="inherit">
+        <AppBar
+          position="sticky"
+          sx={{ backgroundColor: 'background.default' }}
+        >
           <Toolbar sx={{ boxShadow: 'none' }}>
             <Link href="/" passHref>
-              <MUILink color="inherit" underline="none" sx={{ flexGrow: 1 }}>
+              <MUILink underline="none" sx={{ flexGrow: 1 }}>
                 <Typography variant="h6" noWrap>
                   SHOP
                 </Typography>
@@ -89,22 +106,28 @@ export default function Layout(props: any) {
               alignItems="center"
             >
               <Cart />
+
               <Link href="/wishlist" passHref>
                 <IconButton
                   size="large"
                   aria-label="search"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
+                  color="primary"
                 >
-                  <HiOutlineHeart color="#DB7093" />
+                  <HiOutlineHeart />
                 </IconButton>
               </Link>
+              <ThemeSwither onClick={onThemeSwitch} mode={theme.palette.mode} />
               <UserNav />
             </Stack>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+      <Container
+        maxWidth="xl"
+        sx={{ pt: 4, pb: 4, bgcolor: 'background.default' }}
+      >
         {props.children}
       </Container>
       <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
@@ -113,6 +136,6 @@ export default function Layout(props: any) {
         socials={socials}
         copyright="&copy; 2020 Transcend, Inc. All rights reserved."
       />
-    </>
+    </ThemeProvider>
   )
 }

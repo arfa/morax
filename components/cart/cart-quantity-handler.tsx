@@ -65,7 +65,11 @@ export default function CartQuantityHandler({
           </Button>
         </ButtonGroup>
 
-        <IconButton aria-label="Remove" onClick={handleRemove}>
+        <IconButton
+          aria-label="Remove"
+          onClick={handleRemove}
+          sx={{ color: 'text.disabled' }}
+        >
           <Badge color="secondary" badgeContent={quantity}>
             <HiOutlineTrash />
           </Badge>

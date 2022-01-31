@@ -22,7 +22,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
     <>
       {options.map((opt) => (
         <div key={opt.displayName} style={{ marginTop: 0 }}>
-          <Typography variant="h6" mt={4} mb={1}>
+          <Typography variant="h6" mt={4} mb={1} >
             {opt.displayName}
           </Typography>
           <ToggleButtonGroup
@@ -49,18 +49,19 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
                       minWidth: '40px',
                       minHeight: '40px',
                       padding: '0px',
-
                       margin: '3px',
-                      border: '1px solid #e6e6e6',
+                      border: '1px solid',
+                      borderColor: 'action.selected',
                       '&:hover': {
-                        border: '1px solid #000',
-                        backgroundColor: '#fff',
+                        border: '1px solid',
+                        borderColor: 'action.active',
+                        backgroundColor: 'background.default',
                       },
-                      '&.Mui-focusVisible': { backgroundColor: '#fff' },
+                      '&.Mui-focusVisible': { backgroundColor: 'action.selected' },
                       '&.Mui-selected': {
-                        border: '1px solid #000',
-                        backgroundColor: '#fff',
-                        '&:hover': { backgroundColor: '#fff' },
+                        borderColor: 'action.active',
+                        backgroundColor: 'background.default',
+                        '&:hover': { backgroundColor: 'background.default' },
                       },
                     }}
                   >
@@ -75,7 +76,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
                         }}
                       />
                     ) : (
-                      <Typography variant="body2" sx={{ marginX: 1 }}>
+                      <Typography variant="body2" sx={{ marginX: 1 }} color="text.disabled">
                         {v.label}
                       </Typography>
                     )}

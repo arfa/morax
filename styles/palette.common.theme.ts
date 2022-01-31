@@ -1,6 +1,6 @@
 import { red } from '@mui/material/colors'
 
-export const palette = {
+export const common = {
   primary: {
     main: '#db7093',
     light: '#ffc1e2',

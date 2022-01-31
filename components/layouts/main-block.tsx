@@ -12,7 +12,7 @@ const MainBlock = ({ leftBlock, rightBlock }: Props) => {
         {leftBlock}
       </Grid>
       {/* Product list */}
-      <Grid item xs={12} md={9}>
+      <Grid item xs={12} md={9} sx={{ backgroundColor: 'background.paper' }}>
         {rightBlock}
       </Grid>
     </Grid>

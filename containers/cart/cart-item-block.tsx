@@ -3,6 +3,7 @@ import CartItem from '@components/cart/cart-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import useUpdateItem from '@framework/cart/use-update-item'
 import usePrice from '@framework/product/use-price'
+import { Divider } from '@mui/material'
 import { useState } from 'react'
 
 const CartItemBlock = ({
@@ -43,14 +44,17 @@ const CartItemBlock = ({
   }
 
   return (
-    <CartItem
-      itemName={item.name}
-      imageUrl={item.variant.image!.url}
-      imageAlt={item.variant.image!.altText}
-      itemPath={item.path}
-      cartSubtitle={cartSubtitle}
-      cartQuantity={cartQuantity}
-    />
+    <>
+      <CartItem
+        itemName={item.name}
+        imageUrl={item.variant.image!.url}
+        imageAlt={item.variant.image!.altText}
+        itemPath={item.path}
+        cartSubtitle={cartSubtitle}
+        cartQuantity={cartQuantity}
+      />
+      <Divider sx={{ my: 4, backgroundColor: 'divider' }} />
+    </>
   )
 }
 

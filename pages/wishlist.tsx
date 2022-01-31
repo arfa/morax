@@ -18,7 +18,7 @@ const WishlistContent = () => {
   }, [customer])
 
   if (isEmpty && data?.items.length == 0) {
-    return <p>Your wishlist is empty</p>
+    return <Typography variant="body1"> Your wishlist is empty</Typography>
   }
   if (isLoading) {
     return <ProductListLoader number={3} />

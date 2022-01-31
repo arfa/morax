@@ -141,7 +141,15 @@ const SignIn: FC = () => {
             Sign In
           </Button>
           <Grid container border={0} paddingX={0} sx={{ fontSize: 14 }}>
-            <Link href="/register">{"Don't have an account? Sign Up"}</Link>
+            <Link href="/register" passHref>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ cursor: 'pointer', '&:hover': { color: 'text.primary' } }}
+              >
+                {"Don't have an account? Sign Up"}
+              </Typography>
+            </Link>
           </Grid>
         </Box>
       </Paper>
