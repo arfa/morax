@@ -5,7 +5,7 @@ export const MuiGrid = {
     // Name of the slot
     root: {
       padding: THEME_DEFAULT.spacing(3),
-      border: 'solid',
+      border: 'none',
       borderWidth: '1px',
       borderColor: '#e6e6e6',
       borderRadius: '0.5rem',

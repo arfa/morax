@@ -45,7 +45,7 @@ export default function SearchButton({
   return (
     <>
       <IconButton onClick={handleOpen}>
-        <HiSearch size={20} />
+        <HiSearch size={20} color="text.disabled" />
       </IconButton>
 
       <Dialog

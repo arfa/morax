@@ -40,7 +40,7 @@ export default function CartItemSubtitle({
       justifyContent="space-between"
       fontSize={fontSize}
       paddingY={'5px'}
-      color={'#7d879c'}
+      color={'text.secondary'}
       divider={<Divider orientation="vertical" flexItem />}
     >
       {price}

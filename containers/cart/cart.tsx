@@ -55,7 +55,12 @@ export default function Cart() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: 400, padding: 3 }}
+      sx={{
+        width: 400,
+        height: '100vh',
+        padding: 3,
+        backgroundColor: 'background.paper',
+      }}
       role="presentation"
       // onClick={toggleDrawer(anchor, false)}
       // onKeyDown={toggleDrawer(anchor, false)}
@@ -87,12 +92,15 @@ export default function Cart() {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              bgcolor: 'background.paper',
               paddingTop: '20px',
             }}
           >
-            <span>Total</span>
-            <span>{total}</span>
+            <Typography variant="body1" paddingBottom="40px">
+              Total
+            </Typography>
+            <Typography variant="body1" paddingBottom="40px">
+              {total}
+            </Typography>
           </Box>
           <div>
             <Button
@@ -109,29 +117,26 @@ export default function Cart() {
   )
 
   return (
-    <div>
-      <React.Fragment>
-        <IconButton
-          size="large"
-          aria-label="cart"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={toggleDrawer('right', true)}
-          color="inherit"
-        >
-          <Badge color="secondary" badgeContent={itemsCount}>
-            <HiOutlineShoppingCart />
-          </Badge>
-        </IconButton>
-        <SwipeableDrawer
-          anchor={'right'}
-          open={state['right']}
-          onClose={toggleDrawer('right', false)}
-          onOpen={toggleDrawer('right', true)}
-        >
-          {list('right')}
-        </SwipeableDrawer>
-      </React.Fragment>
-    </div>
+    <>
+      <IconButton
+        size="large"
+        aria-label="cart"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        onClick={toggleDrawer('right', true)}
+      >
+        <Badge color="secondary" badgeContent={itemsCount}>
+          <HiOutlineShoppingCart />
+        </Badge>
+      </IconButton>
+      <SwipeableDrawer
+        anchor={'right'}
+        open={state['right']}
+        onClose={toggleDrawer('right', false)}
+        onOpen={toggleDrawer('right', true)}
+      >
+        {list('right')}
+      </SwipeableDrawer>
+    </>
   )
 }

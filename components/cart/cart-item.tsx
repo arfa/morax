@@ -30,11 +30,11 @@ const CartItem = ({
           alt={imageAlt}
           src={imageUrl}
           sx={{
-            width: '76px',
-            height: '76px',
+            width: '84px',
+            height: '84px',
             marginX: '16px',
           }}
-          variant="square"
+          variant="rounded"
         />
       </Link>
       <Box>

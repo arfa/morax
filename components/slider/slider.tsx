@@ -1,4 +1,4 @@
-import { IconButton, Stack } from '@mui/material'
+import { IconButton, Stack, Typography } from '@mui/material'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import React, { Children, isValidElement, useState } from 'react'
@@ -63,9 +63,9 @@ export default function ProductSlider({
           >
             <HiOutlineChevronLeft />
           </IconButton>
-          <span>
+          <Typography variant="body2">
             {currentSlide + 1}/{instanceRef.current.track.details.slides.length}
-          </span>
+          </Typography>
           <IconButton
             color="primary"
             aria-label="upload picture"

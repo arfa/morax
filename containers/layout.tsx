@@ -1,6 +1,5 @@
 import ThemeSwither from '@components/buttons/theme.switcher'
 import useTawk from '@components/hooks/use-tawk'
-import useThemeMode from 'styles/use-template-mode'
 import Cookies from '@components/layouts/cookies'
 import Footer from '@components/layouts/footer'
 import ScrollTop from '@components/layouts/scroll-top'
@@ -15,14 +14,15 @@ import {
   Typography,
 } from '@mui/material'
 import MUILink from '@mui/material/Link'
-import useScrollTrigger from '@mui/material/useScrollTrigger'
 import { ThemeProvider } from '@mui/material/styles'
+import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/user-nav/user-nav'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect } from 'react'
 import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
 import { HiOutlineHeart } from 'react-icons/hi'
+import useThemeMode from 'styles/use-template-mode'
 import Cart from './cart/cart'
 import SearchButtonCtn from './search-container'
 
@@ -85,7 +85,10 @@ export default function Layout(props: any) {
   return (
     <ThemeProvider theme={theme}>
       <ElevationScroll {...props}>
-        <AppBar position="sticky" color="inherit">
+        <AppBar
+          position="sticky"
+          sx={{ backgroundColor: 'background.default' }}
+        >
           <Toolbar sx={{ boxShadow: 'none' }}>
             <Link href="/" passHref>
               <MUILink underline="none" sx={{ flexGrow: 1 }}>
@@ -103,7 +106,7 @@ export default function Layout(props: any) {
               alignItems="center"
             >
               <Cart />
-              <ThemeSwither onClick={onThemeSwitch} mode={theme.palette.mode} />
+
               <Link href="/wishlist" passHref>
                 <IconButton
                   size="large"
@@ -115,12 +118,16 @@ export default function Layout(props: any) {
                   <HiOutlineHeart />
                 </IconButton>
               </Link>
+              <ThemeSwither onClick={onThemeSwitch} mode={theme.palette.mode} />
               <UserNav />
             </Stack>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <Container maxWidth="xl" sx={{ pt: 4, pb: 4, bgcolor: 'background.paper' }}>
+      <Container
+        maxWidth="xl"
+        sx={{ pt: 4, pb: 4, bgcolor: 'background.default' }}
+      >
         {props.children}
       </Container>
       <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />

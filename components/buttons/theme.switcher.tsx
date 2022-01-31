@@ -1,7 +1,8 @@
 import * as React from 'react'
 import IconButton from '@mui/material/IconButton'
 import Box from '@mui/material/Box'
-import { MdBrightness4, MdBrightness7 } from 'react-icons/md'
+import { BsSun } from 'react-icons/Bs'
+import { BiMoon } from 'react-icons/Bi'
 
 type Props = {
   mode?: 'light' | 'dark'
@@ -15,14 +16,13 @@ const ThemeSwither = ({ mode, onClick }: Props) => {
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        bgcolor: 'background.default',
-        color: 'text.primary',
+        color: 'divider',
         borderRadius: 1,
-        p: 3,
+        ml: 0,
       }}
     >
-      <IconButton sx={{ ml: 1 }} onClick={onClick} color="inherit">
-        {mode === 'dark' ? <MdBrightness7 /> : <MdBrightness4 />}
+      <IconButton onClick={onClick}>
+        {mode === 'dark' ? <BsSun /> : <BiMoon />}
       </IconButton>
     </Box>
   )

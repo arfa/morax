@@ -3,7 +3,7 @@ import ProductListLoader from '@components/loaders/product-list-loader'
 import useSearch from '@framework/product/use-search'
 import { useSearchMeta } from '@lib/search'
 import type { SearchPropsType } from '@lib/search-props'
-import { Grid } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import ProductCardContainer from 'containers/product/product-card'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
@@ -28,9 +28,9 @@ const SearchContent = ({ categories }: any) => {
     return (
       <>
         {q ? (
-          <>
+          <Typography variant="body1">
             Searching for: "<strong>{q}</strong>"
-          </>
+          </Typography>
         ) : (
           <ProductListLoader number={3} />
         )}
@@ -45,7 +45,9 @@ const SearchContent = ({ categories }: any) => {
           <p>
             {q && (
               <>
-                There are no products that match <strong>{q}</strong>
+                <Typography variant="body1">
+                  There are no products that match <strong>{q}</strong>
+                </Typography>
                 <NextSeo
                   title={`Search - ${q}`}
                   description={`There are no products that match ${q}`}
@@ -57,14 +59,18 @@ const SearchContent = ({ categories }: any) => {
           <span>
             {q || activeCategory ? (
               <>
-                Showing {data?.products.length} results{' '}
+                <Typography variant="body1">
+                  Showing {data?.products.length} results{' '}
+                </Typography>
                 <NextSeo
                   title={`Category - ${activeCategory?.name}`}
                   description={`${activeCategory?.name} : ${data?.products.length} products`}
                 />
                 {q && (
                   <>
-                    for "<strong>{q}</strong>"
+                    <Typography variant="body1">
+                      for "<strong>{q}</strong>"
+                    </Typography>
                     <NextSeo
                       title={`Search - ${q}`}
                       description={`${data?.products.length} results for : ${q}`}
@@ -73,7 +79,9 @@ const SearchContent = ({ categories }: any) => {
                 )}
               </>
             ) : (
-              <>There are no products that match the selected category.</>
+              <Typography variant="body1">
+                There are no products that match the selected category.
+              </Typography>
             )}
           </span>
         )}

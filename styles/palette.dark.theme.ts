@@ -2,17 +2,17 @@
 export const palette = {
   // Typography
   text: {
-    primary: '#fff',
-    secondary: 'rgba(255, 255, 255, 0.7)',
-    disabled: 'rgba(255, 255, 255, 0.5)',
+    primary: '#e6e5e8',
+    secondary: '#adb0bb',
+    disabled: '#767e89',
   },
   // Background
   background: {
-    default: '#121212',
-    paper: '#121212',
+    default: '#20232a',
+    paper: '#282c34',
   },
   // Divider
-  divider: 'rgba(255, 255, 255, 0.12)',
+  divider: '#767e8045',
   // Action
   action: {
     active: '#fff',
