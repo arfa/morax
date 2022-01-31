@@ -1,8 +1,6 @@
-import { IconButton } from '@mui/material'
-import * as React from 'react'
-import { HiSearch } from 'react-icons/hi'
 import { Product } from '@commerce/types/product'
-import { Dialog, useMediaQuery } from '@mui/material'
+import ProductSearchCard from '@components/product/product-search-card'
+import { Dialog, IconButton, Typography, useMediaQuery } from '@mui/material'
 import Autocomplete, {
   AutocompleteChangeDetails,
   AutocompleteChangeReason,
@@ -11,6 +9,8 @@ import Autocomplete, {
 import TextField from '@mui/material/TextField'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
+import * as React from 'react'
+import { HiSearch } from 'react-icons/hi'
 
 interface Props
   extends Partial<AutocompleteProps<any, undefined, undefined, undefined>> {
@@ -93,18 +93,25 @@ export default function SearchButton({
 
             return (
               <li {...props}>
-                <div>
-                  {parts.map((part: any, index: any) => (
-                    <span
+                <ProductSearchCard
+                  imageUrl={option.images[0].url}
+                  imageAlt={option.name}
+                  title={parts.map((part: any, index: any) => (
+                    <Typography
                       key={index}
-                      style={{
-                        fontWeight: part.highlight ? 700 : 400,
+                      variant="subtitle1"
+                      component="span"
+                      sx={{
+                        fontWeight: part.highlight ? 700 : 100,
                       }}
                     >
                       {part.text}
-                    </span>
+                    </Typography>
                   ))}
-                </div>
+                  subtitle={
+                    option.price.value + ' ' + option.price.currencyCode
+                  }
+                />
               </li>
             )
           }}

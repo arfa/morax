@@ -4,12 +4,12 @@ import Box from '@mui/material/Box'
 interface Props {
   imageUrl: string | undefined
   imageAlt: string | undefined
-  title: string
+  title: any
   subtitle: string
 }
 const ProductSearchCard = ({ imageUrl, imageAlt, title, subtitle }: Props) => {
   return (
-    <Stack direction="row">
+    <Stack direction="row" sx={{ py: 2 }}>
       <Avatar
         alt={imageAlt}
         src={imageUrl}
@@ -23,8 +23,8 @@ const ProductSearchCard = ({ imageUrl, imageAlt, title, subtitle }: Props) => {
       />
 
       <Box>
-        <Typography variant="body2">{title}</Typography>
-        <Typography variant="caption">{subtitle}</Typography>
+        <Typography variant="subtitle1">{title}</Typography>
+        <Typography variant="subtitle1">{subtitle}</Typography>
       </Box>
     </Stack>
   )
