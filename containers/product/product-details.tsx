@@ -1,11 +1,12 @@
 import { Product } from '@commerce/types/product'
-import { Paper } from '@mui/material'
+import Review from '@components/reviews/review'
+import { Divider, Paper } from '@mui/material'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'
+import { format } from 'date-fns'
 import * as React from 'react'
-
 interface TabPanelProps {
   children?: React.ReactNode
   index: number
@@ -37,17 +38,17 @@ function a11yProps(index: number) {
 
 interface ProductDetailsBlockProps {
   product: Product
+  reviews: any
 }
 
 export default function ProductDetailsBlock({
   product,
+  reviews,
 }: ProductDetailsBlockProps) {
   const [value, setValue] = React.useState(0)
-
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
-
   return (
     <Paper elevation={0}>
       <Tabs
@@ -70,7 +71,28 @@ export default function ProductDetailsBlock({
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        {reviews.data.length > 0 ? (
+          reviews.data.map((review: any) => (
+            <>
+              <Review
+                key={review.id}
+                direction={'row'}
+                title={review.name}
+                subtitle={format(
+                  new Date(review.date_modified),
+                  'd MMMM, HH:mm'
+                )}
+                ratingValue={review.rating}
+                body={review.text}
+              />
+              <Divider sx={{ my: 4, backgroundColor: 'divider' }} />
+            </>
+          ))
+        ) : (
+          <Typography variant="body1">
+            This product has no reviews yet
+          </Typography>
+        )}
       </TabPanel>
     </Paper>
   )
