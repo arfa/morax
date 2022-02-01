@@ -1,7 +1,7 @@
-import { useState, useMemo, useEffect } from 'react'
+import { PaletteMode } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { Theme } from '@mui/system'
-import { PaletteMode } from '@mui/material'
+import { useEffect, useMemo, useState } from 'react'
 import { THEME_DARK, THEME_LIGHT } from './constants/constants.theme.base'
 
 const useThemeMode = () => {
