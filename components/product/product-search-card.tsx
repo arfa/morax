@@ -1,10 +1,11 @@
 import { Avatar, Stack, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
+import { ReactNode } from 'react'
 
 interface Props {
   imageUrl: string | undefined
   imageAlt: string | undefined
-  title: any
+  title: ReactNode
   subtitle: string
 }
 const ProductSearchCard = ({ imageUrl, imageAlt, title, subtitle }: Props) => {
