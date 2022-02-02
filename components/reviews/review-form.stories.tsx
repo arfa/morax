@@ -22,5 +22,5 @@ export const Default = Template.bind({})
 Default.args = {
   image: 'https://source.unsplash.com/random',
   title: 'Product Name',
-  rating: 3,
+  rate: 3,
 }

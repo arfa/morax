@@ -16,6 +16,7 @@ interface Props {
   title?: string
   subtitle?: string
   ratingValue?: Rate
+  subject?: string
   body?: string
 }
 export default function Review({
@@ -25,6 +26,7 @@ export default function Review({
   title,
   subtitle,
   ratingValue = Rate.NULL,
+  subject,
   body,
 }: Props) {
   const isColumn = direction === 'column'
@@ -60,20 +62,34 @@ export default function Review({
           )}
         </Stack>
       </Stack>
-      {body && (
+      <Stack direction={'column'}>
         <Typography
-          component="div"
           variant="body2"
           sx={{
             textAlign: 'left',
+            fontWeight: 500,
             mt: isColumn ? 2 : 0,
             ml: !isColumn ? 2 : 0,
             color: grey[600],
           }}
         >
-          {body}
+          {subject}
         </Typography>
-      )}
+        {body && (
+          <Typography
+            component="div"
+            variant="body2"
+            sx={{
+              textAlign: 'left',
+              mt: isColumn ? 2 : 0,
+              ml: !isColumn ? 2 : 0,
+              color: grey[600],
+            }}
+          >
+            {body}
+          </Typography>
+        )}
+      </Stack>
     </Stack>
   )
 }

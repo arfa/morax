@@ -72,22 +72,26 @@ export default function ProductDetailsBlock({
       </TabPanel>
       <TabPanel value={value} index={1}>
         {reviews.data.length > 0 ? (
-          reviews.data.map((review: any) => (
-            <>
-              <Review
-                key={review.id}
-                direction={'row'}
-                title={review.name}
-                subtitle={format(
-                  new Date(review.date_modified),
-                  'd MMMM, HH:mm'
-                )}
-                ratingValue={review.rating}
-                body={review.text}
-              />
-              <Divider sx={{ my: 4, backgroundColor: 'divider' }} />
-            </>
-          ))
+          reviews.data
+            .slice(0)
+            .reverse()
+            .map((review: any) => (
+              <>
+                <Review
+                  key={review.id}
+                  direction={'row'}
+                  title={review.name}
+                  subtitle={format(
+                    new Date(review.date_modified),
+                    'd MMMM, HH:mm'
+                  )}
+                  ratingValue={review.rating}
+                  subject={review.title}
+                  body={review.text}
+                />
+                <Divider sx={{ my: 4, backgroundColor: 'divider' }} />
+              </>
+            ))
         ) : (
           <Typography variant="body1">
             This product has no reviews yet
