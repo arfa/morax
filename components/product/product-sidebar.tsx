@@ -53,9 +53,7 @@ export default function ProductSidebar({
         )}
 
         <Social
-          url={`${process.env.VERCEL_URL || 'http://localhost:3000'}/product${
-            product.path
-          }`}
+          url={`${process.env.NEXT_PUBLIC_VERCEL_URL}/product${product.path}`}
           image={product.images[0]?.url!}
         />
       </Stack>
