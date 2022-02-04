@@ -1,27 +1,34 @@
 import { Button, Stack, Typography } from '@mui/material'
-import Image from 'next/image'
-import { MdHome } from 'react-icons/md'
 import Link from 'next/link'
+import { MdHome } from 'react-icons/md'
 interface Props {
   errorCode?: 404 | 500
 }
 
 export default function Error({ errorCode = 404 }: Props) {
+  const errorTitle = (code: any) => {
+    switch (code) {
+      case 404:
+        return 'Looks like you are lost'
+      case 500:
+        return 'Server Side Error Occured'
+      default:
+        return 'Looks like you are lost'
+    }
+  }
   return (
     <Stack
       direction="column"
       justifyContent="center"
       alignItems="center"
       spacing={2}
+      sx={{ height: '70vh' }}
     >
-      <Image
-        src={`/assets/images/${errorCode}.svg`}
-        alt={`Error ${errorCode}`}
-        width={822}
-        height={492}
-      />
+      <Typography variant="h1" gutterBottom component="div">
+        {errorCode}
+      </Typography>
       <Typography variant="h4" gutterBottom component="div">
-        Looks like you are lost
+        {errorTitle(errorCode)}
       </Typography>
       <Typography variant="subtitle1" gutterBottom component="div">
         We can't find the page you're looking for

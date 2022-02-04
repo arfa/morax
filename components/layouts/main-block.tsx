@@ -6,7 +6,7 @@ interface Props {
 }
 const MainBlock = ({ leftBlock, rightBlock }: Props) => {
   return (
-    <Grid container border={0} padding={0}>
+    <Grid container border={0} padding={0} sx={{ height: '75vh' }}>
       {/* Category list */}
       <Grid item xs={12} md={3} margin={0} border={0}>
         {leftBlock}

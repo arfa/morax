@@ -63,7 +63,6 @@ export default function ProductDetailsBlock({
         <Typography
           component="div"
           variant="body2"
-
           sx={{ fontSize: '0.75rem' }}
           dangerouslySetInnerHTML={{
             __html: product.descriptionHtml || product.description,
