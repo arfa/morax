@@ -3,7 +3,6 @@ import Slider from '@components/slider/slider'
 import useCustomer from '@framework/customer/use-customer'
 import usePrice from '@framework/product/use-price'
 import { Grid, Rating, Stack, Typography } from '@mui/material'
-import { format } from 'date-fns'
 import Image from 'next/image'
 import ProductSideBlock from './product-sidebar'
 import axios from 'axios'
@@ -80,10 +79,7 @@ export default function ProductMainBlock({ product }: ProductMainBlockProps) {
                   ? customer.firstName + ' ' + customer.lastName
                   : '',
                 email: customer ? customer.email : '',
-                date_reviewed: format(
-                  new Date(),
-                  "yyyy-MM-dd'T'HH:mm:ss+00:00"
-                ),
+                date_reviewed: new Date().toISOString(),
               })
             }
           />
