@@ -5,8 +5,8 @@ import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'
-import { format } from 'date-fns'
 import * as React from 'react'
+import DateFnsAdapter from '@date-io/date-fns'
 interface TabPanelProps {
   children?: React.ReactNode
   index: number
@@ -49,6 +49,7 @@ export default function ProductDetailsBlock({
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
+  const dateFns = new DateFnsAdapter()
   return (
     <Paper elevation={0}>
       <Tabs
@@ -81,7 +82,7 @@ export default function ProductDetailsBlock({
                   key={review.id}
                   direction={'row'}
                   title={review.name}
-                  subtitle={format(
+                  subtitle={dateFns.formatByString(
                     new Date(review.date_modified),
                     'd MMMM, HH:mm'
                   )}
