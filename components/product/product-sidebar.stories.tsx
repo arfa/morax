@@ -80,4 +80,5 @@ Default.args = {
     size: 's',
     color: '#d3a3a3',
   },
+  socialUrl: 'https://example.com',
 }
