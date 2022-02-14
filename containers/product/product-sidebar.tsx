@@ -44,6 +44,7 @@ export default function ProductSideBlock({ product }: ProductSideBlockProps) {
       cartEnabled={!!process.env.COMMERCE_CART_ENABLED}
       selectedOptions={selectedOptions}
       setSelectedOptions={setSelectedOptions}
+      socialUrl={`${process.env.NEXT_PUBLIC_VERCEL_URL}/product${product.path}`}
     />
   )
 }

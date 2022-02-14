@@ -14,6 +14,7 @@ interface ProductSidebarProps {
   availableForSale?: boolean
   selectedOptions?: any
   setSelectedOptions?: any
+  socialUrl: string
 }
 
 export default function ProductSidebar({
@@ -24,6 +25,7 @@ export default function ProductSidebar({
   availableForSale = true,
   selectedOptions,
   setSelectedOptions,
+  socialUrl,
 }: ProductSidebarProps) {
   const addToCart = () => {
     if (onAddToCart) {
@@ -53,7 +55,7 @@ export default function ProductSidebar({
         )}
 
         <Social
-          url={`${process.env.NEXT_PUBLIC_VERCEL_URL}/product${product.path}`}
+          url={socialUrl}
           image={product.images[0]?.url!}
         />
       </Stack>
