@@ -43,7 +43,7 @@ export default function ProductSidebar({
       <Stack direction="row" spacing={2} alignItems="center" sx={{ pt: 3 }}>
         {cartEnabled && (
           <LoadingButton
-            sx={{ marginTop: '30px', mt: 0 }}
+            sx={{ mt: 0 }}
             variant="outlined"
             startIcon={<HiOutlineShoppingCart />}
             onClick={addToCart}
