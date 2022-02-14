@@ -26,7 +26,7 @@ export default function Social({
       spacing={1}
       justifyContent="center"
       alignItems="center"
-      sx={{ display: 'flex', flexWrap: 'wrap' }}
+      sx={{ display: 'flex', flexWrap: 'wrap', lineHeight: 1 }}
     >
       <FacebookShareButton url={url} quote={title}>
         <FacebookIcon size={20} round />
