@@ -1,4 +1,4 @@
-import ReviewForm from '@components/reviews/review-form'
+import ReviewForm from '@components/reviews/review-form/review-form'
 import Slider from '@components/slider/slider'
 import useCustomer from '@framework/customer/use-customer'
 import usePrice from '@framework/product/use-price'
