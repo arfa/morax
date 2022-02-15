@@ -69,7 +69,7 @@ export default function Review({
             textAlign: 'left',
             fontWeight: 500,
             mt: isColumn ? 2 : 0,
-            ml: !isColumn ? 2 : 0,
+            ml: isColumn ? 0 : 2,
             color: grey[600],
           }}
         >
@@ -82,7 +82,7 @@ export default function Review({
             sx={{
               textAlign: 'left',
               mt: isColumn ? 2 : 0,
-              ml: !isColumn ? 2 : 0,
+              ml: isColumn ? 0 : 2,
               color: grey[600],
             }}
           >

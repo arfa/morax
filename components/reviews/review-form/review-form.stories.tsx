@@ -1,4 +1,4 @@
-import ReviewForm from '@components/reviews/review-form'
+import ReviewForm from '@components/reviews/review-form/review-form'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
