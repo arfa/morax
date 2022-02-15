@@ -1,5 +1,5 @@
 import round from '@components/reviews/round'
-import { Button, Dialog, Grid } from '@mui/material'
+import { Button, Dialog, Grid, Paper } from '@mui/material'
 import React, { useState } from 'react'
 import ReviewFormCard from './review-form-card'
 import ReviewFormInput from './review-form-input'
@@ -60,6 +60,7 @@ export default function ReviewForm({
         open={open}
         onClose={handleClose}
         maxWidth={'md'}
+        fullWidth
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -80,12 +81,23 @@ export default function ReviewForm({
               onChange={(event, newValue) => setRating(newValue)}
             />
           </Grid>
-          <ReviewFormInput
-            title={title}
-            value={rating}
-            onChange={(event, newValue) => setRating(newValue)}
-            onSubmit={handleSubmit}
-          />
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={8}
+            component={Paper}
+            elevation={6}
+            square
+            sx={{ border: 'none' }}
+          >
+            <ReviewFormInput
+              title={title}
+              value={rating}
+              onChange={(event, newValue) => setRating(newValue)}
+              onSubmit={handleSubmit}
+            />
+          </Grid>
         </Grid>
       </Dialog>
     </>
