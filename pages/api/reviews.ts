@@ -5,7 +5,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { pid, review } = req.body.params
-  console.log(pid)
   try {
     await axios
       .post(
