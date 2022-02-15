@@ -1,5 +1,4 @@
 import ThemeSwither from '@components/buttons/theme.switcher'
-import useTawk from '@components/hooks/use-tawk'
 import Cookies from '@components/layouts/cookies'
 import Footer from '@components/layouts/footer'
 import ScrollTop from '@components/layouts/scroll-top'
@@ -18,6 +17,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/user-nav/user-nav'
 import Link from 'next/link'
+import Script from 'next/script'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect } from 'react'
 import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
@@ -72,7 +72,7 @@ ElevationScroll.propTypes = {
 export default function Layout(props: any) {
   const { theme, setDarkMode } = useThemeMode()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  useTawk({ id: process.env.NEXT_PUBLIC_TAWK_ID })
+  // useTawk({ id: process.env.NEXT_PUBLIC_TAWK_ID })
 
   useEffect(() => {
     document.body.style.backgroundColor = theme.palette.background.default
@@ -83,59 +83,68 @@ export default function Layout(props: any) {
   }, [theme, setDarkMode])
 
   return (
-    <ThemeProvider theme={theme}>
-      <ElevationScroll {...props}>
-        <AppBar
-          position="sticky"
-          sx={{ backgroundColor: 'background.default' }}
-        >
-          <Toolbar sx={{ boxShadow: 'none' }}>
-            <Link href="/" passHref>
-              <MUILink underline="none" sx={{ flexGrow: 1 }}>
-                <Typography variant="h6" noWrap>
-                  SHOP
-                </Typography>
-              </MUILink>
-            </Link>
-            <SearchButtonCtn />
-            <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
-            <Stack
-              spacing={2}
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Cart />
-
-              <Link href="/wishlist" passHref>
-                <IconButton
-                  size="large"
-                  aria-label="search"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  color="primary"
-                >
-                  <HiOutlineHeart />
-                </IconButton>
-              </Link>
-              <ThemeSwither onClick={onThemeSwitch} mode={theme.palette.mode} />
-              <UserNav />
-            </Stack>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-      <Container
-        maxWidth="xl"
-        sx={{ pt: 4, pb: 4, bgcolor: 'background.default' }}
-      >
-        {props.children}
-      </Container>
-      <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
-      <ScrollTop />
-      <Footer
-        socials={socials}
-        copyright="&copy; 2020 Transcend, Inc. All rights reserved."
+    <>
+      <Script
+        src={`https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWK_ID}/default`}
+        strategy="afterInteractive"
       />
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <ElevationScroll {...props}>
+          <AppBar
+            position="sticky"
+            sx={{ backgroundColor: 'background.default' }}
+          >
+            <Toolbar sx={{ boxShadow: 'none' }}>
+              <Link href="/" passHref>
+                <MUILink underline="none" sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" noWrap>
+                    SHOP
+                  </Typography>
+                </MUILink>
+              </Link>
+              <SearchButtonCtn />
+              <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
+              <Stack
+                spacing={2}
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Cart />
+
+                <Link href="/wishlist" passHref>
+                  <IconButton
+                    size="large"
+                    aria-label="search"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="primary"
+                  >
+                    <HiOutlineHeart />
+                  </IconButton>
+                </Link>
+                <ThemeSwither
+                  onClick={onThemeSwitch}
+                  mode={theme.palette.mode}
+                />
+                <UserNav />
+              </Stack>
+            </Toolbar>
+          </AppBar>
+        </ElevationScroll>
+        <Container
+          maxWidth="xl"
+          sx={{ pt: 4, pb: 4, bgcolor: 'background.default' }}
+        >
+          {props.children}
+        </Container>
+        <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
+        <ScrollTop />
+        <Footer
+          socials={socials}
+          copyright="&copy; 2020 Transcend, Inc. All rights reserved."
+        />
+      </ThemeProvider>
+    </>
   )
 }
