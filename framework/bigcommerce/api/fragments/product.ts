@@ -41,6 +41,10 @@ export const productInfoFragment = /* GraphQL */ `
   fragment productInfo on Product {
     entityId
     name
+    reviewSummary {
+      summationOfRatings
+      numberOfReviews
+    }
     path
     brand {
       entityId

@@ -56,6 +56,7 @@ export default function SearchButton({
         aria-labelledby="Dialog-Dialog-title"
         aria-describedby="Dialog-Dialog-description"
         sx={{
+          backdropFilter: 'blur(5px)',
           '& .MuiDialog-container': {
             alignItems: 'flex-start',
           },

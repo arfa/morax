@@ -1,4 +1,3 @@
-import { Method, useReviews } from '@components/hooks/use-reviews'
 import commerce from '@lib/api/commerce'
 import { Container } from '@mui/material'
 import type {
@@ -13,6 +12,7 @@ import ProductDetailsBlock from '../../containers/product/product-details'
 import ProductMainBlock from '../../containers/product/product-main-block'
 import ProductRelated from '../../containers/product/product-related-block'
 import espcapeHtml from '../../lib/escape-html'
+import axios from 'axios'
 
 export async function getStaticProps({
   params,
@@ -42,6 +42,17 @@ export async function getStaticProps({
   if (!product) {
     throw new Error(`Product with slug '${params!.slug}' not found`)
   }
+  // GET REVIEWS
+  const { data: reviews } = await axios.get(
+    `https://api.bigcommerce.com/stores/${process.env.BIGCOMMERCE_STORE_API_STORE_HASH}/v3/catalog/products/${product.id}/reviews`,
+    {
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        'x-auth-token': process.env.BIGCOMMERCE_STORE_API_TOKEN || '',
+      },
+    }
+  )
 
   return {
     props: {
@@ -49,6 +60,7 @@ export async function getStaticProps({
       product,
       relatedProducts,
       categories,
+      reviews,
     },
     revalidate: 200,
   }
@@ -73,9 +85,9 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 
 export default function Slug({
   product,
+  reviews,
   relatedProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const reviews = useReviews(Method.GET, product.id)
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading...</div>
@@ -86,7 +98,7 @@ export default function Slug({
         {/* main product paper */}
         <ProductMainBlock product={product} />
         {/* poduct details paper */}
-        <ProductDetailsBlock product={product} />
+        <ProductDetailsBlock product={product} reviews={reviews} />
 
         {/* Related Products */}
         <ProductRelated relatedProducts={relatedProducts} />

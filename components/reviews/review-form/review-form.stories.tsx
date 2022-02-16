@@ -1,4 +1,4 @@
-import ReviewForm from '@components/reviews/review-form'
+import ReviewForm from '@components/reviews/review-form/review-form'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
@@ -22,5 +22,5 @@ export const Default = Template.bind({})
 Default.args = {
   image: 'https://source.unsplash.com/random',
   title: 'Product Name',
-  rating: 3,
+  rate: 3,
 }
