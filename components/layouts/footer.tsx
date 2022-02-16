@@ -19,7 +19,7 @@ export default function Footer({ socials, copyright }: Props) {
       alignItems="center"
       borderRadius={0}
       border={0}
-      sx={{bgcolor: 'background.default'}}
+      sx={{ bgcolor: 'background.default' }}
     >
       <Grid
         container

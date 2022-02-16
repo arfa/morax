@@ -1,7 +1,7 @@
 import ThemeSwither from '@components/buttons/theme.switcher'
-import useTawk from '@components/hooks/use-tawk'
 import Cookies from '@components/layouts/cookies'
 import Footer from '@components/layouts/footer'
+import Logo from '@components/layouts/logo'
 import ScrollTop from '@components/layouts/scroll-top'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import {
@@ -11,9 +11,7 @@ import {
   IconButton,
   Stack,
   Toolbar,
-  Typography,
 } from '@mui/material'
-import MUILink from '@mui/material/Link'
 import { ThemeProvider } from '@mui/material/styles'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/user-nav/user-nav'
@@ -72,7 +70,6 @@ ElevationScroll.propTypes = {
 export default function Layout(props: any) {
   const { theme, setDarkMode } = useThemeMode()
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  useTawk({ id: process.env.NEXT_PUBLIC_TAWK_ID })
 
   useEffect(() => {
     document.body.style.backgroundColor = theme.palette.background.default
@@ -90,13 +87,7 @@ export default function Layout(props: any) {
           sx={{ backgroundColor: 'background.default' }}
         >
           <Toolbar sx={{ boxShadow: 'none' }}>
-            <Link href="/" passHref>
-              <MUILink underline="none" sx={{ flexGrow: 1 }}>
-                <Typography variant="h6" noWrap>
-                  SHOP
-                </Typography>
-              </MUILink>
-            </Link>
+            <Logo title="SHOP" />
             <SearchButtonCtn />
             <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
             <Stack
