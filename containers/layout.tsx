@@ -16,6 +16,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import UserNav from 'containers/user-nav/user-nav'
 import Link from 'next/link'
+import Script from 'next/script'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect } from 'react'
 import { FiFacebook, FiGithub, FiInstagram } from 'react-icons/fi'
@@ -80,53 +81,62 @@ export default function Layout(props: any) {
   }, [theme, setDarkMode])
 
   return (
-    <ThemeProvider theme={theme}>
-      <ElevationScroll {...props}>
-        <AppBar
-          position="sticky"
-          sx={{ backgroundColor: 'background.default' }}
-        >
-          <Toolbar sx={{ boxShadow: 'none' }}>
-            <Logo title="SHOP" />
-            <SearchButtonCtn />
-            <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
-            <Stack
-              spacing={2}
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Cart />
-
-              <Link href="/wishlist" passHref>
-                <IconButton
-                  size="large"
-                  aria-label="search"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  color="primary"
-                >
-                  <HiOutlineHeart />
-                </IconButton>
-              </Link>
-              <ThemeSwither onClick={onThemeSwitch} mode={theme.palette.mode} />
-              <UserNav />
-            </Stack>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-      <Container
-        maxWidth="xl"
-        sx={{ pt: 4, pb: 4, bgcolor: 'background.default' }}
-      >
-        {props.children}
-      </Container>
-      <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
-      <ScrollTop />
-      <Footer
-        socials={socials}
-        copyright="&copy; 2020 Transcend, Inc. All rights reserved."
+    <>
+      <Script
+        src={`https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWK_ID}/default`}
+        strategy="afterInteractive"
       />
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <ElevationScroll {...props}>
+          <AppBar
+            position="sticky"
+            sx={{ backgroundColor: 'background.default' }}
+          >
+            <Toolbar sx={{ boxShadow: 'none' }}>
+              <Logo title="SHOP" />
+              <SearchButtonCtn />
+              <Divider sx={{ height: 28, marginX: 2 }} orientation="vertical" />
+              <Stack
+                spacing={2}
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Cart />
+
+                <Link href="/wishlist" passHref>
+                  <IconButton
+                    size="large"
+                    aria-label="search"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="primary"
+                  >
+                    <HiOutlineHeart />
+                  </IconButton>
+                </Link>
+                <ThemeSwither
+                  onClick={onThemeSwitch}
+                  mode={theme.palette.mode}
+                />
+                <UserNav />
+              </Stack>
+            </Toolbar>
+          </AppBar>
+        </ElevationScroll>
+        <Container
+          maxWidth="xl"
+          sx={{ pt: 4, pb: 4, bgcolor: 'background.default' }}
+        >
+          {props.children}
+        </Container>
+        <Cookies visible={!acceptedCookies} onClick={() => onAcceptCookies()} />
+        <ScrollTop />
+        <Footer
+          socials={socials}
+          copyright="&copy; 2020 Transcend, Inc. All rights reserved."
+        />
+      </ThemeProvider>
+    </>
   )
 }
