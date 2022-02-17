@@ -1,4 +1,3 @@
-import getCustomerWishlist from '../../operations/get-customer-wishlist'
 import { parseWishlistItem } from '../../utils/parse-item'
 import getCustomerId from '../../utils/get-customer-id'
 import type { WishlistEndpoint } from '.'
@@ -40,7 +39,7 @@ const addItem: WishlistEndpoint['handlers']['addItem'] = async ({
           }
         : {
             name: 'Wishlist',
-            customer_id: customerId,
+            customer_id: Number(customerId),
             items: [parseWishlistItem(item)],
             is_public: false,
           }

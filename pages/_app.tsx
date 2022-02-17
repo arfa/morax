@@ -1,13 +1,12 @@
-import * as React from 'react'
-import Head from 'next/head'
-import { AppProps } from 'next/app'
-import { ThemeProvider } from '@mui/material/styles'
+import Layout from 'containers/layout'
 import CssBaseline from '@mui/material/CssBaseline'
-import theme from '../styles/theme'
-import Layout from '@components/Layout'
 import { NextPage } from 'next'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import * as React from 'react'
 import { ReactElement, ReactNode } from 'react'
-
+import { CommerceProvider } from '@framework'
+import { useRouter } from 'next/router'
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -19,17 +18,18 @@ type AppPropsWithLayout = AppProps & {
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>)
+  const { locale = 'en-US' } = useRouter()
   return (
     <>
       <Head>
-        <title>Change title in _app.tsx</title>
+        <title>Transcend</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
+      <CommerceProvider locale={locale}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
+      </CommerceProvider>
     </>
   )
 }

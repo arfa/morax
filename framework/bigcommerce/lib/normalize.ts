@@ -1,5 +1,5 @@
 import type { Product } from '../types/product'
-import type { Cart, BigcommerceCart, LineItem } from '../types/cart'
+import type { BigcommerceCart, Cart, LineItem } from '../types/cart'
 import type { Page } from '../types/page'
 import type { BCCategory, Category } from '../types/site'
 import { definitions } from '../api/definitions/store-content'
@@ -132,5 +132,6 @@ export function normalizeCategory(category: BCCategory): Category {
     name: category.name,
     slug: getSlug(category.path),
     path: category.path,
+    image: category.image,
   }
 }

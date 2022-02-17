@@ -1,6 +1,32 @@
 {
-  "extends": ["next", "prettier"],
+  "extends": [
+    "next",
+    "prettier"
+  ],
+  "plugins": [
+    "unused-imports"
+  ],
   "rules": {
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    // hack: shorturl.at/ctMX6
+    "@next/next/no-document-import-in-page": "off",
+    // unused imports
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ]
   }
 }

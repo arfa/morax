@@ -1,8 +1,13 @@
+export type CategoryImage = {
+  url: string
+  alt?: string
+}
 export type Category = {
   id: string
   name: string
   slug: string
   path: string
+  image: CategoryImage
 }
 
 export type Brand = any
